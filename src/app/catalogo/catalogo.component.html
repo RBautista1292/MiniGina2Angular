@@ -1,0 +1,27 @@
+<div class="container mt-5">
+        <div class="card-columns" >
+            <div class="card mb-4" *ngFor="let p of peliculas">
+                <img [src]="p.img" class="card-img-top">
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{p.nombre}}</h5>
+                    <p>
+                        <button class="btn btn-light text-primary font-weight-bold" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+p.collapse" aria-expanded="false">
+                            Sinopsis
+                        </button>
+                    </p>
+                    <div class="collapse" [id]="'collapse'+p.collapse">
+                        <div class="card card-body">
+                            <h6 class="card-title">Sinopsis:</h6>
+                            {{p.sinopsis}}
+                        </div>
+                    </div>
+                    <p class="card-text"><span style="font-weight: bold">Año:</span> {{p.year}}</p>
+                    <p class="card-text"><span style="font-weight: bold">Duración:</span> {{p.duracion}} min.</p>
+                    <p class="card-text"><span style="font-weight: bold">Director:</span> {{p.director}}</p>
+                    <button class="btn btn-primary">Comprar boletos</button>
+                </div>
+            </div>
+        </div>
+</div>
+
