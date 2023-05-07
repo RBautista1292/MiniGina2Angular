@@ -1,6 +1,6 @@
-<div class="container mt-5">
+<div class="container mt-5" >
         <div class="card-columns" >
-            <div class="card mb-4" *ngFor="let p of peliculas">
+            <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let p of peliculas">
                 <img [src]="p.img" class="card-img-top">
                 
                 <div class="card-body">
@@ -13,13 +13,13 @@
                     <div class="collapse" [id]="'collapse'+p.collapse">
                         <div class="card card-body">
                             <h6 class="card-title">Sinopsis:</h6>
-                            {{p.sinopsis}}
+                            <p>{{p.sinopsis}}</p>
                         </div>
                     </div>
                     <p class="card-text"><span class="h6">Año: </span> {{p.year}}</p>
                     <p class="card-text"><span class="h6">Duración: </span> {{p.duracion}} min.</p>
                     <p class="card-text"><span class="h6">Director: </span> {{p.director}}</p>
-                    <button class="btn btn-primary" (click)="enviarDatos(p)">Comprar boletos</button>
+                    <a class="btn btn-primary" (click)="enviarDatos(p, $event)">Comprar boletos</a>
                 </div>
             </div>
         </div>

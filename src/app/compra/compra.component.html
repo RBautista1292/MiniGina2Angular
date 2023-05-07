@@ -2,14 +2,14 @@
   <div class="card mb-3 border-0" *ngIf="datosPeliculaCompra.trailer.length > 0">
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img [src]="datosPeliculaCompra.img" alt="..." />
+        <img [src]="datosPeliculaCompra.img" style="max-width: 360px" class="shadow p-3 mb-5 bg-white rounded" alt="..." />
       </div>
       <div class="col-md-8">
         <div class="card-body">
           <h2 class="card-title">{{ datosPeliculaCompra.nombre }}</h2>
           <div class="card-text">
             <h6>Sinopsis:</h6>
-            <p>{{ datosPeliculaCompra.sinopsis }}</p>
+            <p class="text-justify">{{ datosPeliculaCompra.sinopsis }}</p>
             <p><span class="h6">Año: </span>{{ datosPeliculaCompra.year }}</p>
             <p>
               <span class="h6">Duración: </span

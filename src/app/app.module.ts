@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CompraComponent } from './compra/compra.component';
 import { DomseguroPipe } from './domseguro.pipe';
+import { ContenidoComponent } from './contenido/contenido.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { DomseguroPipe } from './domseguro.pipe';
     NavbarComponent,
     CatalogoComponent,
     CompraComponent,
-    DomseguroPipe
+    DomseguroPipe,
+    ContenidoComponent
   ],
   imports: [
     BrowserModule,

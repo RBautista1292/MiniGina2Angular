@@ -1,0 +1,2 @@
+<div *ngIf="isCatalogoVisible"><app-catalogo (datosPelicula)="peliculaCompra($event)"></app-catalogo></div>
+<div *ngIf="isCompraVisible"><app-compra [datosPeliculaCompra]="datosPelicula"></app-compra></div>
