@@ -13,7 +13,9 @@ export class PeliculasService {
       year: 2001,
       duracion: 146,
       director: "Shunji Iwai",
-      collapse: 1
+      collapse: 1,
+      trailer: "Kwlh-z2R8QE",
+      generos: ["Drama", "Crimen"]
     },
     {
       nombre: "Oldboy",
@@ -22,7 +24,9 @@ export class PeliculasService {
       year: 2003,
       duracion: 120,
       director: "Park Chan-wook",
-      collapse: 2
+      collapse: 2,
+      trailer: "2HkjrJ6IK5E",
+      generos: ["Drama", "Acción", "Misterio", "Suspenso"]
     },
     {
       nombre: "Everything Everywhere All at Once",
@@ -31,7 +35,9 @@ export class PeliculasService {
       year: 2022,
       duracion: 140,
       director: "Daniel Scheinert, Daniel Kwan",
-      collapse: 3
+      collapse: 3,
+      trailer: "wxN1T1uxQ2g",
+      generos: ["Aventura", "Acción", "Drama", "Ciencia ficción"]
     },
     {
       nombre: "Shrek",
@@ -40,7 +46,9 @@ export class PeliculasService {
       year: 2001,
       duracion: 90,
       director: "Andrew Adamson, Vicky Jenson",
-      collapse: 4
+      collapse: 4,
+      trailer: "CwXOrWvPBPk",
+      generos: ["Animación", "Comedia", "Fantasía", "Aventura"]
     },
     {
       nombre: "At Eternity's Gate",
@@ -49,7 +57,9 @@ export class PeliculasService {
       year: 2018,
       duracion: 111,
       director: "Julian Schnabel",
-      collapse: 5
+      collapse: 5,
+      trailer: "14fW4mhFkfg",
+      generos: ["Drama"]
     },
     {
       nombre: "Before Sunrise",
@@ -58,7 +68,9 @@ export class PeliculasService {
       year: 1995,
       duracion: 101,
       director: "Richard Linklater",
-      collapse: 6
+      collapse: 6,
+      trailer: "6MUcuqbGTxc",
+      generos: ["Romance", "Drama"]
     },
     {
       nombre: "Irreversible",
@@ -67,7 +79,9 @@ export class PeliculasService {
       year: 2002,
       duracion: 98,
       director: "Gaspar Noé",
-      collapse: 7
+      collapse: 7,
+      trailer: "ZoDtJjqkfxU",
+      generos: ["Misterio", "Crimen", "Drama", "Suspenso"]
     },
     {
       nombre: "Reservoir Dogs",
@@ -76,7 +90,9 @@ export class PeliculasService {
       year: 1992,
       duracion: 99,
       director: "Quentin Tarantino",
-      collapse: 8
+      collapse: 8,
+      trailer: "7GUQGvoDlHw",
+      generos: ["Crimen", "Suspenso"]
     },
     {
       nombre: "Fantastic Mr. Fox",
@@ -85,7 +101,9 @@ export class PeliculasService {
       year: 2009,
       duracion: 87,
       director: "Wes Anderson",
-      collapse: 9
+      collapse: 9,
+      trailer: "n2igjYFojUo",
+      generos: ["Comedia", "Animación", "Aventura"]
     },
     {
       nombre: "La montaña sagrada",
@@ -94,7 +112,9 @@ export class PeliculasService {
       year: 1973,
       duracion: 114,
       director: "Alejandro Jodorowsky",
-      collapse: 10
+      collapse: 10,
+      trailer: "avTOLTUqf1w",
+      generos: ["Drama"]
     },
     {
       nombre: "Monsters, Inc.",
@@ -103,7 +123,9 @@ export class PeliculasService {
       year: 2001,
       duracion: 92,
       director: "Pete Docter",
-      collapse: 11
+      collapse: 11,
+      trailer: "uzkkh-1A_kY",
+      generos: ["Animación", "Comedia"]
     },
     {
       nombre: "Vertigo",
@@ -112,7 +134,9 @@ export class PeliculasService {
       year: 1958,
       duracion: 128,
       director: "Alfred Hitchcock",
-      collapse: 12
+      collapse: 12,
+      trailer: "95o-QM-lz8g",
+      generos: ["Misterio", "Romance", "Suspenso"]
     }
   ];
 
@@ -131,4 +155,6 @@ export interface Pelicula {
   duracion: number;
   director: string;
   collapse: number;
+  trailer: string;
+  generos: string[];
 }

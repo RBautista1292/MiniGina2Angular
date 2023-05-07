@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Pelicula, PeliculasService } from '../peliculas.service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Pelicula, PeliculasService } from '../servicios/peliculas.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -8,11 +8,17 @@ import { Pelicula, PeliculasService } from '../peliculas.service';
 })
 export class CatalogoComponent implements OnInit {
   peliculas: Pelicula[];
+  @Output() datosPelicula = new EventEmitter<Pelicula>();
 
   constructor(public servicio: PeliculasService) {
     this.peliculas = this.servicio.getMovies();
+
   }
   ngOnInit(): void {
     
+  }
+
+  enviarDatos(pelicula: Pelicula){
+    this.datosPelicula.emit(pelicula);
   }
 }

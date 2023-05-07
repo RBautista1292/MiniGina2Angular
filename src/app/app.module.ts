@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CompraComponent } from './compra/compra.component';
+import { DomseguroPipe } from './domseguro.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     CatalogoComponent,
-    CompraComponent
+    CompraComponent,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,

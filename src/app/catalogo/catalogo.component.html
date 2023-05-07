@@ -16,10 +16,10 @@
                             {{p.sinopsis}}
                         </div>
                     </div>
-                    <p class="card-text"><span style="font-weight: bold">Año:</span> {{p.year}}</p>
-                    <p class="card-text"><span style="font-weight: bold">Duración:</span> {{p.duracion}} min.</p>
-                    <p class="card-text"><span style="font-weight: bold">Director:</span> {{p.director}}</p>
-                    <button class="btn btn-primary">Comprar boletos</button>
+                    <p class="card-text"><span class="h6">Año: </span> {{p.year}}</p>
+                    <p class="card-text"><span class="h6">Duración: </span> {{p.duracion}} min.</p>
+                    <p class="card-text"><span class="h6">Director: </span> {{p.director}}</p>
+                    <button class="btn btn-primary" (click)="enviarDatos(p)">Comprar boletos</button>
                 </div>
             </div>
         </div>
