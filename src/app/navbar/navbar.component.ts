@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RutaService } from '../servicios/ruta.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  constructor(private rutaService: RutaService){}
+  
+  seleccionar(opcion: string) {
+    this.rutaService.notifyNavItemSelected(opcion);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pelicula } from '../servicios/peliculas.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-contenido',
@@ -21,6 +21,7 @@ export class ContenidoComponent implements OnInit {
   };
   isCatalogoVisible = true;
   isCompraVisible = false;
+  rutaActual: string = "";
 
   peliculaCompra(pelicula: Pelicula){
     this.datosPelicula = pelicula;
@@ -32,12 +33,12 @@ export class ContenidoComponent implements OnInit {
     this.route.url.subscribe(url => {
       this.isCatalogoVisible = url[1].path === 'catalogo';
       this.isCompraVisible = url[1].path === 'compra';
+      this.rutaActual = url[1].path;
     });
   }
+
+ 
   constructor(private route: ActivatedRoute) {
-    this.route.url.subscribe(url => {
-      this.isCatalogoVisible = url[1].path === 'catalogo';
-      this.isCompraVisible = url[1].path === 'compra';
-    });
+    
   }
 }
