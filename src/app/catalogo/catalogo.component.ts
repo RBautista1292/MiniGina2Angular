@@ -19,6 +19,10 @@ export class CatalogoComponent {
   enviarDatos(pelicula: Pelicula,  event: any){
     event.preventDefault();
     this.datosPelicula.emit(pelicula);
-    this.router.navigateByUrl('/contenido/compra');
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 }

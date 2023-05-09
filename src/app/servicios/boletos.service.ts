@@ -22,5 +22,4 @@ export interface Boleto {
   fecha: Date;
   hora: Time;
   sala: number;
-  sinopsis: string;
 }

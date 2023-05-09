@@ -8,6 +8,7 @@ import { CatalogoComponent } from './catalogo/catalogo.component';
 import { CompraComponent } from './compra/compra.component';
 import { DomseguroPipe } from './domseguro.pipe';
 import { ContenidoComponent } from './contenido/contenido.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ContenidoComponent } from './contenido/contenido.component';
     CatalogoComponent,
     CompraComponent,
     DomseguroPipe,
-    ContenidoComponent
+    ContenidoComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

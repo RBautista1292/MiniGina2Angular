@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Pelicula } from '../servicios/peliculas.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Scroll } from '@angular/router';
+import { RutaService } from '../servicios/ruta.service';
 
 @Component({
   selector: 'app-contenido',
@@ -21,7 +22,7 @@ export class ContenidoComponent implements OnInit {
   };
   isCatalogoVisible = true;
   isCompraVisible = false;
-  rutaActual: string = "";
+  reseteaContenido = false;
 
   peliculaCompra(pelicula: Pelicula){
     this.datosPelicula = pelicula;
@@ -30,15 +31,22 @@ export class ContenidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.route.url.subscribe(url => {
-      this.isCatalogoVisible = url[1].path === 'catalogo';
-      this.isCompraVisible = url[1].path === 'compra';
-      this.rutaActual = url[1].path;
+    this.isCatalogoVisible = true;
+    this.isCompraVisible = false;
+  }
+
+  regresar() {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
     });
+    this.isCatalogoVisible = true;
+    this.isCompraVisible = false;
   }
 
  
-  constructor(private route: ActivatedRoute) {
+  constructor(private router: Router,) {
     
   }
 }

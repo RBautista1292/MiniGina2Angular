@@ -5,12 +5,13 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class RutaService {
-  private navItemSelected = new Subject<string>();
-  navItemSelected$ = this.navItemSelected.asObservable();
+  private _booleanSubject = new Subject<boolean>();
+  boolean$ = this._booleanSubject.asObservable();
 
-  notifyNavItemSelected(navItem: string) {
-    this.navItemSelected.next(navItem);
+  changeBoolean() {
+    this._booleanSubject.next(true);
   }
+  
 
   constructor() { }
 }

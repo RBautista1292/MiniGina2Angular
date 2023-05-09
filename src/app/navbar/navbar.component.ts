@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RutaService } from '../servicios/ruta.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,10 @@ import { RutaService } from '../servicios/ruta.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  constructor(private rutaService: RutaService){}
-  
-  seleccionar(opcion: string) {
-    this.rutaService.notifyNavItemSelected(opcion);
+
+  constructor(private router: Router, private rutaService: RutaService){}
+  restart() {
+      this.router.navigate(['/contenido']);
   }
+  
 }
