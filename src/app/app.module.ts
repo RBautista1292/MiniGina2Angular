@@ -9,6 +9,7 @@ import { CompraComponent } from './compra/compra.component';
 import { DomseguroPipe } from './domseguro.pipe';
 import { ContenidoComponent } from './contenido/contenido.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InicioComponent } from './inicio/inicio.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

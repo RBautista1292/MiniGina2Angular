@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Pelicula } from '../servicios/peliculas.service';
-import { ActivatedRoute, Router, Scroll } from '@angular/router';
+import { ActivatedRoute, Params, Router, Scroll } from '@angular/router';
 import { RutaService } from '../servicios/ruta.service';
 
 @Component({
@@ -22,7 +22,7 @@ export class ContenidoComponent implements OnInit {
   };
   isCatalogoVisible = true;
   isCompraVisible = false;
-  reseteaContenido = false;
+  ruta = 0;
 
   peliculaCompra(pelicula: Pelicula){
     this.datosPelicula = pelicula;
@@ -31,8 +31,21 @@ export class ContenidoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.isCatalogoVisible = true;
-    this.isCompraVisible = false;
+    this.rutaActiva.params.subscribe(
+      (params: Params) => {
+        if(Object.keys(params).length == 0) {
+          this.isCatalogoVisible = true;
+          this.isCompraVisible = false;
+        } else {
+          this.ruta = params['movie'];
+          console.log("Param:"+ typeof params['movie']);
+          this.isCatalogoVisible = false;
+          this.isCompraVisible = true;
+        }
+      
+      }
+    );
+    
   }
 
   regresar() {
@@ -43,10 +56,11 @@ export class ContenidoComponent implements OnInit {
     });
     this.isCatalogoVisible = true;
     this.isCompraVisible = false;
+    this.router.navigateByUrl('/contenido');
   }
 
  
-  constructor(private router: Router,) {
+  constructor(private router: Router, private rutaActiva: ActivatedRoute) {
     
   }
 }

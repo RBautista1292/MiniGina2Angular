@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: "**", redirectTo: "/contenido" }
     ], */
   },
+  { path: "contenido/:movie", component: ContenidoComponent },
   { path: "", redirectTo: "/inicio", pathMatch: "full" },// Cuando es la raíz
   { path: "**", redirectTo: "/inicio" }
 ];

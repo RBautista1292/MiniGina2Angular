@@ -5,11 +5,14 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class RutaService {
-  private _booleanSubject = new Subject<boolean>();
-  boolean$ = this._booleanSubject.asObservable();
+  sharedData: string = "";
 
-  changeBoolean() {
-    this._booleanSubject.next(true);
+  setSharedData(data: string) {
+    this.sharedData = data;
+  }
+
+  getSharedData() {
+    return this.sharedData;
   }
   
 
