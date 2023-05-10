@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContenidoComponent } from './contenido/contenido.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
+import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
 
 const routes: Routes = [
   { path: "inicio", component: InicioComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
     ], */
   },
   { path: "nosotros", component: SobreNosotrosComponent },
+  {path: "reservaciones", component: CitasRegistradasComponent },
   { path: "contenido/:movie", component: ContenidoComponent },
   { path: "", redirectTo: "/inicio", pathMatch: "full" },// Cuando es la raíz
   { path: "**", redirectTo: "/inicio" }

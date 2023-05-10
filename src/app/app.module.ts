@@ -14,6 +14,7 @@ import { ReservaComponent } from './reserva/reserva.component';
 import { CalendarModule } from 'primeng/calendar';
 import { FooterComponent } from './footer/footer.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
+import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.componen
     InicioComponent,
     ReservaComponent,
     FooterComponent,
-    SobreNosotrosComponent
+    SobreNosotrosComponent,
+    CitasRegistradasComponent
   ],
   imports: [
     BrowserModule,
