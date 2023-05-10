@@ -19,7 +19,7 @@
     height: 80%;
 }
 
-p {
+.t {
     padding: 0px 300px;
     color: white;
     text-align: center;
@@ -38,4 +38,8 @@ a {
 a:hover {
     background-color: #3e4d8a;
     color: white;
+}
+
+img {
+   max-height: 362px; 
 }
