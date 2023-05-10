@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" [ngStyle]="{'background-color': color}">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark" [ngStyle]="{'background-color': color}">
     
       <a class="navbar-brand mr-1"><img src="../assets/img/Logo.png" alt="Icon" width="50px"></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -15,10 +15,13 @@
           <li class="nav-item">
             <a class="nav-link active  mt-2" routerLink="/nosotros">Nuestro equipo</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active  mt-2" routerLink="/reservaciones">Lista de reservaciones</a>
+          </li>
         </ul>
         <form class="form-inline  my-lg-0">
           <input class="form-control mr-sm-2" type="search" placeholder="Nombre de la película" aria-label="Search" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
-          <button class="btn my-2 my-sm-0" type="submit" (click)="enrutar()">Buscar</button>
+          <p-button icon="pi pi-search" (click)="enrutar()" styleClass="p-button-raised p-button-help p-button-sm"></p-button>
         </form>
       </div>
     

@@ -7,13 +7,21 @@ import { Router } from '@angular/router';
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
-export class CatalogoComponent {
+export class CatalogoComponent implements OnInit{
   peliculas: Pelicula[];
   @Output() datosPelicula = new EventEmitter<Pelicula>();
 
   constructor(public servicio: PeliculasService, private router: Router) {
     this.peliculas = this.servicio.getMovies();
 
+  }
+
+  ngOnInit(): void {
+    window.scroll({ 
+      top: 0, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
   }
 
   enviarDatos(pelicula: Pelicula,  event: any){
