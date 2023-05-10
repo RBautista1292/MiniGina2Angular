@@ -19,17 +19,7 @@
             </div>
         </div>
       </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Apellido</label>
-        <div class="col-8">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Apellido"
-            formControlName="apellido"
-          />
-        </div>
-      </div>
+      
       <div class="form-group row">
         <label class="col-2 col-form-label">Correo</label>
         <div class="col-8">
@@ -47,6 +37,27 @@
             class="invalid-feedback">
             El correo no tiene el formato correcto
             </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Número de sala</label>
+        <select class="form-control">
+            <option>Seleccione sala...</option>
+            <option value="sala1">Sala 1</option>
+            <option value="sala2">Sala 2</option>
+            <option value="sala3">Sala 3</option>
+            <option value="sala4">Sala 4</option>
+            <option value="sala5">Sala 5</option>
+          </select>
+      </div>
+      <div class="form-group row">
+        <label class="col-2 col-form-label">Fecha y hora de reservación</label>
+        <div class="input-group col-md-8">
+            <p-calendar formGroupName="date" [inline]="true">
+                <ng-template pTemplate="date" let-date>
+                    <span [ngStyle]="{textDecoration: (date.day < 21) ? 'line-through' : 'inherit'}">{{date.day}}</span>
+                </ng-template>
+            </p-calendar>
         </div>
       </div>
       <div class="form-group row">
