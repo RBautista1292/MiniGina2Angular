@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservaComponent } from './reserva/reserva.component';
 import { CalendarModule } from 'primeng/calendar';
 import { FooterComponent } from './footer/footer.component';
+import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FooterComponent } from './footer/footer.component';
     ContenidoComponent,
     InicioComponent,
     ReservaComponent,
-    FooterComponent
+    FooterComponent,
+    SobreNosotrosComponent
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

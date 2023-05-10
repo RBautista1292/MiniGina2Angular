@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContenidoComponent } from './contenido/contenido.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 
 const routes: Routes = [
   { path: "inicio", component: InicioComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
       { path: "**", redirectTo: "/contenido" }
     ], */
   },
+  { path: "nosotros", component: SobreNosotrosComponent },
   { path: "contenido/:movie", component: ContenidoComponent },
   { path: "", redirectTo: "/inicio", pathMatch: "full" },// Cuando es la raíz
   { path: "**", redirectTo: "/inicio" }
