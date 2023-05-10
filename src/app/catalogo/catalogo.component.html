@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{p.nombre}}</h5>
                     <p>
-                        <button class="btn btn-light text-primary font-weight-bold" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+p.collapse" aria-expanded="false">
+                        <button class="btn btn-light font-weight-bold" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+p.collapse" aria-expanded="false">
                             Sinopsis
                         </button>
                     </p>
@@ -19,7 +19,7 @@
                     <p class="card-text"><span class="h6">Año: </span> {{p.year}}</p>
                     <p class="card-text"><span class="h6">Duración: </span> {{p.duracion}} min.</p>
                     <p class="card-text"><span class="h6">Director: </span> {{p.director}}</p>
-                    <a class="btn btn-primary" (click)="enviarDatos(p, $event)">Comprar boletos</a>
+                    <a class="btn" (click)="enviarDatos(p, $event)">Reservar sala</a>
                 </div>
             </div>
         </div>

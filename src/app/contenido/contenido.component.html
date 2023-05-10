@@ -1,6 +1,6 @@
 <div class="container mt-5" *ngIf="isCompraVisible">
 <button class="btn btn-danger" (click)="regresar()">Regresar</button>
-<small class="text-muted">Desplácese hacia abajo para comprar boletos</small>
+<small class="text-muted">Desplácese hacia abajo para reservar una sala</small>
 </div>
 <div *ngIf="isCatalogoVisible"><app-catalogo (datosPelicula)="peliculaCompra($event)"></app-catalogo></div>
 <div *ngIf="isCompraVisible"><app-compra [datosPeliculaCompra]="datosPelicula"></app-compra></div>

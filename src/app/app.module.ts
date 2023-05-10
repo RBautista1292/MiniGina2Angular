@@ -12,6 +12,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReservaComponent } from './reserva/reserva.component';
 import { CalendarModule } from 'primeng/calendar';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CalendarModule } from 'primeng/calendar';
     DomseguroPipe,
     ContenidoComponent,
     InicioComponent,
-    ReservaComponent
+    ReservaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

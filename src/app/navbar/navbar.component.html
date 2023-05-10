@@ -1,13 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4f235f;">
     
-      <a class="navbar-brand"><img src="../assets/img/Logo.png" alt="Icon" width="50px"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand mr-1"><img src="../assets/img/Logo.png" alt="Icon" width="50px"></a>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto ">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="/inicio"><h3>CineFaction</h3></a>
+            <a class="nav-link active" aria-current="page"><h3>CineFaction</h3></a>
           </li>
           <li class="nav-item">
             <a class="nav-link active mt-2" aria-current="page" routerLink="/inicio">Inicio</a>
@@ -16,9 +13,9 @@
             <a class="nav-link active  mt-2" routerLink="/contenido">Películas</a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
-          <button class="btn btn-primary my-2 my-sm-0" type="submit" (click)="enrutar()">Search</button>
+        <form class="form-inline  my-lg-0">
+          <input class="form-control mr-sm-2" type="search" placeholder="Nombre de la película" aria-label="Search" [(ngModel)]="nombre" [ngModelOptions]="{standalone: true}">
+          <button class="btn my-2 my-sm-0" type="submit" (click)="enrutar()">Buscar</button>
         </form>
       </div>
     
