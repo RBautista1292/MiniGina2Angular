@@ -8,14 +8,16 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ReservaComponent {
   forma!: FormGroup;
+  fecha!: Date;
 
   constructor(){
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
-      'apellido': new FormControl('', Validators.required ),
       'correo': new FormControl('',[Validators.required,Validators.email]),
-      'date': new FormControl('', Validators.required)
+      'salaSel': new FormControl(''),
+      'date': new FormControl('')
     });
+    this.fecha = new Date();
   }
   guardarCambios():void{
     console.log("metodo guardarCambios");
