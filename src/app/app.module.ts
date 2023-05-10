@@ -15,6 +15,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { FooterComponent } from './footer/footer.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { CitasRegistradasComponent } from './citas-registradas/citas-registradas
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule, 
+    CardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
