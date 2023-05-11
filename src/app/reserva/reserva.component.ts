@@ -22,9 +22,9 @@ export class ReservaComponent {
       'salaSel': new FormControl(''),
       'date': new FormControl('')
     });
-    this.minDate.setHours(10, 0, 0);
-    this.maxDate.setHours(22, 0, 0);
-    this.defaultDate.setHours(10);
+    this.minDate.setHours(9, 0, 0);
+    this.maxDate.setHours(21, 0, 0);
+    this.defaultDate.setHours(9);
     this.defaultDate.setMinutes(0);
     this.defaultDate.setSeconds(0);
     this.fecha = this.getDisabledDates(new Date());
@@ -32,6 +32,7 @@ export class ReservaComponent {
   guardarCambios():void{
     console.log("metodo guardarCambios");
     console.log(this.forma);
+    this.forma.controls['date'].setValue(this.formatDate(this.forma.get('date')?.value));
     console.log(this.forma.value);
     Swal.fire({
       icon: 'success',
@@ -52,6 +53,19 @@ export class ReservaComponent {
   }
   getDisabledDates(date: Date): Date[] {
     return this.disabledDates(date);
+  }
+  formatDate(date: Date): string {
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: false
+    };
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date);
+    return formattedDate.replace(',', '');
   }
   
 }
