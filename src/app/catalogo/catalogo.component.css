@@ -20,3 +20,8 @@ button:hover {
 button:focus {
     color: #8327a4;
 }
+
+.body {
+    background: rgb(255,255,255);
+background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(122,120,244,0.4651321710324755) 50%, rgba(255,255,255,1) 100%);
+}
