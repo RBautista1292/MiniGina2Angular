@@ -13,7 +13,7 @@ export class NavbarComponent {
   nombre: string = "";
   ruta: string = "";
   peliculas: Pelicula[];
-  color = "#4f235f";
+  color = "#121212";
   search = false;
   constructor(private router: Router, private rutaService: RutaService, private peliculasService: PeliculasService){
     this.peliculas = this.peliculasService.getMovies();

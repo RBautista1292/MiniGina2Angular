@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-reserva',
@@ -13,7 +15,7 @@ export class ReservaComponent {
   maxDate: Date = new Date();
   defaultDate: Date = new Date();
 
-  constructor(){
+  constructor(private router: Router){
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'correo': new FormControl('',[Validators.required,Validators.email]),
@@ -31,7 +33,15 @@ export class ReservaComponent {
     console.log("metodo guardarCambios");
     console.log(this.forma);
     console.log(this.forma.value);
+    Swal.fire({
+      icon: 'success',
+      title: 'Su reservación ha sido registrada',
+      showConfirmButton: false,
+      timer: 2500
+    });
+    this.router.navigateByUrl('/contenido');
   }
+
   disabledDates = (date: Date) => {
     const currentDate = new Date();
     const disabledDates = Array.from(

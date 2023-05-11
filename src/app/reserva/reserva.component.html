@@ -10,7 +10,7 @@
             placeholder="Nombre"
             formControlName="nombre"
           />
-          <div *ngIf="forma.controls['nombre'].errors?.['required']" class="invalidfeedback">
+          <div *ngIf="forma.controls['nombre'].errors?.['required']" class="invalid-feedback">
             El nombre es necesario
             </div>
             <div *ngIf="forma.controls['nombre'].errors?.['minlength']"
@@ -30,7 +30,7 @@
             formControlName="correo"
             [ngClass]="{'is-invalid':!forma.get('correo')?.valid }"
           />
-          <div *ngIf="forma.controls['correo'].errors?.['required']" class="invalidfeedback">
+          <div *ngIf="forma.controls['correo'].errors?.['required']" class="invalid-feedback">
             Correo obligatorio
             </div>
             <div *ngIf="forma.controls['correo'].errors?.['email']"
