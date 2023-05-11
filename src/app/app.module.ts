@@ -16,6 +16,9 @@ import { FooterComponent } from './footer/footer.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
 import { CardModule } from 'primeng/card';
+import { APIComponent } from './api/api.component';
+import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { CardModule } from 'primeng/card';
     ReservaComponent,
     FooterComponent,
     SobreNosotrosComponent,
-    CitasRegistradasComponent
+    CitasRegistradasComponent,
+    APIComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +45,9 @@ import { CardModule } from 'primeng/card';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule, 
-    CardModule
+    CardModule,
+    HttpClientModule,
+    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

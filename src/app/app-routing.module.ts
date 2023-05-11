@@ -4,6 +4,7 @@ import { ContenidoComponent } from './contenido/contenido.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
+import { APIComponent } from './api/api.component';
 
 const routes: Routes = [
   { path: "inicio", component: InicioComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
     ], */
   },
   { path: "nosotros", component: SobreNosotrosComponent },
+  { path: "proximamente", component: APIComponent },
   {path: "reservaciones", component: CitasRegistradasComponent },
   { path: "contenido/:movie", component: ContenidoComponent },
   { path: "", redirectTo: "/inicio", pathMatch: "full" },// Cuando es la raíz
