@@ -15,4 +15,11 @@ export class InicioComponent implements OnInit{
     });
   }
 
+  desplazar(): void {
+    window.scroll({ 
+      top: 800, 
+      left: 0, 
+      behavior: 'smooth' 
+    });
+  }
 }

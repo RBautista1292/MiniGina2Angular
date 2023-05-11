@@ -12,3 +12,18 @@
 img {
     max-width: 150px;
 }
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    color: white;
+    background-color: #171717;
+    border-radius: 4px;
+}
+
+a:hover {
+    background-color: #9531b9;
+}

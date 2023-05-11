@@ -3,11 +3,12 @@
         <div class="encima2">
             <p class="t" style="font-size: 2.5em;">¡Bienvenido a CineFaction!</p>
             <p  class="t">El lugar perfecto para rentar <span style="color: #d261fb">SALAS DE CINE PRIVADAS</span> en donde podrás ver tus películas favoritas</p>
-            <a class="btn shadow-lg" routerLink="/contenido">Revisar catálogo</a>
+            <a class="btn shadow-lg boton" routerLink="/contenido">Revisar catálogo</a>
+            <a class="icono" (click)="desplazar()"><i class="pi pi-chevron-down" style="font-size: 2rem"></i></a>
         </div>
     </div>
 </div>
-<div class="container mt-3">
+<div class="container mt-3" id="estrenos">
     <h2 class="text-center">Nuestros próximos estrenos</h2>
     <h5 class="text-center">Nuestra cartelera va creciendo con el tiempo, pues las películas se quedan de forma permanente</h5>
     <div class="row mt-5">
@@ -81,6 +82,6 @@
         
     </div>
     <div class="container my-5 text-center">
-        <a class="btn shadow-lg" routerLink="/proximamente">Ver todos</a>
+        <a class="btn shadow-lg boton" routerLink="/proximamente">Ver todos</a>
     </div>
 </div>
