@@ -38,9 +38,15 @@ export class ContenidoComponent implements OnInit {
           this.isCompraVisible = false;
         } else {
           this.ruta = params['movie'];
-          console.log("Param:"+ typeof params['movie']);
-          this.isCatalogoVisible = false;
-          this.isCompraVisible = true;
+          if(parseInt(params['movie']) == 0) {
+            this.router.navigate(['/contenido']);
+            this.isCatalogoVisible = true;
+          this.isCompraVisible = false;
+          } else {
+            this.isCatalogoVisible = false;
+            this.isCompraVisible = true;
+          }
+          
         }
       
       }
