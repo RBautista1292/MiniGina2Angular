@@ -38,7 +38,6 @@ export class ContenidoComponent implements OnInit {
           this.isCompraVisible = false;
         } else {
           this.ruta = params['movie'];
-          console.log("Param:"+ typeof params['movie']);
           this.isCatalogoVisible = false;
           this.isCompraVisible = true;
         }
