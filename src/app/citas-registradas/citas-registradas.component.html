@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">Reservaciones</h2>
-  <div class="shadow mt-3">
-  <p-table [columns]="columnas" [value]="citas" selectionMode="single" styleClass="p-datatable-striped" *ngIf="mostrar == true; else vacio">
+  <div class="shadow mt-3" *ngIf="mostrar == true; else vacio">
+  <p-table [columns]="columnas" [value]="citas" selectionMode="single" styleClass="p-datatable-striped" >
     <ng-template pTemplate="header" let-columns>
       <tr>
         <th *ngFor="let col of columns" class="text-center">{{ col }}</th>

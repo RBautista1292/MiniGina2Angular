@@ -42,6 +42,7 @@
         aria-label="Search"
         [(ngModel)]="nombre"
         [ngModelOptions]="{ standalone: true }"
+        (keyup.enter)="enrutar()"
       />
       <p-button
         icon="pi pi-search"
