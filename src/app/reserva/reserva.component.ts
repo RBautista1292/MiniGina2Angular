@@ -121,7 +121,7 @@ export class ReservaComponent {
       showConfirmButton: false,
       timer: 2500,
     });
-    this.router.navigateByUrl('/contenido');
+    this.router.navigate(['/contenido', '0']);
     this.forma.reset();
     this.forma.patchValue({ nombrePel: peliGuardar });
   }

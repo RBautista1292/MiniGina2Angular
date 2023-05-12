@@ -10,10 +10,11 @@ export class CitasRegistradasComponent implements OnInit {
     'Nombre',
     'Correo',
     'Sala',
-    'Pelicula Seleccionada',
+    'Película',
     'Fecha',
   ];
   citas: any[] = [];
+  mostrar = false;
 
   ngOnInit(): void {
     window.scroll({
@@ -26,6 +27,7 @@ export class CitasRegistradasComponent implements OnInit {
     const valores = localStorage.getItem('formData');
     if (valores) {
       this.citas = JSON.parse(valores);
+      this.mostrar = true;
     } else {
     }
   }
