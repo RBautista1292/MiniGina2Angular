@@ -1,90 +1,142 @@
-<form [formGroup]="forma" (ngSubmit)="guardarCambios()" class="needs-validation" novalidate>
-    <div class="container">
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Nombre</label>
-        <div class="col-8">
-          <input
-            class="form-control"
-            [ngClass]="{'is-invalid': !forma.get('nombre')?.valid }"
-            type="text"
-            placeholder="Nombre"
-            formControlName="nombre"
-          />
-          <div *ngIf="forma.controls['nombre'].errors?.['required']" class="invalid-feedback">
-            El nombre es necesario
-            </div>
-            <div *ngIf="forma.controls['nombre'].errors?.['minlength']"
-            class="invalid-feedback">
-            Por lo menos tres caracteres
-            </div>
+<form
+  [formGroup]="forma"
+  (ngSubmit)="guardarCambios()"
+  class="needs-validation"
+  novalidate
+>
+  <div class="container">
+    <div class="card mb-3 border-0">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <img src="../assets/img/calendar.jpg" style="max-width: 260px" class="shadow p-3 mb-5 bg-white rounded">
         </div>
-      </div>
-      
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Correo</label>
-        <div class="col-8">
-          <input
-            class="form-control"
-            type="text"
-            placeholder="Correo electronico"
-            formControlName="correo"
-            [ngClass]="{'is-invalid':!forma.get('correo')?.valid }"
-          />
-          <div *ngIf="forma.controls['correo'].errors?.['required']" class="invalid-feedback">
-            Correo obligatorio
+        <div class="col-md-8">
+          <div class="card-body">
+            <div class="form-group row">
+              <label class="col-3 col-form-label h6">Nombre</label>
+              <div class="col-7">
+                <input
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': !forma.get('nombre')?.valid }"
+                  type="text"
+                  placeholder="Nombre"
+                  formControlName="nombre"
+                />
+                <div
+                  *ngIf="forma.controls['nombre'].errors?.['required']"
+                  class="invalid-feedback"
+                >
+                  El nombre es necesario
+                </div>
+                <div
+                  *ngIf="forma.controls['nombre'].errors?.['minlength']"
+                  class="invalid-feedback"
+                >
+                  Por lo menos tres caracteres
+                </div>
+              </div>
             </div>
-            <div *ngIf="forma.controls['correo'].errors?.['email']"
-            class="invalid-feedback">
-            El correo no tiene el formato correcto
+
+            <div class="form-group row">
+              <label class="col-3 col-form-label h6">Correo</label>
+              <div class="col-7">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="Correo electronico"
+                  formControlName="correo"
+                  [ngClass]="{ 'is-invalid': !forma.get('correo')?.valid }"
+                />
+                <div
+                  *ngIf="forma.controls['correo'].errors?.['required']"
+                  class="invalid-feedback"
+                >
+                  Correo obligatorio
+                </div>
+                <div
+                  *ngIf="forma.controls['correo'].errors?.['email']"
+                  class="invalid-feedback"
+                >
+                  El correo no tiene el formato correcto
+                </div>
+              </div>
             </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Nombre de la película</label>
-        <div class="col-8">
-          <input class="form-control" type="text" [(ngModel)]="nombrePelicula" formControlName="nombrePel" readonly/>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Número de sala</label>
-        <div class="col-8">
-          <select class="form-control" formControlName="salaSel" [ngClass]="{'is-invalid': !forma.get('salaSel')?.valid }">
-            <option disabled selected hidden>Seleccione sala...</option>
-            <option value="sala1">Sala 1</option>
-            <option value="sala2">Sala 2</option>
-            <option value="sala3">Sala 3</option>
-            <option value="sala4">Sala 4</option>
-            <option value="sala5">Sala 5</option>
-          </select>
-          <div *ngIf="forma.controls['salaSel'].errors?.['required']" class="invalid-feedback">
-            Seleccione una sala para continuar
+            <div class="form-group row">
+              <label class="col-3 col-form-label h6"
+                >Nombre de la película</label
+              >
+              <div class="col-7">
+                <input
+                  class="form-control"
+                  type="text"
+                  [(ngModel)]="nombrePelicula"
+                  formControlName="nombrePel"
+                  readonly
+                />
+              </div>
             </div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">Fecha y hora de reservación</label>
-        <div class="input-group col-md-8"><p-calendar 
-          formControlName="date" 
-          hourFormat="12" 
-          [disabledDates]="fecha" 
-          [stepHour]="3" 
-          [showTime]="true" 
-          [showSeconds]="false" 
-          [stepMinute]="0" 
-          [defaultDate]="defaultDate" 
-          [minDate]="minDate"></p-calendar>
-        </div>
-        <div *ngIf="forma.controls['date'].errors?.['required']" class="invalid-feedback">
-          Seleccione una fecha y hora a reservar
+            <div class="form-group row">
+              <label class="col-3 col-form-label h6">Número de sala</label>
+              <div class="col-2">
+                <select
+                  class="form-control"
+                  formControlName="salaSel"
+                  [ngClass]="{ 'is-invalid': !forma.get('salaSel')?.valid }"
+                >
+                  <option disabled selected hidden>Seleccione sala...</option>
+                  <option value="sala1">Sala 1</option>
+                  <option value="sala2">Sala 2</option>
+                  <option value="sala3">Sala 3</option>
+                  <option value="sala4">Sala 4</option>
+                  <option value="sala5">Sala 5</option>
+                </select>
+                <div
+                  *ngIf="forma.controls['salaSel'].errors?.['required']"
+                  class="invalid-feedback"
+                >
+                  Seleccione una sala para continuar
+                </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-3 col-form-label h6"
+                >Fecha y hora de reservación</label
+              >
+              <div class="input-group col-md-8">
+                <p-calendar
+                  formControlName="date"
+                  hourFormat="12"
+                  [disabledDates]="fecha"
+                  [stepHour]="3"
+                  [showTime]="true"
+                  [showSeconds]="false"
+                  [stepMinute]="0"
+                  [defaultDate]="defaultDate"
+                  [minDate]="minDate"
+                ></p-calendar>
+              </div>
+              <div
+                *ngIf="forma.controls['date'].errors?.['required']"
+                class="invalid-feedback"
+              >
+                Seleccione una fecha y hora a reservar
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-2 col-form-label">&nbsp;</label>
+              <div class="input-group col-md-8">
+                <button
+                  type="submit"
+                  class="btn btn-outline-primary"
+                  [disabled]="forma.invalid"
+                >
+                  Guardar
+                </button>
+              </div>
+            </div>
           </div>
-      </div>
-      <div class="form-group row">
-        <label class="col-2 col-form-label">&nbsp;</label>
-        <div class="input-group col-md-8">
-          <button type="submit" class="btn btn-outline-primary" [disabled]="forma.invalid">Guardar</button>
         </div>
       </div>
     </div>
-    <h3 style="text-align:center">{{forma.valid}}</h3>
-    
-  </form>
+  </div>
+</form>
