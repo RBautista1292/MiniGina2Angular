@@ -15,10 +15,11 @@ import { CalendarModule } from 'primeng/calendar';
 import { FooterComponent } from './footer/footer.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
-import { CardModule } from 'primeng/card';
 import { APIComponent } from './api/api.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { TableModule } from 'primeng/table';
     BrowserAnimationsModule, 
     CardModule,
     HttpClientModule,
-    TableModule
+    TableModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
