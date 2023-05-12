@@ -8,15 +8,7 @@ import { APIComponent } from './api/api.component';
 
 const routes: Routes = [
   { path: "inicio", component: InicioComponent },
-  { path: "contenido", 
-    component: ContenidoComponent, 
-    /* children: [
-      { path: "catalogo", component: CatalogoComponent },
-      { path: "compra", component: CompraComponent },
-      { path: "", redirectTo: "/contenido", pathMatch: "full" },// Cuando es la raíz
-      { path: "**", redirectTo: "/contenido" }
-    ], */
-  },
+  { path: "contenido", component: ContenidoComponent },
   { path: "nosotros", component: SobreNosotrosComponent },
   { path: "proximamente", component: APIComponent },
   {path: "reservaciones", component: CitasRegistradasComponent },
