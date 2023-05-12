@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RutaService {
-  sharedData: string = "";
+  sharedData: string = '';
 
   setSharedData(data: string) {
     this.sharedData = data;
@@ -14,7 +14,6 @@ export class RutaService {
   getSharedData() {
     return this.sharedData;
   }
-  
 
-  constructor() { }
+  constructor() {}
 }

@@ -1,29 +1,29 @@
 .footer {
-    width: 100%;
-    padding: 30px;
-    background-color: #121212;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  padding: 30px;
+  background-color: #121212;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 img {
-    max-width: 150px;
+  max-width: 150px;
 }
 
 .nav {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 a {
-    color: white;
-    background-color: #171717;
-    border-radius: 4px;
+  color: white;
+  background-color: #171717;
+  border-radius: 4px;
 }
 
 a:hover {
-    background-color: #9531b9;
+  background-color: #9531b9;
 }

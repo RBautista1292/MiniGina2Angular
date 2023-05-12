@@ -7,18 +7,18 @@ import { CitasRegistradasComponent } from './citas-registradas/citas-registradas
 import { APIComponent } from './api/api.component';
 
 const routes: Routes = [
-  { path: "inicio", component: InicioComponent },
-  { path: "contenido", component: ContenidoComponent },
-  { path: "nosotros", component: SobreNosotrosComponent },
-  { path: "proximamente", component: APIComponent },
-  {path: "reservaciones", component: CitasRegistradasComponent },
-  { path: "contenido/:movie", component: ContenidoComponent },
-  { path: "", redirectTo: "/inicio", pathMatch: "full" },// Cuando es la raíz
-  { path: "**", redirectTo: "/inicio" }
+  { path: 'inicio', component: InicioComponent },
+  { path: 'contenido', component: ContenidoComponent },
+  { path: 'nosotros', component: SobreNosotrosComponent },
+  { path: 'proximamente', component: APIComponent },
+  { path: 'reservaciones', component: CitasRegistradasComponent },
+  { path: 'contenido/:movie', component: ContenidoComponent },
+  { path: '', redirectTo: '/inicio', pathMatch: 'full' }, // Cuando es la raíz
+  { path: '**', redirectTo: '/inicio' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

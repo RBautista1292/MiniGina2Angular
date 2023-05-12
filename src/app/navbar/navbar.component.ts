@@ -7,18 +7,22 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  nombre: string = "";
-  ruta: string = "";
+  nombre: string = '';
+  ruta: string = '';
   peliculas: Pelicula[];
-  color = "#121212";
+  color = '#121212';
   search = false;
-  constructor(private router: Router, private rutaService: RutaService, private peliculasService: PeliculasService){
+  constructor(
+    private router: Router,
+    private rutaService: RutaService,
+    private peliculasService: PeliculasService
+  ) {
     this.peliculas = this.peliculasService.getMovies();
   }
-  
+
   enrutar(): void {
     this.nombre = this.nombre.toLowerCase();
     this.rutaService.setSharedData(this.nombre);
@@ -27,22 +31,22 @@ export class NavbarComponent {
         this.search = true;
       }
     }
-    if(!this.search) {
+    if (!this.search) {
       Swal.fire({
         icon: 'error',
         title: '¡Lo sentimos!',
         text: 'La película no fue encontrada',
-      })
+      });
     }
     for (let pelicula of this.peliculas) {
       if (this.nombre === pelicula.nombre.toLowerCase()) {
         this.ruta = pelicula.collapse.toString();
         this.router.navigate(['/contenido', this.ruta]);
-        this.nombre = "";
-        window.scroll({ 
-          top: 0, 
-          left: 0, 
-          behavior: 'smooth' 
+        this.nombre = '';
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
         });
         this.search = false;
       }

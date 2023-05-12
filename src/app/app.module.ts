@@ -34,24 +34,24 @@ import { DividerModule } from 'primeng/divider';
     FooterComponent,
     SobreNosotrosComponent,
     CitasRegistradasComponent,
-    APIComponent
+    APIComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule, 
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     CalendarModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule, 
+    BrowserAnimationsModule,
     CardModule,
     HttpClientModule,
     TableModule,
-    DividerModule
+    DividerModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

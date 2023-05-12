@@ -1,8 +1,16 @@
 <div class="container mt-5">
-  <div class="card mb-3 border-0" *ngIf="datosPeliculaCompra.trailer.length > 0">
+  <div
+    class="card mb-3 border-0"
+    *ngIf="datosPeliculaCompra.trailer.length > 0"
+  >
     <div class="row no-gutters">
       <div class="col-md-4">
-        <img [src]="datosPeliculaCompra.img" style="max-width: 360px" class="shadow p-3 mb-5 bg-white rounded" alt="..." />
+        <img
+          [src]="datosPeliculaCompra.img"
+          style="max-width: 360px"
+          class="shadow p-3 mb-5 bg-white rounded"
+          alt="..."
+        />
       </div>
       <div class="col-md-8">
         <div class="card-body">
@@ -34,7 +42,9 @@
             ></iframe>
           </div>
           <p class="card-text mt-3">
-            <small class="text-muted">Géneros: {{datosPeliculaCompra.generos.join(", ")}}</small>
+            <small class="text-muted"
+              >Géneros: {{ datosPeliculaCompra.generos.join(", ") }}</small
+            >
           </p>
         </div>
       </div>

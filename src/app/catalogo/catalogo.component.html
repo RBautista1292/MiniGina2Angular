@@ -1,27 +1,39 @@
-<div class="container mt-5" >
-        <div class="card-columns" >
-            <div class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded" *ngFor="let p of peliculas">
-                <img [src]="p.img" class="card-img-top">
-                
-                <div class="card-body">
-                    <h5 class="card-title">{{p.nombre}}</h5>
-                    <p>
-                        <button class="btn btn-light font-weight-bold" type="button" data-toggle="collapse" [attr.data-target]="'#collapse'+p.collapse" aria-expanded="false">
-                            Sinopsis
-                        </button>
-                    </p>
-                    <div class="collapse" [id]="'collapse'+p.collapse">
-                        <div class="card card-body">
-                            <h6 class="card-title">Sinopsis:</h6>
-                            <p>{{p.sinopsis}}</p>
-                        </div>
-                    </div>
-                    <p class="card-text"><span class="h6">Año: </span> {{p.year}}</p>
-                    <p class="card-text"><span class="h6">Duración: </span> {{p.duracion}} min.</p>
-                    <p class="card-text"><span class="h6">Director: </span> {{p.director}}</p>
-                    <a class="btn" (click)="enviarDatos(p, $event)">Reservar sala</a>
-                </div>
-            </div>
-        </div>
-</div>
+<div class="container mt-5">
+  <div class="card-columns">
+    <div
+      class="card mb-4 shadow-sm p-3 mb-5 bg-white rounded"
+      *ngFor="let p of peliculas"
+    >
+      <img [src]="p.img" class="card-img-top" />
 
+      <div class="card-body">
+        <h5 class="card-title">{{ p.nombre }}</h5>
+        <p>
+          <button
+            class="btn btn-light font-weight-bold"
+            type="button"
+            data-toggle="collapse"
+            [attr.data-target]="'#collapse' + p.collapse"
+            aria-expanded="false"
+          >
+            Sinopsis
+          </button>
+        </p>
+        <div class="collapse" [id]="'collapse' + p.collapse">
+          <div class="card card-body">
+            <h6 class="card-title">Sinopsis:</h6>
+            <p>{{ p.sinopsis }}</p>
+          </div>
+        </div>
+        <p class="card-text"><span class="h6">Año: </span> {{ p.year }}</p>
+        <p class="card-text">
+          <span class="h6">Duración: </span> {{ p.duracion }} min.
+        </p>
+        <p class="card-text">
+          <span class="h6">Director: </span> {{ p.director }}
+        </p>
+        <a class="btn" (click)="enviarDatos(p, $event)">Reservar sala</a>
+      </div>
+    </div>
+  </div>
+</div>

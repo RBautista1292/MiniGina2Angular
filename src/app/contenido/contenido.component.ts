@@ -6,65 +6,58 @@ import { RutaService } from '../servicios/ruta.service';
 @Component({
   selector: 'app-contenido',
   templateUrl: './contenido.component.html',
-  styleUrls: ['./contenido.component.css']
+  styleUrls: ['./contenido.component.css'],
 })
 export class ContenidoComponent implements OnInit {
   datosPelicula: Pelicula = {
-    nombre: "",
-    sinopsis: "",
-    img: "",
+    nombre: '',
+    sinopsis: '',
+    img: '',
     year: 0,
     duracion: 0,
-    director: "",
+    director: '',
     collapse: 0,
-    trailer: "", 
-    generos: []
+    trailer: '',
+    generos: [],
   };
   isCatalogoVisible = true;
   isCompraVisible = false;
   ruta = 0;
 
-  peliculaCompra(pelicula: Pelicula){
+  peliculaCompra(pelicula: Pelicula) {
     this.datosPelicula = pelicula;
     this.isCatalogoVisible = false;
     this.isCompraVisible = true;
   }
 
   ngOnInit(): void {
-    this.rutaActiva.params.subscribe(
-      (params: Params) => {
-        if(Object.keys(params).length == 0) {
+    this.rutaActiva.params.subscribe((params: Params) => {
+      if (Object.keys(params).length == 0) {
+        this.isCatalogoVisible = true;
+        this.isCompraVisible = false;
+      } else {
+        if (parseInt(params['movie']) == 0) {
+          this.router.navigate(['/contenido']);
           this.isCatalogoVisible = true;
           this.isCompraVisible = false;
         } else {
-          if(parseInt(params['movie']) == 0) {
-            this.router.navigate(['/contenido']);
-            this.isCatalogoVisible = true;
-          this.isCompraVisible = false;
-          } else {
-            this.isCatalogoVisible = false;
-            this.isCompraVisible = true;
-          }
+          this.isCatalogoVisible = false;
+          this.isCompraVisible = true;
         }
-      
       }
-    );
-    
+    });
   }
 
   regresar() {
-    window.scroll({ 
-      top: 0, 
-      left: 0, 
-      behavior: 'smooth' 
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
     });
     this.isCatalogoVisible = true;
     this.isCompraVisible = false;
     this.router.navigateByUrl('/contenido');
   }
 
- 
-  constructor(private router: Router, private rutaActiva: ActivatedRoute) {
-    
-  }
+  constructor(private router: Router, private rutaActiva: ActivatedRoute) {}
 }

@@ -1,27 +1,32 @@
 a {
-    background-color: #4f235f;
-    color: white;
-    font-weight: bold;
+  background-color: #4f235f;
+  color: white;
+  font-weight: bold;
 }
 
 a:hover {
-    background-color: #371b41;
-    color: white;
+  background-color: #371b41;
+  color: white;
 }
 
 button {
-    color: #8327a4;
+  color: #8327a4;
 }
 
 button:hover {
-    color: #8327a4;
+  color: #8327a4;
 }
 
 button:focus {
-    color: #8327a4;
+  color: #8327a4;
 }
 
 .body {
-    background: rgb(255,255,255);
-background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(122,120,244,0.4651321710324755) 50%, rgba(255,255,255,1) 100%);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(122, 120, 244, 0.4651321710324755) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }

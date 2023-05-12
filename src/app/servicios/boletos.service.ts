@@ -2,14 +2,12 @@ import { Time } from '@angular/common';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BoletosService {
+  private boletos: Boleto[] = [];
 
-  private boletos:Boleto[] = [
-  ];
-
-  constructor() { }
+  constructor() {}
 
   getTickets(): Boleto[] {
     return this.boletos;
