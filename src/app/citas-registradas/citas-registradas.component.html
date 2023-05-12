@@ -1,33 +1,15 @@
-<p-table
-     [columns] = "columnas"
-     [value] = "citas"
-     
-     
-     
-     
-     >
+<p-table [columns]="columnas" [value]="citas">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" class="text-center">{{ col }}</th>
+    </tr>
+  </ng-template>
 
-     <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th *ngFor="let col of columns" class="text-center">{{col}}</th>
-        </tr>
-     </ng-template>
-
-     <ng-template pTemplate="body" let-cita>
-        
-        <td style="text-align: center;">{{cita.nombre}}</td>
-        <td style="text-align: center;">{{cita.correo}}</td>
-        <td style="text-align: center;">{{cita.salaSel}}</td>
-        <td style="text-align: center;">{{cita.nombrePel}}</td>
-        <td style="text-align: center;">{{cita.date}}</td>
-
-
-
-     </ng-template>
-
-
-
-
-
-
+  <ng-template pTemplate="body" let-cita>
+    <td style="text-align: center">{{ cita.nombre }}</td>
+    <td style="text-align: center">{{ cita.correo }}</td>
+    <td style="text-align: center">{{ cita.salaSel }}</td>
+    <td style="text-align: center">{{ cita.nombrePel }}</td>
+    <td style="text-align: center">{{ cita.date }}</td>
+  </ng-template>
 </p-table>
