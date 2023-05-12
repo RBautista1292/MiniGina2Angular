@@ -39,14 +39,19 @@ export class ReservaComponent {
     console.log(this.forma.value);
     const citas1 = JSON.stringify(this.forma.value);
     const citas = JSON.parse(citas1);
+    var citasObject;
     delete citas["[[Prototype]]"];
     const registroCitas = localStorage.getItem('formData');
-    const citasObject = JSON.parse(registroCitas) ? JSON.parse(registroCitas): [];
+    if(registroCitas){
+      citasObject = JSON.parse(registroCitas);
+    }
+    else{
+      citasObject = [];
+    }
     const peliGuardar = this.forma.value.nombrePel;
     console.log(registroCitas);
-    if(registroCitas != null){
       console.log(citasObject);
-      if(Array.isArray(citasObject) == null){
+      if(Array.isArray(citasObject) != null){
         console.log("hay varios");
         for(const cita of citasObject){
           if((cita["salaSel"] === citas["salaSel"]) && (cita["date"] === citas["date"])){
@@ -80,9 +85,9 @@ export class ReservaComponent {
           return;
         }
       }
-    }
-    citasObject
-    localStorage.setItem('formData', JSON.stringify(citas));
+    citasObject.push(citas);
+    console.log(citasObject);
+    localStorage.setItem('formData', JSON.stringify(citasObject));
     Swal.fire({
       icon: 'success',
       title: 'Su reservación ha sido registrada',
