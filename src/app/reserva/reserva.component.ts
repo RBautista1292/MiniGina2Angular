@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -15,12 +15,15 @@ export class ReservaComponent {
   maxDate: Date = new Date();
   defaultDate: Date = new Date();
 
+  @Input() nombrePelicula!: string;
+
   constructor(private router: Router){
     this.forma = new FormGroup({
       'nombre': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'correo': new FormControl('',[Validators.required,Validators.email]),
-      'salaSel': new FormControl(''),
-      'date': new FormControl('')
+      'salaSel': new FormControl('', Validators.required),
+      'nombrePel': new FormControl('', Validators.required),
+      'date': new FormControl('', Validators.required)
     });
     this.minDate.setHours(9, 0, 0);
     this.maxDate.setHours(21, 0, 0);
@@ -28,12 +31,58 @@ export class ReservaComponent {
     this.defaultDate.setMinutes(0);
     this.defaultDate.setSeconds(0);
     this.fecha = this.getDisabledDates(new Date());
+    console.log(this.nombrePelicula);
   }
   guardarCambios():void{
-    console.log("metodo guardarCambios");
     console.log(this.forma);
     this.forma.controls['date'].setValue(this.formatDate(this.forma.get('date')?.value));
     console.log(this.forma.value);
+    const citas1 = JSON.stringify(this.forma.value);
+    const citas = JSON.parse(citas1);
+    delete citas["[[Prototype]]"];
+    const registroCitas = localStorage.getItem('formData');
+    const citasObject = JSON.parse(registroCitas) ? JSON.parse(registroCitas): [];
+    const peliGuardar = this.forma.value.nombrePel;
+    console.log(registroCitas);
+    if(registroCitas != null){
+      console.log(citasObject);
+      if(Array.isArray(citasObject) == null){
+        console.log("hay varios");
+        for(const cita of citasObject){
+          if((cita["salaSel"] === citas["salaSel"]) && (cita["date"] === citas["date"])){
+            console.log("Cita ya registrada, intente de nuevo");
+            Swal.fire({
+              icon: 'error',
+              title: 'Cita ya registrada. Cambie los datos de su cita e intente de nuevo',
+              showConfirmButton: false,
+              timer: 2500
+            });
+            this.forma.reset();
+            this.forma.patchValue({nombrePel: peliGuardar});
+            return;
+          }
+        }
+      }
+      else{
+        console.log("solo hay uno");
+        console.log(citasObject['salaSel']+" "+citas["salaSel"]+" "+citasObject['date']+" "+citas["date"]);
+        console.log((typeof citasObject['salaSel'])+" "+(typeof citas["salaSel"])+" "+(typeof citasObject['date'])+" "+(typeof citas["date"]));
+        if((citasObject['salaSel'] === citas['salaSel']) && (citasObject['date'] === citas['date'])){
+          console.log("Cita ya registrada, intente de nuevo");
+          Swal.fire({
+            icon: 'error',
+            title: 'Cita ya registrada. Cambie los datos de su cita e intente de nuevo',
+            showConfirmButton: false,
+            timer: 2500
+          });
+          this.forma.reset();
+          this.forma.patchValue({nombrePel: peliGuardar});
+          return;
+        }
+      }
+    }
+    citasObject
+    localStorage.setItem('formData', JSON.stringify(citas));
     Swal.fire({
       icon: 'success',
       title: 'Su reservación ha sido registrada',
@@ -41,6 +90,8 @@ export class ReservaComponent {
       timer: 2500
     });
     this.router.navigateByUrl('/contenido');
+    this.forma.reset();
+    this.forma.patchValue({nombrePel: peliGuardar});
   }
 
   disabledDates = (date: Date) => {

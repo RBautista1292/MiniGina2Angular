@@ -40,15 +40,26 @@
         </div>
       </div>
       <div class="form-group row">
+        <label class="col-2 col-form-label">Nombre de la película</label>
+        <div class="col-8">
+          <input class="form-control" type="text" [(ngModel)]="nombrePelicula" formControlName="nombrePel" readonly/>
+        </div>
+      </div>
+      <div class="form-group row">
         <label class="col-2 col-form-label">Número de sala</label>
-        <select class="form-control" formControlName="salaSel">
-            <option>Seleccione sala...</option>
+        <div class="col-8">
+          <select class="form-control" formControlName="salaSel" [ngClass]="{'is-invalid': !forma.get('salaSel')?.valid }">
+            <option disabled selected hidden>Seleccione sala...</option>
             <option value="sala1">Sala 1</option>
             <option value="sala2">Sala 2</option>
             <option value="sala3">Sala 3</option>
             <option value="sala4">Sala 4</option>
             <option value="sala5">Sala 5</option>
           </select>
+          <div *ngIf="forma.controls['salaSel'].errors?.['required']" class="invalid-feedback">
+            Seleccione una sala para continuar
+            </div>
+        </div>
       </div>
       <div class="form-group row">
         <label class="col-2 col-form-label">Fecha y hora de reservación</label>
@@ -59,9 +70,13 @@
           [stepHour]="3" 
           [showTime]="true" 
           [showSeconds]="false" 
+          [stepMinute]="0" 
           [defaultDate]="defaultDate" 
           [minDate]="minDate"></p-calendar>
         </div>
+        <div *ngIf="forma.controls['date'].errors?.['required']" class="invalid-feedback">
+          Seleccione una fecha y hora a reservar
+          </div>
       </div>
       <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
