@@ -56,4 +56,5 @@ img {
 .icono:hover {
     background-color: #9531b9;
     color: white;
+    cursor: pointer;
 }
