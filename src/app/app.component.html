@@ -1,4 +1,30 @@
 <app-navbar></app-navbar>
 <router-outlet></router-outlet>
+<app-accesibilidad
+  *ngIf="mostrar"
+  (lectorTexto)="lectorTexto2(todoTexto)"
+  (agrandarTexto)="agrandarTexto2()"
+  (resaltarEnlaces)="resaltarEnlaces2()"
+  (alinearTexto)="alinearTexto2()"
+></app-accesibilidad>
+<button
+  class="image-button"
+  (click)="alternar()"
+  alt="Boton de Accesibilidad"
+  aria-label="Boton de Accesibilidad"
+></button>
+
+<div
+  [ngClass]="{ 'texto-grande': tamanoGrande }"
+  
+>
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum aliquam illo
+    tenetur? Assumenda at sunt quasi expedita repellendus? Illo ipsum assumenda
+    repellat aliquid veritatis facilis est. Sapiente reprehenderit aliquam
+    corporis?
+  </p>
+</div>
+
 <br />
 <app-footer></app-footer>

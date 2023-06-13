@@ -21,6 +21,7 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ContactoComponent } from './contacto/contacto.component';
+import { AccesibilidadComponent } from './accesibilidad/accesibilidad.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ContactoComponent } from './contacto/contacto.component';
     CitasRegistradasComponent,
     APIComponent,
     ContactoComponent,
+    AccesibilidadComponent,
   ],
   imports: [
     BrowserModule,

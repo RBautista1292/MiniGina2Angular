@@ -3,8 +3,10 @@
   <div class="row mt-3 d-flex justify-content-center">
     <div class="card border-0" style="width: 90%">
       <div class="card-body">
+        
+        
         <h3 class="card-title text-center">Sobre nosotros</h3>
-        <p class="card-text text-justify">
+        <p class="card-text text-justify" [ngClass]="{'texto-grande': letraGrandeBoolean}">
           En nuestro cine, nos apasiona brindar una experiencia única y
           emocionante a todos nuestros espectadores. Desde nuestra apertura, nos
           hemos comprometido a ser el destino preferido para los amantes del

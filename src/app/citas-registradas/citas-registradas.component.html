@@ -1,26 +1,15 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">Reservaciones</h2>
-  <div class="shadow mt-3" *ngIf="mostrar == true; else vacio">
-  <p-table [columns]="columnas" [value]="citas" selectionMode="single" styleClass="p-datatable-striped" >
-    <ng-template pTemplate="header" let-columns>
-      <tr>
-        <th *ngFor="let col of columns" class="text-center">{{ col }}</th>
-      </tr>
-    </ng-template>
-
-    <ng-template pTemplate="body" let-cita>
-      <tr>
-      <td style="text-align: center">{{ cita.nombre }}</td>
-      <td style="text-align: center">{{ cita.correo }}</td>
-      <td style="text-align: center">{{ cita.salaSel }}</td>
-      <td style="text-align: center">{{ cita.nombrePel }}</td>
-      <td style="text-align: center">{{ cita.date }}</td>
+<p-table [columns]="columnas" [value]="citas">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns" class="text-center">{{ col }}</th>
     </tr>
-    </ng-template>
-  </p-table>
-</div>
-
-  <ng-template #vacio>
-    <h3 class="text-danger text-center mt-5">No se encontró ninguna reservación registrada</h3>
   </ng-template>
-</div>
+
+  <ng-template pTemplate="body" let-cita>
+    <td style="text-align: center">{{ cita.nombre }}</td>
+    <td style="text-align: center">{{ cita.correo }}</td>
+    <td style="text-align: center">{{ cita.salaSel }}</td>
+    <td style="text-align: center">{{ cita.nombrePel }}</td>
+    <td style="text-align: center">{{ cita.date }}</td>
+  </ng-template>
+</p-table>
