@@ -5,11 +5,13 @@ import { InicioComponent } from './inicio/inicio.component';
 import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.component';
 import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
 import { APIComponent } from './api/api.component';
+import { ContactoComponent } from './contacto/contacto.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'contenido', component: ContenidoComponent },
   { path: 'nosotros', component: SobreNosotrosComponent },
+  { path: 'contacto', component: ContactoComponent },
   { path: 'proximamente', component: APIComponent },
   { path: 'reservaciones', component: CitasRegistradasComponent },
   { path: 'contenido/:movie', component: ContenidoComponent },

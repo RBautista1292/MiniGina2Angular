@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { ContactoComponent } from './contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DividerModule } from 'primeng/divider';
     SobreNosotrosComponent,
     CitasRegistradasComponent,
     APIComponent,
+    ContactoComponent,
   ],
   imports: [
     BrowserModule,

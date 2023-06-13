@@ -1,0 +1,49 @@
+<div class="container mt-5">
+    <h3>Formulario de contacto</h3>
+    <h5>Háganos saber cualquier duda, la resolveremos lo más pronto posible</h5>
+    <form [formGroup]="forma" (ngSubmit)="guardarCambios()">
+        <div class="container">
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Nombre</label>
+                <div class="col-6">
+                    <input class="form-control" [ngClass]="{'is-invalid':!forma.get('nombre')?.valid}" type="text"
+                      placeholder="Nombre" formControlName="nombre" />
+                    <div *ngIf="forma.controls['nombre'].errors?.['required']" class="invalid-feedback">
+                      El nombre es necesario
+                    </div>
+                    <div *ngIf="forma.controls['nombre'].errors?.['minlength']" class="invalid-feedback">
+                      Por lo menos tres caracteres
+                    </div>
+                  </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Correo</label>
+                <div class="col-6">
+                    <input class="form-control" [ngClass]="{'is-invalid':!forma.get('correo')?.valid}" type="text" placeholder="Correo electronico" formControlName="correo" />
+                    <div *ngIf="forma.controls['correo'].errors?.['required']" class="invalid-feedback">
+                      Correo obligatorio
+                    </div>
+                    <div *ngIf="forma.controls['correo'].errors?.['email']" class="invalid-feedback">
+                      El correo no tiene el formato correcto
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">Duda</label>
+                <div class="col-6">
+                    <textarea class="form-control" [ngClass]="{'is-invalid':!forma.get('duda')?.valid}" placeholder="Escriba su duda..." formControlName="duda" rows="4"></textarea>
+                    <div *ngIf="forma.controls['duda'].errors?.['required']" class="invalid-feedback">
+                      Ingrese su duda por favor
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-2 col-form-label">&nbsp;</label>
+                <div class="input-group col-md-8">
+                  <button type="submit" class="btn btn-outline-primary" [disabled]="forma.invalid">Enviar</button>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+</div>
