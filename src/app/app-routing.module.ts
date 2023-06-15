@@ -11,7 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { VerificarComponent } from './verificar/verificar.component';
-import { VerificacionRegisterComponent } from './verificar/verificar.component';
+import { VerificacionRegisterComponent } from './verificacion-register/verificacion-register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
