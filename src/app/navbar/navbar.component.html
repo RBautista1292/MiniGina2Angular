@@ -2,40 +2,98 @@
   class="navbar sticky-top navbar-expand-xl navbar-dark"
   [ngStyle]="{ 'background-color': color }"
 >
-  <a class="navbar-brand mr-1"
+  <a class="navbar-brand mr-1v" [ngClass]="{'margen-abajo' : accService.linkResaltadoBooleanServicio}"
     ><img src="assets/img/Logo.png" alt="Icon" width="50px"
   /></a>
+  <!--Cambiar el icono al logo negro
+   -->
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link active" aria-current="page"><h3>CineFaction</h3></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active mt-2" aria-current="page" routerLink="/inicio"
-          >Inicio</a
+        <a
+          class="nav-link active"
+          aria-current="page"
+          [ngClass]="{
+            'margen-arriba': accService.letraGrandeBooleanServicio,
+            'margen-arriba2' : accService.linkResaltadoBooleanServicio
+          }"
+          ><h3>CineFaction</h3></a
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link active mt-2" routerLink="/contenido/0">Películas</a>
+        <a
+          class="nav-link active mt-2"
+          aria-current="page"
+          routerLink="/inicio"
+        >
+          <p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Inicio
+          </p>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active mt-2" routerLink="/contenido/0"
+          ><p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Peliculas
+          </p></a
+        >
       </li>
       <li class="nav-item">
         <a class="nav-link active mt-2" routerLink="/proximamente"
-          >Próximamente</a
+          ><p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Proximamente
+          </p></a
         >
       </li>
       <li class="nav-item">
         <a class="nav-link active mt-2" routerLink="/nosotros"
-          >Nuestro equipo</a
+          ><p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Nuestro Equipo
+          </p></a
         >
       </li>
       <li class="nav-item">
         <a class="nav-link active mt-2" routerLink="/contacto"
-          >Contacto</a
+          ><p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Contacto
+          </p></a
         >
       </li>
       <li class="nav-item">
         <a class="nav-link active mt-2" routerLink="/reservaciones"
-          >Lista de reservaciones</a
+          ><p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Lista de Reservaciones
+          </p></a
         >
       </li>
     </ul>
@@ -52,8 +110,11 @@
       <p-button
         icon="pi pi-search"
         (click)="enrutar()"
-        styleClass="p-button-raised p-button-help p-button-sm"
+        styleClass="p-button-raised p-button-sm p-button-help"
+        
       ></p-button>
+
+      <!--Falta poder hacer que el icono se torne amarillo-->
     </form>
   </div>
 </nav>

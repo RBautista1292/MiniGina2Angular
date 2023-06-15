@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AccService } from '../shared/acc.service';
 
 @Component({
   selector: 'app-api',
@@ -21,7 +22,7 @@ export class APIComponent {
   ]
   prueba ='';
 
-  constructor(private httpclient: HttpClient) {
+  constructor(private httpclient: HttpClient, public accService: AccService) {
     for (let i of this.ids) {
       this.httpclient.get(this.url+i+this.key).subscribe(data => {
         this.httpData = data;

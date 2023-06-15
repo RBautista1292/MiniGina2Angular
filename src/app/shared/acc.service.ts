@@ -5,11 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class AccService {
 
-  letraGrandeBooleanServicio!: boolean;
-  
+  letraGrandeBooleanServicio: boolean = false;
+  linkResaltadoBooleanServicio: boolean = false;
+  alinearTextoBooleanServicio: boolean = false;
+  ambosBoolean: boolean = false;
 
 
-  constructor() { }
+  constructor() {
+    this.ambosBoolean = this.letraGrandeBooleanServicio && this.linkResaltadoBooleanServicio;
+   }
 
   getletraGrandeBooleanServicio(){
     return this.letraGrandeBooleanServicio;
@@ -18,4 +22,11 @@ export class AccService {
   setletraGrandeBooleanServicio(valor: boolean){
     this.letraGrandeBooleanServicio = valor;
   }
+
+  
+
+
+
+
+
 }

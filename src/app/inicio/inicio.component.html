@@ -1,5 +1,11 @@
 <div class="fondo" style="background-image: url('assets/img/fondo3.jpg')">
-  <div class="encima container-fluid">
+  <div
+    class="encima container-fluid"
+    [ngClass]="{
+      'texto-grande': accService.letraGrandeBooleanServicio,
+      'texto-alineado': accService.alinearTextoBooleanServicio
+    }"
+  >
     <div class="encima2">
       <p class="t1" style="font-size: 2.5em">¡Bienvenido a CineFaction!</p>
       <p class="t">
@@ -7,10 +13,20 @@
         <span style="color: #d261fb">SALAS DE CINE PRIVADAS</span> en donde
         podrás ver tus películas favoritas
       </p>
-      <a class="btn shadow-lg boton" routerLink="/contenido"
+      <a
+        [ngClass]="{
+          'link-grande': accService.linkResaltadoBooleanServicio,
+          'btn shadow-lg boton': !accService.linkResaltadoBooleanServicio
+        }"
+        routerLink="/contenido"
         >Revisar catálogo</a
       >
-      <a class="icono" (click)="desplazar()"
+      <a
+        class="icono"
+        [ngClass]="{
+          'link-grande2': accService.linkResaltadoBooleanServicio
+        }"
+        (click)="desplazar()"
         ><i class="pi pi-chevron-down" style="font-size: 2rem"></i
       ></a>
     </div>
@@ -18,7 +34,13 @@
 </div>
 <div class="container mt-3" id="estrenos">
   <h2 class="text-center">Nuestros próximos estrenos</h2>
-  <h5 class="text-center">
+  <h5
+    class="text-center"
+    [ngClass]="{
+      'texto-grande2': accService.letraGrandeBooleanServicio,
+      'texto-alineado': accService.alinearTextoBooleanServicio
+    }"
+  >
     Nuestra cartelera va creciendo con el tiempo, pues las películas se quedan
     de forma permanente
   </h5>
@@ -28,7 +50,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere1.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>Quentin Tarantino</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >Quentin Tarantino
+        </p>
       </p-card>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-6 tarjeta">
@@ -36,7 +68,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere2.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>Robert Zemeckis</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >Robert Zemeckis
+        </p>
       </p-card>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-6 tarjeta">
@@ -44,7 +86,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere3.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>Lilly Wachowski</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >Lilly Wachowski
+        </p>
       </p-card>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-6 tarjeta">
@@ -52,7 +104,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere4.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>David Fincher</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >David Fincher
+        </p>
       </p-card>
     </div>
   </div>
@@ -62,7 +124,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere5.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>James Cameron</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >James Cameron
+        </p>
       </p-card>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-6 tarjeta">
@@ -70,7 +142,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere6.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>Rob Minkoff</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >Rob Minkoff
+        </p>
       </p-card>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-6 tarjeta">
@@ -78,7 +160,17 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere7.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>Christopher Nolan</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >Christopher Nolan
+        </p>
       </p-card>
     </div>
     <div class="col-md-3 col-lg-3 col-sm-6 tarjeta">
@@ -86,11 +178,28 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/premiere8.jpg" />
         </ng-template>
-        <p><span class="h6">Director: </span>Danny Boyle</p>
+        <p
+          [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
+        >
+          <span
+            class="h6"
+            [ngClass]="{
+              'texto-grande3': accService.letraGrandeBooleanServicio
+            }"
+            >Director: </span
+          >Danny Boyle
+        </p>
       </p-card>
     </div>
   </div>
   <div class="container my-5 text-center">
-    <a class="btn shadow-lg boton" routerLink="/proximamente">Ver todos</a>
+    <a
+      [ngClass]="{
+        'link-grande': accService.linkResaltadoBooleanServicio,
+        'btn shadow-lg boton': !accService.linkResaltadoBooleanServicio
+      }"
+      routerLink="/proximamente"
+      >Ver todos</a
+    >
   </div>
 </div>

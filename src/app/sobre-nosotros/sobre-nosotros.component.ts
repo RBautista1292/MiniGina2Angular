@@ -9,12 +9,15 @@ import { AccService } from '../shared/acc.service';
 })
 export class SobreNosotrosComponent implements OnInit {
 
-  letraGrandeBoolean!: boolean;
+  
 
-
-  constructor(private accService: AccService){
+  constructor(public accService: AccService){
     
   }
+
+  texto: boolean = this.accService.letraGrandeBooleanServicio;
+  enlaces: boolean = this.accService.linkResaltadoBooleanServicio;
+  alineado: boolean = this.accService.alinearTextoBooleanServicio;
 
   ngOnInit(): void {
     window.scroll({
@@ -23,10 +26,7 @@ export class SobreNosotrosComponent implements OnInit {
       behavior: 'smooth',
     });
 
-    this.letraGrandeBoolean = this.accService.getletraGrandeBooleanServicio();
-    console.log("Booleano componente" + this.letraGrandeBoolean);
-    console.log("Booleano servicio" + this.accService.letraGrandeBooleanServicio);
-    console.log("Get boolean servicio" + this.accService.getletraGrandeBooleanServicio());
+    
 
 
   }

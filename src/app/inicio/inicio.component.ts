@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccService } from '../shared/acc.service';
 
 @Component({
   selector: 'app-inicio',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
+
+  constructor(public accService: AccService){}
+  
   ngOnInit(): void {
     window.scroll({
       top: 0,

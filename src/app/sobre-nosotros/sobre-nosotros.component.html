@@ -1,12 +1,16 @@
-<div class="container mt-5">
+<div
+  class="container mt-5"
+  [ngClass]="{
+    'texto-grande': accService.letraGrandeBooleanServicio,
+    'texto-alineado': accService.alinearTextoBooleanServicio
+  }"
+>
   <h1 class="text-center">Nuestro equipo de trabajo</h1>
   <div class="row mt-3 d-flex justify-content-center">
     <div class="card border-0" style="width: 90%">
       <div class="card-body">
-        
-        
         <h3 class="card-title text-center">Sobre nosotros</h3>
-        <p class="card-text text-justify" [ngClass]="{'texto-grande': letraGrandeBoolean}">
+        <p class="card-text">
           En nuestro cine, nos apasiona brindar una experiencia única y
           emocionante a todos nuestros espectadores. Desde nuestra apertura, nos
           hemos comprometido a ser el destino preferido para los amantes del
@@ -22,7 +26,7 @@
     <div class="card border-0" style="width: 90%">
       <div class="card-body">
         <h3 class="card-title text-center">Visión</h3>
-        <p class="card-text text-justify">
+        <p class="card-text">
           Nuestra visión es convertirnos en el principal destino cinematográfico
           de nuestra región, reconocidos por nuestra excelencia en la selección
           de películas y la calidad de nuestras instalaciones. Buscamos ser el
@@ -40,7 +44,7 @@
     <div class="card border-0" style="width: 90%">
       <div class="card-body">
         <h3 class="card-title text-center">Misión</h3>
-        <p class="card-text text-justify">
+        <p class="card-text">
           Nuestra misión es ofrecer entretenimiento de primer nivel y momentos
           inolvidables a través de la magia del cine. Nos esforzamos por
           seleccionar cuidadosamente una variedad de películas de diferentes
@@ -64,7 +68,12 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/rr.jpeg" />
         </ng-template>
-        <p>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
           Emprendedor apasionado y visionario con un profundo amor por el mundo
           del cine. Con una perspicacia empresarial excepcional, ha logrado
           construir y hacer crecer su imperio cinematográfico, su compromiso con
@@ -83,7 +92,12 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/ee.jpeg" />
         </ng-template>
-        <p>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
           Destacado por su capacidad para tomar decisiones audaces y mantenerse
           al tanto de las últimas tendencias y tecnologías. Su carisma y
           habilidades de comunicación le permiten establecer relaciones sólidas
@@ -102,7 +116,12 @@
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/dd.jpeg" />
         </ng-template>
-        <p>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
           Con una mentalidad empresarial aguda y una visión a largo plazo, ha
           desempeñado un papel fundamental en la expansión y crecimiento del
           cine. Su capacidad para establecer relaciones sólidas con socios clave
@@ -118,9 +137,14 @@
         [style]="{ width: '240px' }"
       >
         <ng-template pTemplate="header">
-          <img alt="Card" src="assets/img/mm.jpg" />
+          <img alt="Card" src="../../assets/img/mau.jpg" />
         </ng-template>
-        <p>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
           Demuestra un fuerte sentido de responsabilidad social. Está
           comprometido con promover el cine como una forma de arte y
           entretenimiento que une a las personas y fomenta la diversidad
@@ -131,7 +155,13 @@
       </p-card>
     </div>
 
-    <h5 class="text-center mt-5">
+    <h5
+      class="text-center mt-5"
+      [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }"
+    >
       El siguiente sitio forma parte de un proyecto académico, no está
       relacionado a ningún negocio ni organización con fines de lucro
     </h5>

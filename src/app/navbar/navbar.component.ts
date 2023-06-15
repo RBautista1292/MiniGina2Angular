@@ -3,6 +3,7 @@ import { RutaService } from '../servicios/ruta.service';
 import { Router } from '@angular/router';
 import { Pelicula, PeliculasService } from '../servicios/peliculas.service';
 import Swal from 'sweetalert2';
+import { AccService } from '../shared/acc.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,8 @@ export class NavbarComponent {
   constructor(
     private router: Router,
     private rutaService: RutaService,
-    private peliculasService: PeliculasService
+    private peliculasService: PeliculasService, 
+    public accService: AccService
   ) {
     this.peliculas = this.peliculasService.getMovies();
   }

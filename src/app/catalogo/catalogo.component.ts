@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Pelicula, PeliculasService } from '../servicios/peliculas.service';
 import { Router } from '@angular/router';
+import { AccService } from '../shared/acc.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -11,7 +12,7 @@ export class CatalogoComponent implements OnInit {
   peliculas: Pelicula[];
   @Output() datosPelicula = new EventEmitter<Pelicula>();
 
-  constructor(public servicio: PeliculasService, private router: Router) {
+  constructor(public servicio: PeliculasService, private router: Router, public accService: AccService) {
     this.peliculas = this.servicio.getMovies();
   }
 

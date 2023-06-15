@@ -1,3 +1,15 @@
 .texto-grande{
-    font-size: 18px;
+    font-size: larger;
+}
+
+.link-grande{
+    background-color: yellow;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    font-family: "Metropolis", sans-serif;
+}
+
+.texto-alineado{
+    text-align: justify;
 }

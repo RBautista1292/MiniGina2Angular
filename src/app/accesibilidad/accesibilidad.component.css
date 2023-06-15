@@ -7,8 +7,8 @@
   background-color: #eff1f5; /* Color de fondo de la barra lateral */
   transition: left 2s ease; /* Transición suave para la animación */
   /*border-right: 0.5px solid black;*/
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
 }
 
@@ -17,26 +17,42 @@
   background-position: center;
   padding: 10px;
   
+  
 }
 
 .box2 {
   
   border-radius: 10px;
-  background-color: #003d68;
+  background-color: white;
   display: flex;
   align-items: center;
   justify-content:center;
+  margin-top: 10px;
   
+}
+
+.margen-arriba-letra{
+  margin-top: 15px;
+}
+
+.margen-arriba-link{
+  margin-top: 30px;
+}
+
+.margen-arrriba-ambos{
+  margin-top: 40px;
 }
 
 .titulo2 {
   top: 10;
   font-family: "Metropolis", sans-serif;
-  font-size: 15px;
-  color: white;
+  font-size: 18px;
+  color: black;
   text-align: center;
   font-weight: bold;
   padding-top: 15px;
+  text-transform: uppercase;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   
 }
 
@@ -79,6 +95,7 @@
   width: 70px;
   background-position: center;
   transition: transform 0.2s;
+  border-radius: 10%;
 }
 
 .contenedor3 {
@@ -116,4 +133,8 @@
   text-align: center;
   border-radius: 10px;
   bottom: 10px;
+}
+
+.boton-presionado{
+  background-color: lightgray !important;
 }
