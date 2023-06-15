@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Pelicula, PeliculasService } from '../servicios/peliculas.service';
-import { Boleto, BoletosService } from '../servicios/boletos.service';
+import { Pelicula, PeliculasService } from '../services/peliculas.service';
+import { Boleto, BoletosService } from '../services/boletos.service';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({

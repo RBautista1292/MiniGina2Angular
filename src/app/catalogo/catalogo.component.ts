@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Pelicula, PeliculasService } from '../servicios/peliculas.service';
+import { Pelicula, PeliculasService } from '../services/peliculas.service';
 import { Router } from '@angular/router';
 import { AccService } from '../shared/acc.service';
 

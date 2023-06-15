@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Pelicula } from '../servicios/peliculas.service';
+import { Pelicula } from '../services/peliculas.service';
 import { ActivatedRoute, Params, Router, Scroll } from '@angular/router';
-import { RutaService } from '../servicios/ruta.service';
+import { RutaService } from '../services/ruta.service';
 
 @Component({
   selector: 'app-contenido',

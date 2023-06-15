@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <div *ngIf="!loading" class="body">
+        <img class="logo" src="../../../assets/img/login.png" alt="Login">
+        <h1>Iniciar sesión</h1>
+        <form (ngSubmit)="loginC()" [formGroup]="loginUsuarioC">
+            <div class="form-floating mb-3">
+                <input type="email" formControlName="email" class="form-control" placeholder="nombre@ejemplo.com">
+                <label>Email</label>
+                <span *ngIf="loginUsuarioC.get('email')?.hasError('required') && loginUsuarioC.get('email')?.touched" class="text-danger errorLabel">
+                    El <strong>correo</strong> es requerido.
+                </span>
+                <span *ngIf="loginUsuarioC.get('email')?.hasError('email') && loginUsuarioC.get('email')?.touched" class="text-danger errorLabel">
+                    El <strong>correo</strong> es inválido.
+                </span>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" formControlName="password" class="form-control" placeholder="Contraseña">
+                <label>Contraseña</label>
+                <span *ngIf="loginUsuarioC.get('password')?.hasError('required') && loginUsuarioC.get('password')?.touched" class="text-danger errorLabel">
+                    La <strong>contraseña</strong> es requerida.
+                </span>
+            </div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="loginUsuarioC.invalid" >Iniciar sesión</button>
+            </div>
+        </form>
+        <hr>
+        <form (ngSubmit)="onSignInSubmit()" [formGroup]="loginUsuarioT">
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="numTelefono" class="form-control" placeholder="1234567891">
+                <label>Número de teléfono</label>
+            </div>
+            <div #recaptchaContainer></div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="loginUsuarioT.invalid" >Iniciar sesión</button>
+            </div>
+        </form>
+        <p class="mt-3">¿No tienes cuenta? <a routerLink="/registrar-usuario">Regístrate</a></p>
+        <a class="mt-3" routerLink="/recuperar-password">Recuperar Contraseña</a>
+    </div>
+    <app-spinner *ngIf="loading"></app-spinner>
+</div>
