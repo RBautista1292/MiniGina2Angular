@@ -12,18 +12,60 @@ export class AccesibilidadComponent {
   botonPresionado3: boolean = false;
   botonPresionado4: boolean = false;
 
+  botonPresionado5: boolean = false;
+  botonPresionado6: boolean = false;
+  botonPresionado7: boolean = false;
+
+  lectorPantalla: boolean = true;
+  resumirLector: boolean = true;
+  pausarLector: boolean = true;
+  cancelarLector: boolean = true;
+
   constructor(public accService: AccService) {}
 
-  @Output() lectorTexto = new EventEmitter();
+  //Toggles
+  toggleLectorPantalla(): void {
+    this.lectorPantalla = !this.lectorPantalla;
+    this.botonPresionado1 = !this.botonPresionado1;
+    //this.accService.setPoderLeer(this.leerBotonBoolean);
+  }
+
+  toggleResumirLector(): void {
+    this.resumirLector = !this.resumirLector;
+  }
+
+  togglePausarLector(): void {
+    this.pausarLector = !this.pausarLector;
+  }
+
+  toggleCancelarLector(): void {
+    this.cancelarLector = !this.cancelarLector;
+  }
+
+  //Toggles
+
+  resumirLector1(): void {
+    this.accService.resumirContenido.emit();
+  }
+  pausarLector1(): void {
+    this.accService.pausarContenido.emit();
+  }
+
+  cancelarLector1(): void {
+    this.accService.cancelarContenido.emit();
+  }
 
   leerTexto1(): void {
-    this.lectorTexto.emit();
-    console.log(this.lectorTexto);
+    if (this.lectorPantalla) {
+      this.accService.leerContenido.emit();
+    }
+
+    this.accService.leerContenido.subscribe(() => {
+      console.log('Lector Emitido');
+    });
   }
 
-  botonPresionadoFuncion1(): void {
-    this.botonPresionado1 = !this.botonPresionado1;
-  }
+  botonPresionadoFuncion1(): void {}
 
   botonPresionadoFuncion2(): void {
     this.botonPresionado2 = !this.botonPresionado2;
@@ -35,6 +77,18 @@ export class AccesibilidadComponent {
 
   botonPresionadoFuncion4(): void {
     this.botonPresionado4 = !this.botonPresionado4;
+  }
+
+  botonPresionadoFuncion5(): void {
+    this.botonPresionado5 = !this.botonPresionado5;
+  }
+
+  botonPresionadoFuncion6(): void {
+    this.botonPresionado6 = !this.botonPresionado6;
+  }
+
+  botonPresionadoFuncion7(): void {
+    this.botonPresionado7 = !this.botonPresionado7;
   }
 
   agrandarTexto2(): void {

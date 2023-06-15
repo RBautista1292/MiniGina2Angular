@@ -28,6 +28,7 @@
   align-items: center;
   justify-content:center;
   margin-top: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
   
 }
 
@@ -72,6 +73,7 @@
   font-weight: bold;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 #icon1 {
@@ -86,6 +88,11 @@
 #icon3:active,
 #icon4:active {
   transform: scale(0.8);
+  
+}
+
+.boxLector:active{
+  background-color: lightgray !important;
 }
 
 #icon2,
@@ -133,8 +140,15 @@
   text-align: center;
   border-radius: 10px;
   bottom: 10px;
-}
+  margin-top: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);}
 
 .boton-presionado{
   background-color: lightgray !important;
+}
+
+.boxLector{
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  border-radius: 10px;
 }

@@ -28,6 +28,7 @@ export class AppComponent {
 
   alternar(): void {
     this.mostrar = !this.mostrar;
+    console.log("Mostrar Barra: " + this.mostrar)
   }
 
   lectorTexto2(text: any): void {
