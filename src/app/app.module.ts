@@ -89,7 +89,7 @@ firebase.initializeApp(firebaseConfig);
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [ConfirmationResultService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
