@@ -1,3 +1,24 @@
+.boton {
+  background-color: #596bb0;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: #3e4d8a;
+  color: white;
+}
+
+.shadow {
+  background-color: #3e4d8a0e;
+}
+
+.input-group-text, .form-control {
+  border-color: #7e7e7e;
+}
+
 /*Accesibilidad*/
 
 .texto-grande {
