@@ -12,11 +12,11 @@ export class ContactoComponent {
   
   constructor(public accService: AccService){
     this.forma = new FormGroup({
-    'nombre': new FormControl('', [Validators.required, Validators.minLength(3)] ),
+    'nombre': new FormControl('', [Validators.required, Validators.minLength(5)] ),
     'correo': new FormControl('', [Validators.required, Validators.email] ),
     'duda': new FormControl('', Validators.required ),
     });
-    }
+    } 
 
   guardarCambios():void{
     
