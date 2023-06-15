@@ -11,7 +11,10 @@ import { LoginComponent } from './login/login.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { VerificarComponent } from './verificar/verificar.component';
+<<<<<<< HEAD
 import { VerificacionRegisterComponent } from './verificar/verificacion-register.component';
+=======
+>>>>>>> parent of a7169af (aguanta)
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 
@@ -28,7 +31,6 @@ const routes: Routes = [
   { path: 'verificar-correo', component: VerificarCorreoComponent },
   { path: 'recuperar-password', component: RecuperarPasswordComponent },
   { path: 'verificacion', component: VerificarComponent },
-  { path: 'verificacion-register', component: VerificacionRegisterComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'vincular-telefono', component: VincularTelefonoComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }, // Cuando es la raíz
