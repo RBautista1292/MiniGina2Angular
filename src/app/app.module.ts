@@ -36,7 +36,9 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import * as firebase from 'firebase/app';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { VerificacionRegisterComponent } from './verificacion-register/verificacion-register.component';
+
+import { VincularCorreoComponent } from './vincular-correo/vincular-correo.component';
+import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
@@ -72,7 +74,8 @@ firebase.initializeApp(firebaseConfig);
     VerificarCorreoComponent,
     SpinnerComponent,
     DashboardComponent,
-    VerificacionRegisterComponent,
+    VincularCorreoComponent,
+    VincularTelefonoComponent,
   ],
   imports: [
     BrowserModule,
