@@ -42,12 +42,21 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.recaptchaVerifier = new RecaptchaVerifier(this.recaptchaContainer.nativeElement, {
       'size': 'normal',
       'callback': (response: any) =>{ 
-        this.onSignInSubmit();
+        //this.onSignInSubmit();
       }
     }, auth);
+    this.recaptchaVerifier.render();
   }
 
   ngOnInit(): void {
+    const auth = getAuth();
+    this.recaptchaVerifier = new RecaptchaVerifier(this.recaptchaContainer.nativeElement, {
+      'size': 'normal',
+      'callback': (response: any) =>{ 
+        //this.onSignInSubmit();
+      }
+    }, auth);
+    this.recaptchaVerifier.render();
   }
 
   onSignInSubmit(): void {
@@ -73,7 +82,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loading = true;
     this.afAuth.signInWithEmailAndPassword(email, password).then((user) => {
       if(user.user?.emailVerified) {
-        this.router.navigate(['/dashboard']);
+        if(user.user?.phoneNumber) this.router.navigate(['/dashboard']);
+        else this.router.navigate(['/vincular-telefono']);
       } else {
         this.router.navigate(['/verificar-correo']);
       }

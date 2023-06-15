@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
   reservationsRef = ref(this.database, 'reservations');
   emailU!: any;
   columns: string[] = [
-    'UID', 'Nombre', 'Email'
+    'UID', 'Nombre', 'Email', 'Proveedores'
   ];
 
   constructor(private afAuth: AngularFireAuth, private router: Router, private http: HttpClient) {
