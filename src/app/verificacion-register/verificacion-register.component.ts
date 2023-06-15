@@ -8,11 +8,11 @@ import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber }
 import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
 
 @Component({
-  selector: 'app-verificar',
-  templateUrl: './verificar.component.html',
-  styleUrls: ['./verificar.component.css']
+  selector: 'app-verificacion-register',
+  templateUrl: './verificacion-register.component.html',
+  styleUrls: ['./verificacion-register.component.css']
 })
-export class VerificarComponent implements OnInit {
+export class VerificacionRegisterComponent implements OnInit {
   OTPCode: FormGroup;
   loading: boolean = false;
   constructor(
@@ -36,9 +36,7 @@ export class VerificarComponent implements OnInit {
       confirmationResult.confirm(code)
         .then((result) => {
           // User signed in successfully.
-          const user = result.user;
-          this.loading = false;
-          this.router.navigate(['/dashboard']);
+          this.afAuth.signOut();
           // ...
         })
         .catch((error) => {
@@ -46,5 +44,4 @@ export class VerificarComponent implements OnInit {
           // ...
         });
     }
-
 }

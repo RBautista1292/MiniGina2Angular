@@ -36,6 +36,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import * as firebase from 'firebase/app';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+
 import { VincularCorreoComponent } from './vincular-correo/vincular-correo.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 
