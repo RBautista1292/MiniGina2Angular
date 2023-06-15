@@ -17,7 +17,7 @@
     Háganos saber cualquier duda, la resolveremos lo más pronto posible
   </h5>
   <br />
-  <form [formGroup]="forma" (ngSubmit)="guardarCambios()" class="w-75 ">
+  <form [formGroup]="forma" (ngSubmit)="enviar()" class="w-75 ">
     <div class="container d-flex flex-column align-items-center">
       <div class="row w-100">
         <div class="col-6 mb-3">
@@ -33,18 +33,13 @@
             }"
             type="text"
             formControlName="nombre"
+            [(ngModel)]="usuario"
           />
           <div
             *ngIf="forma.controls['nombre'].errors?.['required']"
             class="invalid-feedback"
           >
             El nombre es necesario
-          </div>
-          <div
-            *ngIf="forma.controls['nombre'].errors?.['minlength']"
-            class="invalid-feedback"
-          >
-            Por lo menos cinco caracteres
           </div>
         </div>
           
@@ -61,8 +56,9 @@
               'is-invalid': !forma.get('correo')?.valid,
               'texto-grande-placeholder': accService.letraGrandeBooleanServicio
             }"
-            type="text"
+            type="email"
             formControlName="correo"
+            [(ngModel)]="email"
           />
           <div
             *ngIf="forma.controls['correo'].errors?.['required']"
@@ -89,6 +85,7 @@
             }"
             placeholder="Escriba su duda..."
             formControlName="duda"
+            [(ngModel)]="descripcion"
             rows="4"
           ></textarea>
           <div
@@ -97,6 +94,12 @@
           >
             Ingrese su duda por favor
           </div>
+          <div
+          *ngIf="forma.controls['duda'].errors?.['minlength']"
+          class="invalid-feedback"
+        >
+          Por lo menos 10 caracteres
+        </div>
         </div>
       <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
@@ -108,6 +111,7 @@
             [ngClass]="{
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            
           >
             Enviar
           </button>

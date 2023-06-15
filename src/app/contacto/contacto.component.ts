@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccService } from '../shared/acc.service';
+import { RutaService } from '../services/ruta.service';
 
 @Component({
   selector: 'app-contacto',
@@ -9,16 +10,27 @@ import { AccService } from '../shared/acc.service';
 })
 export class ContactoComponent {
   forma!: FormGroup;
+
+  usuario?: string;
+  email?: string;
+  descripcion?: string;
   
-  constructor(public accService: AccService){
-    this.forma = new FormGroup({
-    'nombre': new FormControl('', [Validators.required, Validators.minLength(5)] ),
-    'correo': new FormControl('', [Validators.required, Validators.email] ),
-    'duda': new FormControl('', Validators.required ),
+  constructor(public accService: AccService, private envio: RutaService, private formBuilder: FormBuilder){
+    this.forma = this.formBuilder.group({
+    nombre: new FormControl('', Validators.required),
+    correo: new FormControl('', [Validators.required, Validators.email] ),
+    duda: new FormControl('', [Validators.required, Validators.minLength(10)] ),
     });
     } 
 
-  guardarCambios():void{
-    
-  }
+    enviar(): void {
+      console.log(this.email);
+      const urapi = `https://cinefactionmails.onrender.com/mailDuda/${this.email}/${this.usuario}/${this.descripcion}`;
+      this.envio.getJSONurl(urapi).subscribe((res: any) => {
+        console.log(res);
+        
+      });
+      
+        this.forma.get('duda')?.setValue('');
+    }
 }
