@@ -1,4 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
+import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
+import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
 
 @Component({
   selector: 'app-verificacion-register',
