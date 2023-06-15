@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { VerificarComponent } from './verificar/verificar.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'verificar-correo', component: VerificarCorreoComponent },
   { path: 'recuperar-password', component: RecuperarPasswordComponent },
   { path: 'verificacion', component: VerificarComponent },
+  { path: 'dashboard', component: DashboardComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }, // Cuando es la raíz
   { path: '**', redirectTo: '/inicio' },
 ];
