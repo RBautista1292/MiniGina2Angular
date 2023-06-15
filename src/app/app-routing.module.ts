@@ -6,6 +6,11 @@ import { SobreNosotrosComponent } from './sobre-nosotros/sobre-nosotros.componen
 import { CitasRegistradasComponent } from './citas-registradas/citas-registradas.component';
 import { APIComponent } from './api/api.component';
 import { ContactoComponent } from './contacto/contacto.component';
+import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.component';
+import { LoginComponent } from './login/login.component';
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { VerificarComponent } from './verificar/verificar.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -15,6 +20,11 @@ const routes: Routes = [
   { path: 'proximamente', component: APIComponent },
   { path: 'reservaciones', component: CitasRegistradasComponent },
   { path: 'contenido/:movie', component: ContenidoComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'registrar-usuario', component: RegistrarUsuarioComponent },
+  { path: 'verificar-correo', component: VerificarCorreoComponent },
+  { path: 'recuperar-password', component: RecuperarPasswordComponent },
+  { path: 'verificacion', component: VerificarComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }, // Cuando es la raíz
   { path: '**', redirectTo: '/inicio' },
 ];

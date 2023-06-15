@@ -22,6 +22,30 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { ContactoComponent } from './contacto/contacto.component';
 import { AccesibilidadComponent } from './accesibilidad/accesibilidad.component';
+import { LoginComponent } from './login/login.component';
+import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
+import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
+import { VerificarComponent } from './verificar/verificar.component';
+import { VerificarCorreoComponent } from './verificar-correo/verificar-correo.component';
+import { environment } from 'src/app/environments/environment';
+import { ConfirmationResultService } from './services/confirmation-result.service';
+import { AngularFireModule } from '@angular/fire/compat';
+import { ToastrModule } from 'ngx-toastr';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+
+import * as firebase from 'firebase/app';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
+
+export const firebaseConfig = {
+  apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
+  authDomain: 'proyecto-gina-a9700.firebaseapp.com',
+  projectId: 'proyecto-gina-a9700',
+  storageBucket: 'proyecto-gina-a9700.appspot.com',
+  messagingSenderId: '204542506942',
+  appId: '1:204542506942:web:8810a04d7d27bfd57c6bef',
+};
+
+firebase.initializeApp(firebaseConfig);
 
 @NgModule({
   declarations: [
@@ -39,6 +63,12 @@ import { AccesibilidadComponent } from './accesibilidad/accesibilidad.component'
     APIComponent,
     ContactoComponent,
     AccesibilidadComponent,
+    LoginComponent,
+    RecuperarPasswordComponent,
+    RegistrarUsuarioComponent,
+    VerificarComponent,
+    VerificarCorreoComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +84,10 @@ import { AccesibilidadComponent } from './accesibilidad/accesibilidad.component'
     HttpClientModule,
     TableModule,
     DividerModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
