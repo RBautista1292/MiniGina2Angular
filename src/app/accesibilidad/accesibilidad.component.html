@@ -27,7 +27,7 @@
         alt=""
         style="padding-top: 12px"
         (click)="leerTexto1()"
-        (click)="botonPresionadoFuncion1()"
+        (click)="toggleLectorPantalla()"
       />
     </div>
     <div class="box" [ngClass]="{ 'boton-presionado': botonPresionado2 }">
@@ -64,15 +64,40 @@
 
   <div class="contenedor3">
     <div class="box3">
-      <img src="../../assets/img/accesibilidad/play.png" id="icon1" />
-      <img src="../../assets/img/accesibilidad/pausar.png" id="icon1" />
-      <img src="../../assets/img/accesibilidad/cancelar.png" id="icon1" />
+      <div class="boxLector" >
+        <img
+          (click)="resumirLector1()"
+          (click)="toggleResumirLector()"
+          (click)="botonPresionadoFuncion5()"
+          src="../../assets/img/accesibilidad/play.png"
+          id="icon1"
+        />
+      </div>
+      <div class="boxLector">
+        <img
+          
+          (click)="pausarLector1()"
+          (click)="togglePausarLector()"
+          (click)="botonPresionadoFuncion6()"
+          src="../../assets/img/accesibilidad/pausar.png"
+          id="icon1"
+        />
+      </div>
+      <div class="boxLector">
+        <img
+          (click)="cancelarLector1()"
+          (click)="toggleCancelarLector()"
+          (click)="botonPresionadoFuncion7()"
+          src="../../assets/img/accesibilidad/cancelar.png"
+          id="icon1"
+        />
+      </div>
     </div>
-  </div>
 
-  <div class="descripcion">
-    <p>Resumir</p>
-    <p>Pausar</p>
-    <p>Cancelar</p>
+    <div class="descripcion">
+      <p>Resumir</p>
+      <p>Pausar</p>
+      <p>Cancelar</p>
+    </div>
   </div>
 </div>
