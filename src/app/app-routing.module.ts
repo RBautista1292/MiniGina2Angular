@@ -11,10 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { RecuperarPasswordComponent } from './recuperar-password/recuperar-password.component';
 import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario.component';
 import { VerificarComponent } from './verificar/verificar.component';
-<<<<<<< HEAD
-import { VerificacionRegisterComponent } from './verificar/verificacion-register.component';
-=======
->>>>>>> parent of a7169af (aguanta)
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 
