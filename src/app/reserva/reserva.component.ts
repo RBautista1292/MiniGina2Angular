@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-reserva',
@@ -14,10 +15,12 @@ export class ReservaComponent {
   minDate: Date = new Date();
   maxDate: Date = new Date();
   defaultDate: Date = new Date();
+  dataUser!: any;
+  anonUser!: boolean;
 
   @Input() nombrePelicula!: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private session: SessionService) {
     this.forma = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
@@ -25,6 +28,7 @@ export class ReservaComponent {
       ]),
       correo: new FormControl('', [Validators.required, Validators.email]),
       salaSel: new FormControl('', Validators.required),
+      numAsientos: new FormControl('', [Validators.required, Validators.min(1), Validators.max(30)]),
       nombrePel: new FormControl('', Validators.required),
       date: new FormControl('', Validators.required),
     });
@@ -35,7 +39,16 @@ export class ReservaComponent {
     this.defaultDate.setSeconds(0);
     this.fecha = this.getDisabledDates(new Date());
     console.log(this.nombrePelicula);
+    if(this.session.getUser()) {
+      this.dataUser = this.session.getUser();
+      this.anonUser = true;
+    }
+    else {
+      this.dataUser = null;
+      this.anonUser = false;
+    }
   }
+
   guardarCambios(): void {
     console.log(this.forma);
     this.forma.controls['date'].setValue(
