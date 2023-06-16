@@ -99,7 +99,7 @@
       <li class="nav-item">
         <a class="nav-link active mt-2" (click)="alternarSesion()">
           <p>
-            {{ dataUser ? 'Hola '+dataUser?.displayName+'. Cerrar sesión' : 'Iniciar sesión' }}
+            <span style="color: #ab9bf1; font-weight: bold;">{{ dataUser ? 'Hola '+dataUser?.displayName+'. Cerrar sesión' : 'Iniciar sesión' }}</span>
           </p>
         </a>
       </li>
