@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-verificar',
@@ -21,7 +22,8 @@ export class VerificarComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router,
     private firebaseError: FirebaseCodeErrorService,
-    private confirmationResultService: ConfirmationResultService){
+    private confirmationResultService: ConfirmationResultService,
+    private session: SessionService){
       this.OTPCode = this.fb.group({
         otpCode: ['', Validators.required],
       });
@@ -38,7 +40,10 @@ export class VerificarComponent implements OnInit {
           // User signed in successfully.
           const user = result.user;
           this.loading = false;
-          if(user?.email) this.router.navigate(['/dashboard']);
+          if(user?.email) {
+            this.session.setUser(user);
+            this.router.navigate(['/inicio']);
+          }
           else this.router.navigate(['/vincular-correo']);
           // ...
         })

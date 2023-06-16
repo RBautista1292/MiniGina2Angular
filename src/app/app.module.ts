@@ -38,6 +38,7 @@ import { SpinnerComponent } from './shared/spinner/spinner.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VincularCorreoComponent } from './vincular-correo/vincular-correo.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
+import { SessionService } from './services/session.service';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
@@ -95,7 +96,9 @@ firebase.initializeApp(firebaseConfig);
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(),
   ],
-  providers: [ConfirmationResultService,],
+  providers: [ConfirmationResultService,
+    SessionService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
