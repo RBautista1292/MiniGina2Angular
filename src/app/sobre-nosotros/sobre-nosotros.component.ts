@@ -11,19 +11,20 @@ declare const speechSynthesis: any;
 export class SobreNosotrosComponent implements OnInit {
   constructor(public accService: AccService) {}
 
-  texto: boolean = this.accService.letraGrandeBooleanServicio;
-  enlaces: boolean = this.accService.linkResaltadoBooleanServicio;
-  alineado: boolean = this.accService.alinearTextoBooleanServicio;
+  
+  textoHTML: string = "";
 
-  texto2: string =
-    'El siguiente sitio forma parte de un proyecto académico, no está relacionado a ningún negocio ni organización con fines de lucro';
-
+  
   ngOnInit(): void {
     window.scroll({
       top: 0,
       left: 0,
       behavior: 'smooth',
     });
+
+
+
+   this.leerElementosHTML();
 
     this.accService.leerContenido.subscribe(() => {
       this.leerContenidoCommponente();
@@ -43,9 +44,22 @@ export class SobreNosotrosComponent implements OnInit {
     });
   }
 
+  leerElementosHTML(): void{
+    const elementosTexto = Array.from(document.querySelectorAll('h1, h3, p, .p-card'))
+    .filter(elemento => {
+      const texto = elemento.textContent?.trim();
+      return texto !== '';
+    })
+    .map(elemento => elemento.textContent?.trim());
+
+  this.textoHTML = elementosTexto.join('. ');
+
+  
+  }
+
   leerContenidoCommponente(): void {
     const parrafo = new SpeechSynthesisUtterance();
-    parrafo.text = this.texto2;
+    parrafo.text = this.textoHTML;
     speechSynthesis.speak(parrafo);
   }
 

@@ -7,15 +7,18 @@ import { AccService } from '../shared/acc.service';
   styleUrls: ['./accesibilidad.component.css'],
 })
 export class AccesibilidadComponent {
+  //Botones principales
   botonPresionado1: boolean = false;
   botonPresionado2: boolean = false;
   botonPresionado3: boolean = false;
   botonPresionado4: boolean = false;
 
+  //Reaundar, pausar y cancelar
   botonPresionado5: boolean = false;
   botonPresionado6: boolean = false;
   botonPresionado7: boolean = false;
 
+  //Boolean
   lectorPantalla: boolean = true;
   resumirLector: boolean = true;
   pausarLector: boolean = true;
@@ -46,6 +49,7 @@ export class AccesibilidadComponent {
 
   resumirLector1(): void {
     this.accService.resumirContenido.emit();
+    
   }
   pausarLector1(): void {
     this.accService.pausarContenido.emit();
@@ -53,11 +57,15 @@ export class AccesibilidadComponent {
 
   cancelarLector1(): void {
     this.accService.cancelarContenido.emit();
+    this.botonPresionado1 = false;
   }
 
   leerTexto1(): void {
     if (this.lectorPantalla) {
       this.accService.leerContenido.emit();
+    } 
+    if(!this.lectorPantalla){
+      this.accService.cancelarContenido.emit();
     }
 
     this.accService.leerContenido.subscribe(() => {
@@ -65,7 +73,7 @@ export class AccesibilidadComponent {
     });
   }
 
-  botonPresionadoFuncion1(): void {}
+  
 
   botonPresionadoFuncion2(): void {
     this.botonPresionado2 = !this.botonPresionado2;

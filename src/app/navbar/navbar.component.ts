@@ -5,6 +5,7 @@ import { Pelicula, PeliculasService } from '../services/peliculas.service';
 import Swal from 'sweetalert2';
 import { AccService } from '../shared/acc.service';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
