@@ -13,6 +13,7 @@ import { RegistrarUsuarioComponent } from './registrar-usuario/registrar-usuario
 import { VerificarComponent } from './verificar/verificar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
+import { VincularCorreoComponent } from './vincular-correo/vincular-correo.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'verificacion', component: VerificarComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'vincular-telefono', component: VincularTelefonoComponent },
+  { path: 'vincular-correo', component: VincularCorreoComponent },
   { path: '', redirectTo: '/inicio', pathMatch: 'full' }, // Cuando es la raíz
   { path: '**', redirectTo: '/inicio' },
 ];

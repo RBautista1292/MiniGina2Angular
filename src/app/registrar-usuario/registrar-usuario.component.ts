@@ -54,6 +54,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         const user = userCredential.user;
         const displayName = name;
         if (user) {
+          console.log(user);
           updateProfile(user, { displayName })
             .then(() => {
               this.verificarCorreo();

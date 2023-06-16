@@ -38,7 +38,8 @@ export class VerificarComponent implements OnInit {
           // User signed in successfully.
           const user = result.user;
           this.loading = false;
-          this.router.navigate(['/dashboard']);
+          if(user?.email) this.router.navigate(['/dashboard']);
+          else this.router.navigate(['/vincular-correo']);
           // ...
         })
         .catch((error) => {
