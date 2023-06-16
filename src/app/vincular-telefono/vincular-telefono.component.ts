@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-vincular-telefono',
@@ -26,7 +27,8 @@ export class VincularTelefonoComponent implements OnInit, AfterViewInit {
     private afAuth: AngularFireAuth,
     private toastr: ToastrService,
     private router: Router,
-    private firebaseError: FirebaseCodeErrorService,) {
+    private firebaseError: FirebaseCodeErrorService,
+    private session: SessionService) {
       this.numTelefonoR = this.fb.group({
         numTelefono: ['', Validators.required],
       });
@@ -96,7 +98,8 @@ export class VincularTelefonoComponent implements OnInit, AfterViewInit {
         // User signed in successfully.
         //const user = result.user;
         this.loading = false;
-        this.router.navigate(['/dashboard']);
+        this.session.setUser(result.user);
+        this.router.navigate(['/inicio']);
         // ...
       })
       .catch((error) => {
