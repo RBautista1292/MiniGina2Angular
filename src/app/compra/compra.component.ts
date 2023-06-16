@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Pelicula, PeliculasService } from '../services/peliculas.service';
 import { Boleto, BoletosService } from '../services/boletos.service';
 import { ActivatedRoute, Params } from '@angular/router';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-compra',
@@ -12,6 +13,7 @@ export class CompraComponent implements OnInit {
   peliculas: Pelicula[];
   boletos: Boleto[];
   nPelicula = 0;
+  isLogged!: boolean;
   @Input() datosPeliculaCompra: Pelicula = {
     nombre: '',
     sinopsis: '',
@@ -27,10 +29,17 @@ export class CompraComponent implements OnInit {
   constructor(
     public servicio1: PeliculasService,
     public servicio2: BoletosService,
-    private rutaActiva: ActivatedRoute
+    private rutaActiva: ActivatedRoute,
+    private session: SessionService
   ) {
     this.peliculas = this.servicio1.getMovies();
     this.boletos = this.servicio2.getTickets();
+    if(this.session.getUser()){
+      this.isLogged = true;
+    }
+    else {
+      this.isLogged = false;
+    }
   }
 
   ngOnInit(): void {
