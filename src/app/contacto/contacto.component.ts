@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccService } from '../shared/acc.service';
 import { RutaService } from '../services/ruta.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contacto',
@@ -30,7 +31,12 @@ export class ContactoComponent {
         console.log(res);
         
       });
-      
-        this.forma.get('duda')?.setValue('');
+      Swal.fire({
+        icon: 'success',
+        title: 'Su duda ha sido enviada, será resuelta lo más pronto posible',
+        showConfirmButton: false,
+        timer: 4000,
+      });
+      this.forma.get('duda')?.setValue('');
     }
 }
