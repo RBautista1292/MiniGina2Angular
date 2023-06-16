@@ -7,6 +7,7 @@ import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.s
 import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
 import { SessionService } from 'src/app/services/session.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -99,7 +100,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
       }
     }).catch((error) => {
       this.loading = false;
-      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+      Swal.fire({
+        icon: 'error',
+        title: 'Datos erróneos, vuelva a intentarlo',
+        showConfirmButton: true,
+        timer: 4000,
+      });
     })
   }
 }

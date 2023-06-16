@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import { EmailAuthProvider, getAuth, RecaptchaVerifier, signInWithPhoneNumber, updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vincular-correo',
@@ -42,10 +43,12 @@ export class VincularCorreoComponent {
     const repetirPassowrd = this.vincularUsuario.value.repetirPassword;
     const name = this.vincularUsuario.value.name;
     if (password !== repetirPassowrd) {
-      this.toastr.error(
-        'Las contraseñas ingresadas deben ser las mismas',
-        'Error'
-      );
+      Swal.fire({
+        icon: 'error',
+        title: 'Las contraseñas ingresadas deben ser las mismas',
+        showConfirmButton: true,
+        timer: 4000,
+      });
       return;
     }
     this.loading = true;
@@ -66,7 +69,12 @@ export class VincularCorreoComponent {
             })
             .catch((error: any) => {
               this.loading = false;
-              this.toastr.error(this.firebaseError.codeError(error.code), 'Error al actualizar el perfil');
+              Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar el perfil',
+                showConfirmButton: true,
+                timer: 4000,
+              });
             });
         } else {
           this.loading = false;
@@ -75,17 +83,24 @@ export class VincularCorreoComponent {
       })
       .catch((error: any) => {
         this.loading = false;
-        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          showConfirmButton: true,
+          timer: 4000,
+        });
       });
   }
   verificarCorreo() {
     this.afAuth.currentUser
       .then((user) => user?.sendEmailVerification())
       .then(() => {
-        this.toastr.info(
-          'Le enviamos un correo electronico para su verificacion',
-          'Verificar correo'
-        );
+        Swal.fire({
+          icon: 'info',
+          title: 'Le enviamos un correo electronico para su verificacion',
+          showConfirmButton: true,
+          timer: 4000,
+        });
         this.router.navigate(['/dashboard']);
       });
   }
