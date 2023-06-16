@@ -97,9 +97,9 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link active mt-2" routerLink="/login">
-          <p *nfIf="">
-            Iniciar sesión
+        <a class="nav-link active mt-2" (click)="alternarSesion()">
+          <p>
+            {{ dataUser ? 'Hola '+dataUser?.displayName+'. Cerrar sesión' : 'Iniciar sesión' }}
           </p>
         </a>
       </li>

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { RutaService } from '../services/ruta.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Pelicula, PeliculasService } from '../services/peliculas.service';
 import Swal from 'sweetalert2';
 import { AccService } from '../shared/acc.service';
@@ -31,7 +31,18 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.dataUser = this.session.getUser();
+    //this.dataUser = this.session.getUser();
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd) {
+        this.afAuth.currentUser.then((user) => {
+          if(this.session.getUser()) {
+            this.dataUser = user;
+            console.log(user);
+          }
+        });
+        console.log(this.dataUser);
+      }
+    });
   }
 
   enrutar(): void {
@@ -61,6 +72,18 @@ export class NavbarComponent implements OnInit {
         });
         this.search = false;
       }
+    }
+  }
+  alternarSesion() {
+    if(this.dataUser) {
+      console.log("Cerrando sesion");
+      this.afAuth.signOut().then(() => this.router.navigate(['/inicio']));
+      this.dataUser = null;
+      this.session.setUser(null);
+    }
+    else {
+      console.log("Iniciando sesion");
+      this.router.navigate(['/login']);
     }
   }
 }

@@ -18,12 +18,6 @@ export class InicioComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
-    this.afAuth.currentUser.then((user) => {
-      this.dataUser = user;
-      console.log(this.dataUser);
-    });
-    this.dataUser = this.session.getUser();
-    console.log(this.dataUser);
   }
 
   desplazar(): void {
