@@ -2,9 +2,20 @@
     <div *ngIf="!loading" class="body">
         <img class="logo" src="../../../assets/img/login.png" alt="Login">
         <h1>Verificar número</h1>
+        <form (ngSubmit)="onTelefoneSubmit()" [formGroup]="numTelefonoR">
+            <div class="form-floating mb-3">
+                <input type="text" formControlName="numTelefono" class="form-control" placeholder="1234567891">
+                <label>Número de teléfono</label>
+            </div>
+            <div #recaptchaContainer></div>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg" [disabled]="numTelefonoR.invalid" >Vincular</button>
+            </div>
+        </form>
+        <hr>
         <form (ngSubmit)="onVerifyCode()" [formGroup]="OTPCode">
             <div class="form-floating mb-3">
-                <input type="text" formControlName="otpCode" class="form-control" placeholder="123456">
+                <input type="text" formControlName="otpCode" class="form-control" placeholder="123456" [disabled]="OTPbool">
                 <label>Código de verificación</label>
                 <span *ngIf="OTPCode.get('otpCode')?.hasError('required') && OTPCode.get('otpCode')?.touched" class="text-danger errorLabel">
                     El <strong>código de verificación</strong> es requerido.

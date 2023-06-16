@@ -156,14 +156,100 @@
     </div>
 
     <h5
-      class="text-center mt-5"
+      class="text-center mt-5 mb-5"
       [ngClass]="{
         'texto-grande': accService.letraGrandeBooleanServicio,
         'texto-alineado': accService.alinearTextoBooleanServicio
       }"
     >
-      El siguiente sitio forma parte de un proyecto académico, no está
-      relacionado a ningún negocio ni organización con fines de lucro
+      Este sitio forma parte de un proyecto académico, no está
+      relacionado a ningún negocio ni organización con fines de lucro.
     </h5>
+
+    <h1 class="text-center mb-5 w-100">Preguntas frecuentes</h1>
+    <p class="text-center w-100">
+      <button class="btn btn-primary btn-lg boton" type="button" data-toggle="collapse" data-target="#Q1" aria-expanded="false" aria-controls="collapseExample">
+        ¿Es necesario registrarse para hacer una reservación?
+      </button>
+    </p>
+    <div class="collapse w-100 text-center" id="Q1">
+      <div class="card card-body h5" [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }">
+        Sí, es necesario registrarse en nuestro sistema para poder realizar la reservación de una sala privada de cine.
+      </div>
+    </div>
+
+    <p class="text-center mt-3 w-100">
+      <button class="btn btn-primary btn-lg boton" type="button" data-toggle="collapse" data-target="#Q2" aria-expanded="false" aria-controls="collapseExample">
+        ¿Puedo elegir la película que se proyectará en la sala privada?
+      </button>
+    </p>
+    <div class="collapse mb-5 w-100 text-center" id="Q2">
+      <div class="card card-body h5" [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }">
+      Sí, puedes elegir la película que deseas ver de entre las opciones disponibles en nuestro catálogo.
+      </div>
+    </div>
+
+    <p class="text-center mt-3 w-100">
+      <button class="btn btn-primary btn-lg boton" type="button" data-toggle="collapse" data-target="#Q3" aria-expanded="false" aria-controls="collapseExample">
+        ¿Cómo puedo saber qué películas están disponibles para reservar?
+      </button>
+    </p>
+    <div class="collapse mb-5 w-100 text-center" id="Q3">
+      <div class="card card-body h5" [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }">
+      En nuestro sistema de reservaciones, encontrarás un catálogo actualizado con todas las películas disponibles para proyección en las salas privadas.
+      </div>
+    </div>
+
+    <p class="text-center mt-3 w-100">
+      <button class="btn btn-primary btn-lg boton" type="button" data-toggle="collapse" data-target="#Q4" aria-expanded="false" aria-controls="collapseExample">
+        ¿Puedo elegir la sala en la que se proyectará la película?
+      </button>
+    </p>
+    <div class="collapse mb-5 w-100 text-center" id="Q4">
+      <div class="card card-body h5" [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }">
+      Sí, puedes seleccionar la sala privada de cine en la que te gustaría ver la película, siempre y cuando esté disponible en la fecha y hora que elijas.
+      </div>
+    </div>
+
+    <p class="text-center mt-3 w-100">
+      <button class="btn btn-primary btn-lg boton" type="button" data-toggle="collapse" data-target="#Q5" aria-expanded="false" aria-controls="collapseExample">
+        ¿Hay algún límite en el número de personas que pueden asistir a una proyección en la sala privada de cine?
+      </button>
+    </p>
+    <div class="collapse mb-5 w-100 text-center" id="Q5">
+      <div class="card card-body h5" [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }">
+      Cada sala privada tiene un límite de capacidad establecido. Te proporcionaremos información sobre el número máximo de personas permitidas al momento de realizar la reservación.
+      </div>
+    </div>
+
+    <p class="text-center mt-3 w-100">
+      <button class="btn btn-primary btn-lg boton" type="button" data-toggle="collapse" data-target="#Q6" aria-expanded="false" aria-controls="collapseExample">
+        ¿Se ofrece servicio de alimentos y bebidas en las salas privadas de cine?
+      </button>
+    </p>
+    <div class="collapse mb-5 w-100 text-center" id="Q6">
+      <div class="card card-body h5" [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }">
+      Sí, ofrecemos servicios de alimentos y bebidas en las salas privadas de cine. Puedes elegir entre diferentes opciones de menú al hacer tu reservación.
+      </div>
+    </div>
+    <p class="my-4 text-light">fse</p>
   </div>
 </div>

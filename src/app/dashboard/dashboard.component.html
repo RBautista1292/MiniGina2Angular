@@ -1,0 +1,69 @@
+<div class="container">
+    <header
+      class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none"
+      >
+        <svg
+          class="bi me-2"
+          width="40"
+          height="32"
+          role="img"
+          aria-label="Bootstrap"
+        >
+          <use xlink:href="#bootstrap"></use>
+        </svg>
+      </a>
+  
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+      </ul>
+  
+      <div class="col-md-3 text-end">
+        <button
+          type="button"
+          class="btn btn-outline-primary me-2"
+          (click)="logOut()"
+        >
+          Cerrar sesión
+        </button>
+      </div>
+    </header>
+    <div class="shadow mt-3">
+      <p-table
+        [columns]="columns"
+        selectionMode="single"
+        [value]="users"
+        [tableStyle]="{ 'min-width': '50rem' }"
+        styleClass="p-datatable-striped"
+      >
+        <ng-template pTemplate="header" let-columns>
+          <tr>
+            <th *ngFor="let col of columns" class="text-center">{{ col }}</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td style="text-align: center">{{ user.uid || 'N/A' }}</td>
+            <td style="text-align: center">{{ user.displayName || 'N/A' }}</td>
+            <td style="text-align: center">{{ user.email || 'N/A' }}</td>
+            <td style="text-align: center">{{ user.providerData || 'N/A' }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+      <h1 class="display-4 fw-normal">¡Bienvenido!</h1>
+      <p class="fs-5 text-muted">
+        {{ dataUser?.displayName }}: {{ dataUser?.email || "N/A" }}
+      </p>
+    </div>
+    <hr />
+  </div>
+  

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccService } from '../shared/acc.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-inicio',
@@ -7,8 +9,8 @@ import { AccService } from '../shared/acc.service';
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
-
-  constructor(public accService: AccService){}
+  dataUser!: any;
+  constructor(public accService: AccService, private afAuth: AngularFireAuth, public session: SessionService){}
   
   textoHTML: string = "";
 

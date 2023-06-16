@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { RutaService } from '../services/ruta.service';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Pelicula, PeliculasService } from '../services/peliculas.service';
 import Swal from 'sweetalert2';
 import { AccService } from '../shared/acc.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { SessionService } from 'src/app/services/session.service';
 
 
 @Component({
@@ -11,19 +13,37 @@ import { AccService } from '../shared/acc.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   nombre: string = '';
   ruta: string = '';
   peliculas: Pelicula[];
   color = '#121212';
   search = false;
+  dataUser!: any;
   constructor(
     private router: Router,
     private rutaService: RutaService,
     private peliculasService: PeliculasService, 
-    public accService: AccService
+    public accService: AccService,
+    private afAuth: AngularFireAuth,
+    private session: SessionService
   ) {
     this.peliculas = this.peliculasService.getMovies();
+  }
+
+  ngOnInit() {
+    //this.dataUser = this.session.getUser();
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd) {
+        this.afAuth.currentUser.then((user) => {
+          if(this.session.getUser()) {
+            this.dataUser = user;
+            console.log(user);
+          }
+        });
+        console.log(this.dataUser);
+      }
+    });
   }
 
   enrutar(): void {
@@ -53,6 +73,18 @@ export class NavbarComponent {
         });
         this.search = false;
       }
+    }
+  }
+  alternarSesion() {
+    if(this.dataUser) {
+      console.log("Cerrando sesion");
+      this.afAuth.signOut().then(() => this.router.navigate(['/inicio']));
+      this.dataUser = null;
+      this.session.setUser(null);
+    }
+    else {
+      console.log("Iniciando sesion");
+      this.router.navigate(['/login']);
     }
   }
 }

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth';
 import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private router: Router,
     private firebaseError: FirebaseCodeErrorService,
     private confirmationResultService: ConfirmationResultService,
+    private session: SessionService,
   ) {
     this.loginUsuarioC = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -42,12 +44,26 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.recaptchaVerifier = new RecaptchaVerifier(this.recaptchaContainer.nativeElement, {
       'size': 'normal',
       'callback': (response: any) =>{ 
-        this.onSignInSubmit();
+        //this.onSignInSubmit();
       }
     }, auth);
+    this.recaptchaVerifier.render();
   }
 
   ngOnInit(): void {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+    const auth = getAuth();
+    this.recaptchaVerifier = new RecaptchaVerifier(this.recaptchaContainer.nativeElement, {
+      'size': 'normal',
+      'callback': (response: any) =>{ 
+        //this.onSignInSubmit();
+      }
+    }, auth);
+    this.recaptchaVerifier.render();
   }
 
   onSignInSubmit(): void {
@@ -73,7 +89,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loading = true;
     this.afAuth.signInWithEmailAndPassword(email, password).then((user) => {
       if(user.user?.emailVerified) {
-        this.router.navigate(['/dashboard']);
+        if(user.user?.phoneNumber) {
+          this.session.setUser(user);
+          this.router.navigate(['/inicio']);
+        }
+        else this.router.navigate(['/vincular-telefono']);
       } else {
         this.router.navigate(['/verificar-correo']);
       }

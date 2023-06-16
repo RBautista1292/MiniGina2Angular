@@ -1,18 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
-import { updateProfile } from 'firebase/auth';
+import { EmailAuthProvider, getAuth, RecaptchaVerifier, signInWithPhoneNumber, updateProfile } from 'firebase/auth';
 
 @Component({
-  selector: 'app-registrar-usuario',
-  templateUrl: './registrar-usuario.component.html',
-  styleUrls: ['./registrar-usuario.component.css'],
+  selector: 'app-vincular-correo',
+  templateUrl: './vincular-correo.component.html',
+  styleUrls: ['./vincular-correo.component.css']
 })
-export class RegistrarUsuarioComponent implements OnInit {
-  registrarUsuario: FormGroup;
+export class VincularCorreoComponent {
+  dataUser!: any;
+  vincularUsuario!: FormGroup;
   loading: boolean = false;
 
   constructor(
@@ -22,23 +23,24 @@ export class RegistrarUsuarioComponent implements OnInit {
     private router: Router,
     private firebaseError: FirebaseCodeErrorService
   ) {
-    this.registrarUsuario = this.fb.group({
+    this.vincularUsuario = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repetirPassword: ['', Validators.required],
       name: ['', Validators.required],
     });
+    this.afAuth.currentUser.then((user) => {
+      this.dataUser = user;
+    });
   }
 
   ngOnInit(): void {}
 
-  registrar() {
-    const email = this.registrarUsuario.value.email;
-    const password = this.registrarUsuario.value.password;
-    const repetirPassowrd = this.registrarUsuario.value.repetirPassword;
-    const name = this.registrarUsuario.value.name;
-
-    console.log(this.registrarUsuario);
+  vincular() {
+    const email = this.vincularUsuario.value.email;
+    const password = this.vincularUsuario.value.password;
+    const repetirPassowrd = this.vincularUsuario.value.repetirPassword;
+    const name = this.vincularUsuario.value.name;
     if (password !== repetirPassowrd) {
       this.toastr.error(
         'Las contraseñas ingresadas deben ser las mismas',
@@ -46,20 +48,23 @@ export class RegistrarUsuarioComponent implements OnInit {
       );
       return;
     }
-
     this.loading = true;
-    this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        const displayName = name;
-        if (user) {
-          console.log(user);
-          updateProfile(user, { displayName })
+    console.log(this.dataUser);
+    const auth = EmailAuthProvider;
+    const credential = auth.credential(email, password);
+    console.log(credential);
+    this.dataUser.linkWithCredential(credential)
+      .then((confirmationResult: any) => {
+        console.log(confirmationResult.user);
+        if(this.dataUser){
+          console.log(this.dataUser);
+          const displayName = name;
+          updateProfile(this.dataUser, { displayName })
             .then(() => {
+              console.log(this.dataUser);
               this.verificarCorreo();
             })
-            .catch((error) => {
+            .catch((error: any) => {
               this.loading = false;
               this.toastr.error(this.firebaseError.codeError(error.code), 'Error al actualizar el perfil');
             });
@@ -68,12 +73,11 @@ export class RegistrarUsuarioComponent implements OnInit {
           console.error('El usuario es nulo');
         }
       })
-      .catch((error) => {
+      .catch((error: any) => {
         this.loading = false;
         this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       });
   }
-
   verificarCorreo() {
     this.afAuth.currentUser
       .then((user) => user?.sendEmailVerification())
@@ -82,7 +86,7 @@ export class RegistrarUsuarioComponent implements OnInit {
           'Le enviamos un correo electronico para su verificacion',
           'Verificar correo'
         );
-        this.router.navigate(['/login']);
+        this.router.navigate(['/dashboard']);
       });
   }
 }
