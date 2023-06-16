@@ -38,6 +38,11 @@ export class ContactoComponent implements OnInit{
         }
       });
       console.log(this.dataUser);
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     }
 
     enviar(): void {

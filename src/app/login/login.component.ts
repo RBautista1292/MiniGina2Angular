@@ -51,6 +51,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     const auth = getAuth();
     this.recaptchaVerifier = new RecaptchaVerifier(this.recaptchaContainer.nativeElement, {
       'size': 'normal',

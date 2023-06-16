@@ -1,15 +1,17 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { SessionService } from '../services/session.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { RutaService } from '../services/ruta.service';
 
 @Component({
   selector: 'app-reserva',
   templateUrl: './reserva.component.html',
   styleUrls: ['./reserva.component.css'],
 })
-export class ReservaComponent {
+export class ReservaComponent implements OnInit {
   forma!: FormGroup;
   fecha!: Date[];
   minDate: Date = new Date();
@@ -20,7 +22,8 @@ export class ReservaComponent {
 
   @Input() nombrePelicula!: string;
 
-  constructor(private router: Router, private session: SessionService) {
+  constructor(private router: Router, private session: SessionService, private afAuth: AngularFireAuth,
+    private email: RutaService,) {
     this.forma = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
@@ -39,14 +42,28 @@ export class ReservaComponent {
     this.defaultDate.setSeconds(0);
     this.fecha = this.getDisabledDates(new Date());
     console.log(this.nombrePelicula);
-    if(this.session.getUser()) {
-      this.dataUser = this.session.getUser();
-      this.anonUser = true;
-    }
-    else {
-      this.dataUser = null;
-      this.anonUser = false;
-    }
+    
+  }
+
+  ngOnInit(): void {
+    this.afAuth.currentUser.then((user) => {
+      if(this.session.getUser()) {
+        const nombreV = this.forma.get('nombre') as FormControl;
+        nombreV.clearValidators();
+        nombreV.updateValueAndValidity();
+        const correoV = this.forma.get('correo') as FormControl;
+        correoV.clearValidators();
+        correoV.updateValueAndValidity();
+        this.dataUser = user;
+        this.anonUser = true;
+        console.log(user);
+      }
+      else {
+        this.dataUser = null;
+        this.anonUser = false;
+      }
+    });
+    
   }
 
   guardarCambios(): void {
@@ -54,6 +71,7 @@ export class ReservaComponent {
     this.forma.controls['date'].setValue(
       this.formatDate(this.forma.get('date')?.value)
     );
+    let fechona = this.forma.get('date')?.value;
     console.log(this.forma.value);
     const citas1 = JSON.stringify(this.forma.value);
     const citas = JSON.parse(citas1);
@@ -128,6 +146,13 @@ export class ReservaComponent {
     citasObject.push(citas);
     console.log(citasObject);
     localStorage.setItem('formData', JSON.stringify(citasObject));
+    fechona = fechona.replace(/\//g, '-');
+    const urapi = 
+      `https://cinefactionmails.onrender.com/mailCita/${this.forma.get('correo')?.value}/${this.forma.get('nombre')?.value}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.forma.get('salaSel')?.value}/${this.forma.get('numAsientos')?.value}`;
+      this.email.getJSONurl(urapi).subscribe((res: any) => {
+        console.log(res);
+        
+    });
     Swal.fire({
       icon: 'success',
       title: 'Su reservación ha sido registrada',
@@ -174,4 +199,6 @@ export class ReservaComponent {
     );
     return formattedDate.replace(',', '');
   }
+
+ 
 }
