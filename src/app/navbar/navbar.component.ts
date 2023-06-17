@@ -7,13 +7,16 @@ import { AccService } from '../shared/acc.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { SessionService } from 'src/app/services/session.service';
 
-
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
+  //Accesibilidad
+  private parrafo: SpeechSynthesisUtterance;
+  leerElementosBoolean: boolean = false;
+
   nombre: string = '';
   ruta: string = '';
   peliculas: Pelicula[];
@@ -23,20 +26,21 @@ export class NavbarComponent implements OnInit {
   constructor(
     private router: Router,
     private rutaService: RutaService,
-    private peliculasService: PeliculasService, 
+    private peliculasService: PeliculasService,
     public accService: AccService,
     private afAuth: AngularFireAuth,
     private session: SessionService
   ) {
     this.peliculas = this.peliculasService.getMovies();
+    this.parrafo = new SpeechSynthesisUtterance();
   }
 
   ngOnInit() {
     //this.dataUser = this.session.getUser();
     this.router.events.subscribe((event) => {
-      if(event instanceof NavigationEnd) {
+      if (event instanceof NavigationEnd) {
         this.afAuth.currentUser.then((user) => {
-          if(this.session.getUser()) {
+          if (this.session.getUser()) {
             this.dataUser = user;
             console.log(user);
           }
@@ -44,6 +48,58 @@ export class NavbarComponent implements OnInit {
         console.log(this.dataUser);
       }
     });
+    this.accService.leerContenido.subscribe(() => {
+      this.leerElementosBoolean = true;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.leerContenido2.subscribe(() => {
+      this.leerElementosBoolean = false;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.resumirContenido.subscribe(() => {
+      this.reanudarVoz();
+    });
+
+    this.accService.pausarContenido.subscribe(() => {
+      this.pausarVoz();
+    });
+
+    this.accService.cancelarContenido.subscribe(() => {
+      this.cancelarVoz();
+    });
+  }
+
+  leerTexto1(event: MouseEvent): void {
+    if (this.leerElementosBoolean) {
+      const contenido = (event.target as HTMLElement).textContent;
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
+    }
+  }
+  cancelarVoz(): any {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+    }
+  }
+
+  pausarVoz(): void {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.pause();
+    }
+  }
+
+  reanudarVoz(): void {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.resume();
+    }
   }
 
   enrutar(): void {
@@ -76,14 +132,13 @@ export class NavbarComponent implements OnInit {
     }
   }
   alternarSesion() {
-    if(this.dataUser) {
-      console.log("Cerrando sesion");
+    if (this.dataUser) {
+      console.log('Cerrando sesion');
       this.afAuth.signOut().then(() => this.router.navigate(['/inicio']));
       this.dataUser = null;
       this.session.setUser(null);
-    }
-    else {
-      console.log("Iniciando sesion");
+    } else {
+      console.log('Iniciando sesion');
       this.router.navigate(['/login']);
     }
   }

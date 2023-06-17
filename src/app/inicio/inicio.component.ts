@@ -68,6 +68,17 @@ export class InicioComponent implements OnInit {
     }
   }
 
+  leerTexto2(event: MouseEvent): void {
+    if (this.leerElementosBoolean) {
+      const elemento = event.target as HTMLElement;
+      const contenido = elemento.getAttribute('header');
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
+    }
+  }
+
   /*
   leerElementosHTML(): void {
     const elementosTexto = Array.from(

@@ -8,6 +8,7 @@ import { ConfirmationResult, getAuth, RecaptchaVerifier, signInWithPhoneNumber }
 import { ConfirmationResultService } from 'src/app/services/confirmation-result.service';
 import { SessionService } from 'src/app/services/session.service';
 import Swal from 'sweetalert2';
+import { AccService } from '../shared/acc.service';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,9 @@ export class LoginComponent implements OnInit, AfterViewInit {
   recaptchaVerifier!: RecaptchaVerifier;
   confirmationResult!: ConfirmationResult;
   @ViewChild('recaptchaContainer') recaptchaContainer!: ElementRef;
+  
+  private parrafo: SpeechSynthesisUtterance;
+  leerElementosBoolean: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +34,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private firebaseError: FirebaseCodeErrorService,
     private confirmationResultService: ConfirmationResultService,
     private session: SessionService,
+    public accService: AccService
   ) {
     this.loginUsuarioC = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -38,6 +43,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     this.loginUsuarioT = this.fb.group({
       numTelefono: ['', Validators.required],
     });
+    this.parrafo = new SpeechSynthesisUtterance();
   }
 
   ngAfterViewInit() {
@@ -65,7 +71,75 @@ export class LoginComponent implements OnInit, AfterViewInit {
       }
     }, auth);
     this.recaptchaVerifier.render();
+
+    this.accService.leerContenido.subscribe(() => {
+      this.leerElementosBoolean = true;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.leerContenido2.subscribe(() => {
+      this.leerElementosBoolean = false;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.resumirContenido.subscribe(() => {
+      this.reanudarVoz();
+    });
+
+    this.accService.pausarContenido.subscribe(() => {
+      this.pausarVoz();
+    });
+
+    this.accService.cancelarContenido.subscribe(() => {
+      this.cancelarVoz();
+    });
   }
+
+  leerTexto1(event: MouseEvent): void {
+    if (this.leerElementosBoolean) {
+      const contenido = (event.target as HTMLElement).textContent;
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
+    }
+  }
+  
+
+  leerTexto2(event: MouseEvent): void {
+    if (this.leerElementosBoolean) {
+      const elemento = event.target as HTMLElement;
+      const contenido = elemento.getAttribute('header');
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
+    }
+  }
+
+  cancelarVoz(): any {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+    }
+  }
+
+  pausarVoz(): void {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.pause();
+    }
+  }
+
+  reanudarVoz(): void {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.resume();
+    }
+  }
+
+  
 
   onSignInSubmit(): void {
     const auth = getAuth();

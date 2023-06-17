@@ -7,6 +7,12 @@ import { AccService } from '../shared/acc.service';
   styleUrls: ['./accesibilidad.component.css'],
 })
 export class AccesibilidadComponent implements OnInit {
+
+//Lector 
+  private parrafo: SpeechSynthesisUtterance;
+  lectorActivado: string = "Lector de Pantalla Activado";
+  lectorDesactivado: string = "Lector de Pantalla Desactivado"
+
   //Botones principales
   botonPresionado1: boolean = false;
   botonPresionado2: boolean = false;
@@ -21,7 +27,9 @@ export class AccesibilidadComponent implements OnInit {
   //Boolean
   lectorPantalla: boolean = false;
 
-  constructor(public accService: AccService) {}
+  constructor(public accService: AccService) {
+    this.parrafo = new SpeechSynthesisUtterance();
+  }
 
   ngOnInit(): void {
     this.accService.leerContenido.subscribe(() => {
@@ -56,18 +64,28 @@ export class AccesibilidadComponent implements OnInit {
     //this.lectorPantalla = !this.lectorPantalla;
   }
 
+
   leerTexto1(): void {
+
     this.lectorPantalla = !this.lectorPantalla;
     this.botonPresionado1 = !this.botonPresionado1;
+
     console.log("Boton Lector Boolean Acc: " + this.botonPresionado1)
     console.log("Boolean Lector Acc : " + this.lectorPantalla)
+
     if (this.lectorPantalla) {
       this.accService.leerContenido.emit();
-      console.log("Funcion Emitir Lector");
+      console.log("Funcion Activar Lector");
+      this.parrafo.text = this.lectorActivado;
+      speechSynthesis.speak(this.parrafo);
     }
     if (!this.lectorPantalla) {
       this.accService.leerContenido2.emit();
       this.accService.cancelarContenido.emit();
+      console.log("Funcion Desactivar Lector");
+      this.parrafo.text = this.lectorDesactivado;
+      speechSynthesis.speak(this.parrafo);
+
     }
   }
 

@@ -20,6 +20,7 @@
             'margen-arriba': accService.letraGrandeBooleanServicio,
             'margen-arriba2': accService.linkResaltadoBooleanServicio
           }"
+          (mouseenter)="leerTexto1($event)"
           ><h3>CineFaction</h3></a
         >
       </li>
@@ -34,6 +35,7 @@
               'link-grande': accService.linkResaltadoBooleanServicio,
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            (mouseenter)="leerTexto1($event)"
           >
             Inicio
           </p>
@@ -46,6 +48,7 @@
               'link-grande': accService.linkResaltadoBooleanServicio,
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            (mouseenter)="leerTexto1($event)"
           >
             Peliculas
           </p></a
@@ -58,6 +61,7 @@
               'link-grande': accService.linkResaltadoBooleanServicio,
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            (mouseenter)="leerTexto1($event)"
           >
             Proximamente
           </p></a
@@ -70,6 +74,7 @@
               'link-grande': accService.linkResaltadoBooleanServicio,
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            (mouseenter)="leerTexto1($event)"
           >
             Nuestro Equipo
           </p></a
@@ -82,6 +87,7 @@
               'link-grande': accService.linkResaltadoBooleanServicio,
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            (mouseenter)="leerTexto1($event)"
           >
             Contacto
           </p></a
@@ -94,6 +100,7 @@
               'link-grande': accService.linkResaltadoBooleanServicio,
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
+            (mouseenter)="leerTexto1($event)"
           >
             Lista de Reservaciones
           </p></a
@@ -101,14 +108,16 @@
       </li>
       <li class="nav-item">
         <a class="nav-link active mt-2" (click)="alternarSesion()">
-          <p>
-            <span
-              style="color: #ab9bf1; font-weight: bold"
-              [ngClass]="{
-                'link-grande': accService.linkResaltadoBooleanServicio,
-                'texto-grande': accService.letraGrandeBooleanServicio
-              }"
-              >{{
+          <p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio,
+              'iniciar-sesion': !accService.linkResaltadoBooleanServicio
+            }"
+            (mouseenter)="leerTexto1($event)"
+          >
+            <span>
+              {{
                 dataUser
                   ? "Hola " + dataUser?.displayName + ". Cerrar sesión"
                   : "Iniciar sesión"
