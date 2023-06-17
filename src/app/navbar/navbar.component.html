@@ -87,7 +87,7 @@
           </p></a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="dataUser !== null">
         <a class="nav-link active mt-2" routerLink="/reservaciones"
           ><p
             [ngClass]="{
@@ -95,7 +95,7 @@
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
           >
-            Lista de Reservaciones
+            Reservaciones Realizadas
           </p></a
         >
       </li>
