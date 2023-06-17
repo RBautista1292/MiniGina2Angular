@@ -9,12 +9,14 @@ declare const speechSynthesis: any;
   styleUrls: ['./sobre-nosotros.component.css'],
 })
 export class SobreNosotrosComponent implements OnInit {
-  constructor(public accService: AccService) {}
+  private parrafo: SpeechSynthesisUtterance;
 
-  
-  textoHTML: string = "";
+  constructor(public accService: AccService) {
+    this.parrafo = new SpeechSynthesisUtterance();
+  }
 
-  
+  textoHTML: string = '';
+
   ngOnInit(): void {
     window.scroll({
       top: 0,
@@ -22,9 +24,7 @@ export class SobreNosotrosComponent implements OnInit {
       behavior: 'smooth',
     });
 
-
-
-   this.leerElementosHTML();
+    this.leerElementosHTML();
 
     this.accService.leerContenido.subscribe(() => {
       this.leerContenidoCommponente();
@@ -44,23 +44,30 @@ export class SobreNosotrosComponent implements OnInit {
     });
   }
 
-  leerElementosHTML(): void{
-    const elementosTexto = Array.from(document.querySelectorAll('h1, h3, p, .p-card'))
-    .filter(elemento => {
-      const texto = elemento.textContent?.trim();
-      return texto !== '';
-    })
-    .map(elemento => elemento.textContent?.trim());
+  leerTexto1(event: MouseEvent): void {
+    const contenido = (event.target as HTMLElement).textContent;
+    if (contenido) {
+      this.parrafo.text = contenido;
+      speechSynthesis.speak(this.parrafo);
+    }
+  }
 
-  this.textoHTML = elementosTexto.join('. ');
+  leerElementosHTML(): void {
+    const elementosTexto = Array.from(
+      document.querySelectorAll('h1, h3, p, .p-card')
+    )
+      .filter((elemento) => {
+        const texto = elemento.textContent?.trim();
+        return texto !== '';
+      })
+      .map((elemento) => elemento.textContent?.trim());
 
-  
+    this.textoHTML = elementosTexto.join('. ');
   }
 
   leerContenidoCommponente(): void {
-    const parrafo = new SpeechSynthesisUtterance();
-    parrafo.text = this.textoHTML;
-    speechSynthesis.speak(parrafo);
+    this.parrafo.text = this.textoHTML;
+    speechSynthesis.speak(this.parrafo);
   }
 
   cancelarVoz(): any {
