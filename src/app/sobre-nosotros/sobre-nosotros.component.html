@@ -162,6 +162,48 @@
         </p>
       </p-card>
     </div>
+    <div class="col-3">
+      <p-card
+        header="Ana Carolina De La Peña Gallego"
+        subheader="Socio 5"
+        [style]="{ width: '240px' }"
+      >
+        <ng-template pTemplate="header">
+          <img alt="Card" src="assets/img/caro.jpeg" />
+        </ng-template>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
+          Demuestra ser perfecta para las situaciones de riesgo y crisis.
+          Una gran persona cuando se trata de desafios imposibles para el
+          el resto, siempre esta a la altura del problema.
+        </p>
+      </p-card>
+    </div>
+    <div class="col-3">
+      <p-card
+        header="Alonso Prieto Omar"
+        subheader="Socio 6"
+        [style]="{ width: '240px' }"
+      >
+        <ng-template pTemplate="header">
+          <img alt="Card" src="../../assets/img/Omar.jpeg" />
+        </ng-template>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
+          Demuestra caracter a la hora de resolver problemas, es un gran
+          coolaborador, se define principalmente por sus valores y su etica
+          de trabajo, una persona muy puntual.
+        </p>
+      </p-card>
+    </div>
 
     <h5
       class="text-center mt-5 mb-5"
