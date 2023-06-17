@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recuperar-password',
@@ -35,12 +36,22 @@ export class RecuperarPasswordComponent implements OnInit {
     this.afAuth
       .sendPasswordResetEmail(email)
       .then(() => {
-        this.toastr.info('Le enviamos un correo para restablecer su password', 'Recuperar Password')
+        Swal.fire({
+          icon: 'info',
+          title: 'Le enviamos un correo electronico para reestablecer su password',
+          showConfirmButton: true,
+          timer: 4000,
+        });
         this.router.navigate(['/login']);
       })
       .catch((error) => {
         this.loading = false;
-        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          showConfirmButton: true,
+          timer: 4000,
+        });
       });
   }
 }

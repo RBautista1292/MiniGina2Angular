@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FirebaseCodeErrorService } from 'src/app/services/firebase-code-error.service';
 import { updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registrar-usuario',
@@ -40,10 +41,12 @@ export class RegistrarUsuarioComponent implements OnInit {
 
     console.log(this.registrarUsuario);
     if (password !== repetirPassowrd) {
-      this.toastr.error(
-        'Las contraseñas ingresadas deben ser las mismas',
-        'Error'
-      );
+      Swal.fire({
+        icon: 'error',
+        title: 'Las contraseñas ingresadas deben ser las mismas',
+        showConfirmButton: true,
+        timer: 4000,
+      });
       return;
     }
 
@@ -61,7 +64,12 @@ export class RegistrarUsuarioComponent implements OnInit {
             })
             .catch((error) => {
               this.loading = false;
-              this.toastr.error(this.firebaseError.codeError(error.code), 'Error al actualizar el perfil');
+              Swal.fire({
+                icon: 'error',
+                title: 'Error al actualizar el perfil',
+                showConfirmButton: true,
+                timer: 4000,
+              });
             });
         } else {
           this.loading = false;
@@ -70,7 +78,12 @@ export class RegistrarUsuarioComponent implements OnInit {
       })
       .catch((error) => {
         this.loading = false;
-        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          showConfirmButton: true,
+          timer: 4000,
+        });
       });
   }
 
@@ -78,10 +91,12 @@ export class RegistrarUsuarioComponent implements OnInit {
     this.afAuth.currentUser
       .then((user) => user?.sendEmailVerification())
       .then(() => {
-        this.toastr.info(
-          'Le enviamos un correo electronico para su verificacion',
-          'Verificar correo'
-        );
+        Swal.fire({
+          icon: 'info',
+          title: 'Le enviamos un correo electronico para su verificacion',
+          showConfirmButton: true,
+          timer: 4000,
+        });
         this.router.navigate(['/login']);
       });
   }
