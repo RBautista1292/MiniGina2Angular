@@ -18,6 +18,8 @@ export class CitasRegistradasComponent implements OnInit {
     'Sala',
     'Película',
     'Fecha',
+    'Código QR',
+    'Eliminar cita'
   ];
   citas!: any;
   mostrar = false;

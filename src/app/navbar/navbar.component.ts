@@ -20,6 +20,8 @@ export class NavbarComponent implements OnInit {
   color = '#121212';
   search = false;
   dataUser!: any;
+  adminUID = '5ONTPL5AACSW3OnubQDt1f0MUxz1';
+  adminLogin: boolean;
   constructor(
     private router: Router,
     private rutaService: RutaService,
@@ -29,6 +31,7 @@ export class NavbarComponent implements OnInit {
     private session: SessionService
   ) {
     this.peliculas = this.peliculasService.getMovies();
+    this.adminLogin = false;
   }
 
   ngOnInit() {
@@ -39,6 +42,12 @@ export class NavbarComponent implements OnInit {
           if(this.session.getUser()) {
             this.dataUser = user;
             console.log(user);
+            if(this.dataUser.uid === this.adminUID) {
+              this.adminLogin = true;
+            }
+            else {
+              this.adminLogin = false;
+            }
           }
           else {
             this.dataUser = null;

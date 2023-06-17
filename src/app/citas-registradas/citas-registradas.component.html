@@ -67,6 +67,26 @@
       >
         {{ cita.date }}
       </td>
+      <td
+        style="text-align: center"
+        (mouseenter)="leerTexto1($event)"
+        [ngClass]="{
+          'texto-grande': accService.letraGrandeBooleanServicio,
+          'texto-alineado': accService.alinearTextoBooleanServicio
+        }"
+      >
+        <!--Aquí se muestra el QR-->
+      </td>
+      <td
+        style="text-align: center"
+        (mouseenter)="leerTexto1($event)"
+        [ngClass]="{
+          'texto-grande': accService.letraGrandeBooleanServicio,
+          'texto-alineado': accService.alinearTextoBooleanServicio
+        }"
+      >
+        <!--Aquí se pone el botón pa eliminar-->
+      </td>
     </tr>
   </ng-template>
 </p-table>
