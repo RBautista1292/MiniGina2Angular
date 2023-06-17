@@ -5,6 +5,8 @@ import Swal from 'sweetalert2';
 import { SessionService } from '../services/session.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { RutaService } from '../services/ruta.service';
+import { getDatabase, ref, push, set, onValue } from 'firebase/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-reserva',
@@ -19,6 +21,8 @@ export class ReservaComponent implements OnInit {
   defaultDate: Date = new Date();
   dataUser!: any;
   anonUser!: boolean;
+  database = getDatabase();
+  reservationsRef = ref(this.database, 'reservations');
 
   @Input() nombrePelicula!: string;
 
@@ -68,6 +72,7 @@ export class ReservaComponent implements OnInit {
 
   guardarCambios(): void {
     console.log(this.forma);
+    const peliGuardar = this.forma.value.nombrePel;
     this.forma.controls['date'].setValue(
       this.formatDate(this.forma.get('date')?.value)
     );
@@ -75,18 +80,72 @@ export class ReservaComponent implements OnInit {
     console.log(this.forma.value);
     const citas1 = JSON.stringify(this.forma.value);
     const citas = JSON.parse(citas1);
-    var citasObject;
+    var citasObject: never[];
     delete citas['[[Prototype]]'];
-    const registroCitas = localStorage.getItem('formData');
+    var registroCitas = null;
+    onValue(this.reservationsRef, (snapshot) => {
+      registroCitas = snapshot.val();
+      console.log(registroCitas);
+      for (const key in registroCitas) {
+        if(registroCitas.hasOwnProperty(key)) {
+          const cita = registroCitas[key];
+          console.log(cita);
+          if (
+            cita['salaSel'] === citas['salaSel'] &&
+            cita['date'] === citas['date']
+          ) {
+            console.log('Cita ya registrada, intente de nuevo');
+            Swal.fire({
+              icon: 'error',
+              title:
+                'Cita ya registrada. Cambie los datos de su cita e intente de nuevo',
+              showConfirmButton: false,
+              timer: 2500,
+            });
+            this.forma.reset();
+            this.forma.patchValue({ nombrePel: peliGuardar });
+            return;
+          }
+          else {
+            
+          }
+        }
+      }
+      //aqui
+      const newReservationRef = push(this.reservationsRef);
+      set(newReservationRef, {
+        nombre: this.forma.value.nombre,
+        correo: this.forma.value.correo,
+        salaSel: this.forma.value.salaSel,
+        numAsientos: this.forma.value.numAsientos,
+        nombrePel: this.forma.value.nombrePel,
+        date: this.forma.value.date,
+      });
+      fechona = fechona.replace(/\//g, '-');
+      const urapi = 
+        `https://cinefactionmails.onrender.com/mailCita/${this.forma.get('correo')?.value}/${this.forma.get('nombre')?.value}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.forma.get('salaSel')?.value}/${this.forma.get('numAsientos')?.value}`;
+        this.email.getJSONurl(urapi).subscribe((res: any) => {
+          console.log(res);
+        
+      });
+      Swal.fire({
+        icon: 'success',
+        title: 'Su reservación ha sido registrada',
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      this.router.navigate(['/contenido', '0']);
+      this.forma.reset();
+      this.forma.patchValue({ nombrePel: peliGuardar });
+    });
     if (registroCitas) {
-      citasObject = JSON.parse(registroCitas);
+      citasObject = registroCitas;
     } else {
       citasObject = [];
     }
-    const peliGuardar = this.forma.value.nombrePel;
     console.log(registroCitas);
     console.log(citasObject);
-    if (Array.isArray(citasObject) != null) {
+    /*if (Array.isArray(citasObject) != null) {
       console.log('hay varios');
       for (const cita of citasObject) {
         if (
@@ -106,7 +165,7 @@ export class ReservaComponent implements OnInit {
           return;
         }
       }
-    } else {
+    }*/ /* else {
       console.log('solo hay uno');
       console.log(
         citasObject['salaSel'] +
@@ -142,26 +201,11 @@ export class ReservaComponent implements OnInit {
         this.forma.patchValue({ nombrePel: peliGuardar });
         return;
       }
-    }
+    }*/
+    /*
     citasObject.push(citas);
     console.log(citasObject);
-    localStorage.setItem('formData', JSON.stringify(citasObject));
-    fechona = fechona.replace(/\//g, '-');
-    const urapi = 
-      `https://cinefactionmails.onrender.com/mailCita/${this.forma.get('correo')?.value}/${this.forma.get('nombre')?.value}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.forma.get('salaSel')?.value}/${this.forma.get('numAsientos')?.value}`;
-      this.email.getJSONurl(urapi).subscribe((res: any) => {
-        console.log(res);
-        
-    });
-    Swal.fire({
-      icon: 'success',
-      title: 'Su reservación ha sido registrada',
-      showConfirmButton: false,
-      timer: 2500,
-    });
-    this.router.navigate(['/contenido', '0']);
-    this.forma.reset();
-    this.forma.patchValue({ nombrePel: peliGuardar });
+    localStorage.setItem('formData', JSON.stringify(citasObject));*/
   }
 
   disabledDates = (date: Date) => {
