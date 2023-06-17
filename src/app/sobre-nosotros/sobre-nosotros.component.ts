@@ -10,12 +10,11 @@ declare const speechSynthesis: any;
 })
 export class SobreNosotrosComponent implements OnInit {
   private parrafo: SpeechSynthesisUtterance;
+  leerElementosBoolean: boolean = false;
 
   constructor(public accService: AccService) {
     this.parrafo = new SpeechSynthesisUtterance();
   }
-
-  textoHTML: string = '';
 
   ngOnInit(): void {
     window.scroll({
@@ -24,11 +23,18 @@ export class SobreNosotrosComponent implements OnInit {
       behavior: 'smooth',
     });
 
-    this.leerElementosHTML();
-
     this.accService.leerContenido.subscribe(() => {
-      this.leerContenidoCommponente();
-      console.log('Evento Recibido');
+      this.leerElementosBoolean = true;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.leerContenido2.subscribe(() => {
+      this.leerElementosBoolean = false;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
     });
 
     this.accService.resumirContenido.subscribe(() => {
@@ -45,13 +51,15 @@ export class SobreNosotrosComponent implements OnInit {
   }
 
   leerTexto1(event: MouseEvent): void {
-    const contenido = (event.target as HTMLElement).textContent;
-    if (contenido) {
-      this.parrafo.text = contenido;
-      speechSynthesis.speak(this.parrafo);
+    if (this.leerElementosBoolean) {
+      const contenido = (event.target as HTMLElement).textContent;
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
     }
   }
-
+  /*
   leerElementosHTML(): void {
     const elementosTexto = Array.from(
       document.querySelectorAll('h1, h3, p, .p-card')
@@ -64,12 +72,13 @@ export class SobreNosotrosComponent implements OnInit {
 
     this.textoHTML = elementosTexto.join('. ');
   }
-
+  */
+  /*
   leerContenidoCommponente(): void {
     this.parrafo.text = this.textoHTML;
     speechSynthesis.speak(this.parrafo);
   }
-
+*/
   cancelarVoz(): any {
     if ('speechSynthesis' in window) {
       speechSynthesis.cancel();

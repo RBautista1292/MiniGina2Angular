@@ -7,19 +7,21 @@ export class AccService {
   letraGrandeBooleanServicio: boolean = false;
   linkResaltadoBooleanServicio: boolean = false;
   alinearTextoBooleanServicio: boolean = false;
-  ambosBoolean: boolean = false;
-  leer: boolean = true;
+  
+  lectorTextoBooleanServicio: boolean = false;
 
   leerContenido: EventEmitter<void> = new EventEmitter<void>();
   resumirContenido: EventEmitter<void> = new EventEmitter<void>();
   pausarContenido: EventEmitter<void> = new EventEmitter<void>();
   cancelarContenido: EventEmitter<void> = new EventEmitter<void>();
 
+  leerContenido2: EventEmitter<void> = new EventEmitter<void>();
+  
+
 
 
   constructor() {
-    this.ambosBoolean =
-      this.letraGrandeBooleanServicio && this.linkResaltadoBooleanServicio;
+    
   }
 
   getletraGrandeBooleanServicio() {

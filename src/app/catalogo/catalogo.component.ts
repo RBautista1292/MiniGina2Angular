@@ -12,8 +12,16 @@ export class CatalogoComponent implements OnInit {
   peliculas: Pelicula[];
   @Output() datosPelicula = new EventEmitter<Pelicula>();
 
-  constructor(public servicio: PeliculasService, private router: Router, public accService: AccService) {
+  private parrafo: SpeechSynthesisUtterance;
+  leerElementosBoolean: boolean = false;
+
+  constructor(
+    public servicio: PeliculasService,
+    private router: Router,
+    public accService: AccService
+  ) {
     this.peliculas = this.servicio.getMovies();
+    this.parrafo = new SpeechSynthesisUtterance();
   }
 
   ngOnInit(): void {
@@ -22,6 +30,59 @@ export class CatalogoComponent implements OnInit {
       left: 0,
       behavior: 'smooth',
     });
+
+    this.accService.leerContenido.subscribe(() => {
+      this.leerElementosBoolean = true;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.leerContenido2.subscribe(() => {
+      this.leerElementosBoolean = false;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.resumirContenido.subscribe(() => {
+      this.reanudarVoz();
+    });
+
+    this.accService.pausarContenido.subscribe(() => {
+      this.pausarVoz();
+    });
+
+    this.accService.cancelarContenido.subscribe(() => {
+      this.cancelarVoz();
+    });
+  }
+
+  leerTexto1(event: MouseEvent): void {
+    if (this.leerElementosBoolean) {
+      const contenido = (event.target as HTMLElement).textContent;
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
+    }
+  }
+  cancelarVoz(): any {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+    }
+  }
+
+  pausarVoz(): void {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.pause();
+    }
+  }
+
+  reanudarVoz(): void {
+    if ('speechSynthesis' in window) {
+      speechSynthesis.resume();
+    }
   }
 
   enviarDatos(pelicula: Pelicula, event: any) {

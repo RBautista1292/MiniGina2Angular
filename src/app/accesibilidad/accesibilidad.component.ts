@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AccService } from '../shared/acc.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { AccService } from '../shared/acc.service';
   templateUrl: './accesibilidad.component.html',
   styleUrls: ['./accesibilidad.component.css'],
 })
-export class AccesibilidadComponent {
+export class AccesibilidadComponent implements OnInit {
   //Botones principales
   botonPresionado1: boolean = false;
   botonPresionado2: boolean = false;
@@ -19,37 +19,32 @@ export class AccesibilidadComponent {
   botonPresionado7: boolean = false;
 
   //Boolean
-  lectorPantalla: boolean = true;
-  resumirLector: boolean = true;
-  pausarLector: boolean = true;
-  cancelarLector: boolean = true;
+  lectorPantalla: boolean = false;
 
   constructor(public accService: AccService) {}
 
+  ngOnInit(): void {
+    this.accService.leerContenido.subscribe(() => {
+      console.log('Lector Emitido');
+    });
+  }
+
   //Toggles
+  /*
   toggleLectorPantalla(): void {
     this.lectorPantalla = !this.lectorPantalla;
     this.botonPresionado1 = !this.botonPresionado1;
+    console.log("Boton Lector Boolean Acc: " + this.botonPresionado1)
+    console.log("Boolean Lector Acc : " + this.lectorPantalla)
     //this.accService.setPoderLeer(this.leerBotonBoolean);
   }
-
-  toggleResumirLector(): void {
-    this.resumirLector = !this.resumirLector;
-  }
-
-  togglePausarLector(): void {
-    this.pausarLector = !this.pausarLector;
-  }
-
-  toggleCancelarLector(): void {
-    this.cancelarLector = !this.cancelarLector;
-  }
+*/
+  
 
   //Toggles
 
   resumirLector1(): void {
     this.accService.resumirContenido.emit();
-    
   }
   pausarLector1(): void {
     this.accService.pausarContenido.emit();
@@ -57,23 +52,24 @@ export class AccesibilidadComponent {
 
   cancelarLector1(): void {
     this.accService.cancelarContenido.emit();
-    this.botonPresionado1 = false;
+   // this.botonPresionado1 = !this.botonPresionado1;
+    //this.lectorPantalla = !this.lectorPantalla;
   }
 
   leerTexto1(): void {
+    this.lectorPantalla = !this.lectorPantalla;
+    this.botonPresionado1 = !this.botonPresionado1;
+    console.log("Boton Lector Boolean Acc: " + this.botonPresionado1)
+    console.log("Boolean Lector Acc : " + this.lectorPantalla)
     if (this.lectorPantalla) {
       this.accService.leerContenido.emit();
-    } 
-    if(!this.lectorPantalla){
+      console.log("Funcion Emitir Lector");
+    }
+    if (!this.lectorPantalla) {
+      this.accService.leerContenido2.emit();
       this.accService.cancelarContenido.emit();
     }
-
-    this.accService.leerContenido.subscribe(() => {
-      console.log('Lector Emitido');
-    });
   }
-
-  
 
   botonPresionadoFuncion2(): void {
     this.botonPresionado2 = !this.botonPresionado2;

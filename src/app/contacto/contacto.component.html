@@ -6,6 +6,7 @@
     [ngClass]="{
       'texto-grande4': accService.letraGrandeBooleanServicio
     }"
+    (mouseenter)="leerTexto1($event)"
   >
     Contáctenos
   </h3>
@@ -13,94 +14,104 @@
     [ngClass]="{
       'texto-grande2': accService.letraGrandeBooleanServicio
     }"
+    (mouseenter)="leerTexto1($event)"
   >
     Háganos saber cualquier duda, la resolveremos lo más pronto posible
   </h5>
   <br />
-  <form [formGroup]="forma" (ngSubmit)="enviar()" class="w-75 ">
+  <form [formGroup]="forma" (ngSubmit)="enviar()" class="w-75">
     <div class="container d-flex flex-column align-items-center">
       <div class="row w-100">
         <div class="col-6 mb-3">
           <div class="input-group mb-2 has-validation">
             <div class="input-group-prepend">
-              <div class="input-group-text">Nombre</div>
+              <div class="input-group-text" (mouseenter)="leerTexto1($event)">
+                Nombre
+              </div>
             </div>
-          <input
-            class="form-control form-control-lg"
-            [ngClass]="{
-              'is-invalid': !forma.get('nombre')?.valid,
-              'texto-grande-placeholder': accService.letraGrandeBooleanServicio
-            }"
-            type="text"
-            formControlName="nombre"
-            [(ngModel)]="usuario"
-          />
-          <div
-            *ngIf="forma.controls['nombre'].errors?.['required']"
-            class="invalid-feedback"
-          >
-            El nombre es necesario
+            <input
+              class="form-control form-control-lg"
+              [ngClass]="{
+                'is-invalid': !forma.get('nombre')?.valid,
+                'texto-grande-placeholder':
+                  accService.letraGrandeBooleanServicio
+              }"
+              type="text"
+              formControlName="nombre"
+              [(ngModel)]="usuario"
+            />
+            <div
+              *ngIf="forma.controls['nombre'].errors?.['required']"
+              class="invalid-feedback"
+              (mouseenter)="leerTexto1($event)"
+            >
+              El nombre es necesario
+            </div>
           </div>
-        </div>
-          
-          
         </div>
         <div class="col-6 mb-3">
           <div class="input-group mb-2 has-validation">
-            <div class="input-group-prepend ">
-              <div class="input-group-text ">Correo</div>
+            <div class="input-group-prepend">
+              <div class="input-group-text" (mouseenter)="leerTexto1($event)">
+                Correo
+              </div>
             </div>
-          <input
-            class="form-control form-control-lg"
-            [ngClass]="{
-              'is-invalid': !forma.get('correo')?.valid,
-              'texto-grande-placeholder': accService.letraGrandeBooleanServicio
-            }"
-            type="email"
-            formControlName="correo"
-            [(ngModel)]="email"
-          />
-          <div
-            *ngIf="forma.controls['correo'].errors?.['required']"
-            class="invalid-feedback"
-          >
-            Correo obligatorio
+            <input
+              class="form-control form-control-lg"
+              [ngClass]="{
+                'is-invalid': !forma.get('correo')?.valid,
+                'texto-grande-placeholder':
+                  accService.letraGrandeBooleanServicio
+              }"
+              type="email"
+              formControlName="correo"
+              [(ngModel)]="email"
+            />
+            <div
+              *ngIf="forma.controls['correo'].errors?.['required']"
+              class="invalid-feedback"
+              (mouseenter)="leerTexto1($event)"
+            >
+              Correo obligatorio
+            </div>
+            <div
+              *ngIf="forma.controls['correo'].errors?.['email']"
+              class="invalid-feedback"
+              (mouseenter)="leerTexto1($event)"
+            >
+              El correo no tiene el formato correcto
+            </div>
           </div>
-          <div
-            *ngIf="forma.controls['correo'].errors?.['email']"
-            class="invalid-feedback"
-          >
-            El correo no tiene el formato correcto
-          </div>
-        </div>
-          
         </div>
       </div>
-        <div class="col-12 mb-5">
-          <textarea
-            class="form-control form-control-lg"
-            [ngClass]="{
-              'is-invalid': !forma.get('duda')?.valid,
-              'texto-grande-placeholder': accService.letraGrandeBooleanServicio
-            }"
-            placeholder="Escriba su duda..."
-            formControlName="duda"
-            [(ngModel)]="descripcion"
-            rows="4"
-          ></textarea>
-          <div
-            *ngIf="forma.controls['duda'].errors?.['required']"
-            class="invalid-feedback"
-          >
-            Ingrese su duda por favor
-          </div>
-          <div
+      <div class="col-12 mb-5">
+        <textarea
+          (mouseenter)="leerTexto2($event)"
+          class="form-control form-control-lg"
+          [ngClass]="{
+            'is-invalid': !forma.get('duda')?.valid,
+            'texto-grande-placeholder': accService.letraGrandeBooleanServicio
+          }"
+          placeholder="Escriba su duda..."
+          formControlName="duda"
+          [(ngModel)]="descripcion"
+          rows="4"
+        ></textarea>
+        <div
+          *ngIf="forma.controls['duda'].errors?.['required']"
+          class="invalid-feedback"
+          (mouseenter)="leerTexto1($event)"
+        >
+          Ingrese su duda por favor
+        </div>
+        <div
           *ngIf="forma.controls['duda'].errors?.['minlength']"
           class="invalid-feedback"
+          (mouseenter)="leerTexto1($event)"
         >
           Por lo menos 10 caracteres
         </div>
-        </div>
+      </div>
       <div class="form-group row">
         <label class="col-2 col-form-label">&nbsp;</label>
         <div class="input-group col-md-8">
@@ -111,7 +122,7 @@
             [ngClass]="{
               'texto-grande': accService.letraGrandeBooleanServicio
             }"
-            
+            (mouseenter)="leerTexto1($event)"
           >
             Enviar
           </button>

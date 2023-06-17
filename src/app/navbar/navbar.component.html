@@ -2,8 +2,11 @@
   class="navbar sticky-top navbar-expand-xl navbar-dark"
   [ngStyle]="{ 'background-color': color }"
 >
-  <a class="navbar-brand mr-1 ms-2" [ngClass]="{'margen-abajo' : accService.linkResaltadoBooleanServicio}"
-  routerLink="/inicio"><img src="assets/img/Logo.png" alt="Icon" width="50px"
+  <a
+    class="navbar-brand mr-1 ms-2"
+    [ngClass]="{ 'margen-abajo': accService.linkResaltadoBooleanServicio }"
+    routerLink="/inicio"
+    ><img src="assets/img/Logo.png" alt="Icon" width="50px"
   /></a>
   <!--Cambiar el icono al logo negro
    -->
@@ -15,7 +18,7 @@
           aria-current="page"
           [ngClass]="{
             'margen-arriba': accService.letraGrandeBooleanServicio,
-            'margen-arriba2' : accService.linkResaltadoBooleanServicio
+            'margen-arriba2': accService.linkResaltadoBooleanServicio
           }"
           ><h3>CineFaction</h3></a
         >
@@ -99,7 +102,18 @@
       <li class="nav-item">
         <a class="nav-link active mt-2" (click)="alternarSesion()">
           <p>
-            <span style="color: #ab9bf1; font-weight: bold;">{{ dataUser ? 'Hola '+dataUser?.displayName+'. Cerrar sesión' : 'Iniciar sesión' }}</span>
+            <span
+              style="color: #ab9bf1; font-weight: bold"
+              [ngClass]="{
+                'link-grande': accService.linkResaltadoBooleanServicio,
+                'texto-grande': accService.letraGrandeBooleanServicio
+              }"
+              >{{
+                dataUser
+                  ? "Hola " + dataUser?.displayName + ". Cerrar sesión"
+                  : "Iniciar sesión"
+              }}</span
+            >
           </p>
         </a>
       </li>
@@ -118,7 +132,6 @@
         icon="pi pi-search"
         (click)="enrutar()"
         styleClass="p-button-raised p-button-sm p-button-help"
-        
       ></p-button>
 
       <!--Falta poder hacer que el icono se torne amarillo-->

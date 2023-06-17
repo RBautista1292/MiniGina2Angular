@@ -4,8 +4,7 @@
       class="box2"
       [ngClass]="{
         'margen-arriba-letra': accService.letraGrandeBooleanServicio,
-        'margen-arriba-link': accService.linkResaltadoBooleanServicio,
-        'margen-arriba-ambos': accService.ambosBoolean
+        'margen-arriba-link': accService.linkResaltadoBooleanServicio
       }"
     >
       <!--Revisar la combinacion de valores-->
@@ -27,7 +26,6 @@
         alt=""
         style="padding-top: 12px"
         (click)="leerTexto1()"
-        (click)="toggleLectorPantalla()"
       />
     </div>
     <div class="box" [ngClass]="{ 'boton-presionado': botonPresionado2 }">
@@ -64,10 +62,11 @@
 
   <div class="contenedor3">
     <div class="box3">
-      <div class="boxLector" >
+      <div class="boxLector">
         <img
           (click)="resumirLector1()"
-          (click)="toggleResumirLector()"
+          
+        
           (click)="botonPresionadoFuncion5()"
           src="../../assets/img/accesibilidad/play.png"
           id="icon1"
@@ -75,9 +74,8 @@
       </div>
       <div class="boxLector">
         <img
-          
           (click)="pausarLector1()"
-          (click)="togglePausarLector()"
+          
           (click)="botonPresionadoFuncion6()"
           src="../../assets/img/accesibilidad/pausar.png"
           id="icon1"
@@ -86,7 +84,7 @@
       <div class="boxLector">
         <img
           (click)="cancelarLector1()"
-          (click)="toggleCancelarLector()"
+          
           (click)="botonPresionadoFuncion7()"
           src="../../assets/img/accesibilidad/cancelar.png"
           id="icon1"

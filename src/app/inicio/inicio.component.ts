@@ -3,16 +3,26 @@ import { AccService } from '../shared/acc.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { SessionService } from '../services/session.service';
 
+declare const speechSynthesis: any;
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
 })
 export class InicioComponent implements OnInit {
+
+  private parrafo: SpeechSynthesisUtterance;
+  leerElementosBoolean: boolean = false;
   dataUser!: any;
-  constructor(public accService: AccService, private afAuth: AngularFireAuth, public session: SessionService){}
-  
-  textoHTML: string = "";
+
+  constructor(
+    public accService: AccService,
+    private afAuth: AngularFireAuth,
+    public session: SessionService
+  ) {
+    this.parrafo = new SpeechSynthesisUtterance();
+  }
 
   ngOnInit(): void {
     window.scroll({
@@ -21,12 +31,18 @@ export class InicioComponent implements OnInit {
       behavior: 'smooth',
     });
 
-   
-    this.leerElementosHTML();
-
     this.accService.leerContenido.subscribe(() => {
-      this.leerContenidoCommponente();
-      console.log('Evento Recibido');
+      this.leerElementosBoolean = true;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
+    });
+
+    this.accService.leerContenido2.subscribe(() => {
+      this.leerElementosBoolean = false;
+      console.log(
+        'Leer Elementos Boolean Componente: ' + this.leerElementosBoolean
+      );
     });
 
     this.accService.resumirContenido.subscribe(() => {
@@ -42,24 +58,36 @@ export class InicioComponent implements OnInit {
     });
   }
 
-  leerElementosHTML(): void{
-    const elementosTexto = Array.from(document.querySelectorAll('h1, h3, h5, h6, a, p, .p-card, span'))
-    .filter(elemento => {
-      const texto = elemento.textContent?.trim();
-      return texto !== '';
-    })
-    .map(elemento => elemento.textContent?.trim());
-
-  this.textoHTML = elementosTexto.join('. ');
-
-  
+  leerTexto1(event: MouseEvent): void {
+    if (this.leerElementosBoolean) {
+      const contenido = (event.target as HTMLElement).textContent;
+      if (contenido) {
+        this.parrafo.text = contenido;
+        speechSynthesis.speak(this.parrafo);
+      }
+    }
   }
 
+  /*
+  leerElementosHTML(): void {
+    const elementosTexto = Array.from(
+      document.querySelectorAll('h1, h3, h5, h6, a, p, .p-card, span')
+    )
+      .filter((elemento) => {
+        const texto = elemento.textContent?.trim();
+        return texto !== '';
+      })
+      .map((elemento) => elemento.textContent?.trim());
+
+    this.textoHTML = elementosTexto.join('. ');
+  }
+  */
+/*
   leerContenidoCommponente(): void {
     const parrafo = new SpeechSynthesisUtterance();
     parrafo.text = this.textoHTML;
     speechSynthesis.speak(parrafo);
-  }
+  }*/
 
   cancelarVoz(): any {
     if ('speechSynthesis' in window) {

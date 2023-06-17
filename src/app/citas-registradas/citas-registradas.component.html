@@ -1,15 +1,70 @@
 <p-table [columns]="columnas" [value]="citas">
   <ng-template pTemplate="header" let-columns>
     <tr>
-      <th *ngFor="let col of columns" class="text-center">{{ col }}</th>
+      <th
+        *ngFor="let col of columns"
+        class="text-center"
+        (mouseenter)="leerTexto1($event)"
+        [ngClass]="{
+          'texto-grande': accService.letraGrandeBooleanServicio,
+          'texto-alineado': accService.alinearTextoBooleanServicio
+        }"
+      >
+        {{ col }}
+      </th>
     </tr>
   </ng-template>
 
   <ng-template pTemplate="body" let-cita>
-    <td style="text-align: center">{{ cita.nombre }}</td>
-    <td style="text-align: center">{{ cita.correo }}</td>
-    <td style="text-align: center">{{ cita.salaSel }}</td>
-    <td style="text-align: center">{{ cita.nombrePel }}</td>
-    <td style="text-align: center">{{ cita.date }}</td>
+    <td
+      style="text-align: center"
+      (mouseenter)="leerTexto1($event)"
+      [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }"
+    >
+      {{ cita.nombre }}
+    </td>
+    <td
+      style="text-align: center"
+      (mouseenter)="leerTexto1($event)"
+      [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }"
+    >
+      {{ cita.correo }}
+    </td>
+    <td
+      style="text-align: center"
+      (mouseenter)="leerTexto1($event)"
+      [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }"
+    >
+      {{ cita.salaSel }}
+    </td>
+    <td
+      style="text-align: center"
+      (mouseenter)="leerTexto1($event)"
+      [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }"
+    >
+      {{ cita.nombrePel }}
+    </td>
+    <td
+      style="text-align: center"
+      (mouseenter)="leerTexto1($event)"
+      [ngClass]="{
+        'texto-grande': accService.letraGrandeBooleanServicio,
+        'texto-alineado': accService.alinearTextoBooleanServicio
+      }"
+    >
+      {{ cita.date }}
+    </td>
   </ng-template>
 </p-table>
