@@ -93,7 +93,7 @@
           </p></a
         >
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="dataUser !== null">
         <a class="nav-link active mt-2" routerLink="/reservaciones"
           ><p
             [ngClass]="{
@@ -102,7 +102,7 @@
             }"
             (mouseenter)="leerTexto1($event)"
           >
-            Lista de Reservaciones
+            Reservaciones Realizadas
           </p></a
         >
       </li>
@@ -125,6 +125,18 @@
             >
           </p>
         </a>
+      </li>
+      <li class="nav-item" *ngIf="adminLogin !== false">
+        <a class="nav-link active mt-2" routerLink="/dashboard"
+          ><p
+            [ngClass]="{
+              'link-grande': accService.linkResaltadoBooleanServicio,
+              'texto-grande': accService.letraGrandeBooleanServicio
+            }"
+          >
+            Página de administrador
+          </p></a
+        >
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">

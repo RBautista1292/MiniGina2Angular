@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
@@ -39,6 +39,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VincularCorreoComponent } from './vincular-correo/vincular-correo.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 import { SessionService } from './services/session.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
@@ -94,7 +95,12 @@ firebase.initializeApp(firebaseConfig);
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     BrowserAnimationsModule, // required animations module
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot(), ServiceWorkerModule.register('ngsw-worker.js', {
+  enabled: !isDevMode(),
+  // Register the ServiceWorker as soon as the application is stable
+  // or after 30 seconds (whichever comes first).
+  registrationStrategy: 'registerWhenStable:30000'
+}),
   ],
   providers: [ConfirmationResultService,
     SessionService,

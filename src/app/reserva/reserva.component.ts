@@ -114,6 +114,7 @@ export class ReservaComponent implements OnInit {
       //aqui
       const newReservationRef = push(this.reservationsRef);
       set(newReservationRef, {
+        uid: this.dataUser.uid,
         nombre: this.forma.value.nombre,
         correo: this.forma.value.correo,
         salaSel: this.forma.value.salaSel,

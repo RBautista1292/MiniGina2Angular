@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   loading: boolean = false;
   recaptchaVerifier!: RecaptchaVerifier;
   confirmationResult!: ConfirmationResult;
+  adminUID = '5ONTPL5AACSW3OnubQDt1f0MUxz1';
   @ViewChild('recaptchaContainer') recaptchaContainer!: ElementRef;
   
   private parrafo: SpeechSynthesisUtterance;
@@ -166,7 +167,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
       if(user.user?.emailVerified) {
         if(user.user?.phoneNumber) {
           this.session.setUser(user);
-          this.router.navigate(['/inicio']);
+          if (user.user?.uid === this.adminUID) this.router.navigate(['/dashboard']);
+          else this.router.navigate(['/inicio']);
         }
         else this.router.navigate(['/vincular-telefono']);
       } else {
