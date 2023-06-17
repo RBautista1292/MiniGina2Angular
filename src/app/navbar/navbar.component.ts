@@ -40,6 +40,9 @@ export class NavbarComponent implements OnInit {
             this.dataUser = user;
             console.log(user);
           }
+          else {
+            this.dataUser = null;
+          }
         });
         console.log(this.dataUser);
       }

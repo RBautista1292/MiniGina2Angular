@@ -41,7 +41,17 @@
           Nuestro Equipo
         </p></a
       >
-      <a class="nav-link active mt-2" routerLink="/reservaciones"
+      <a class="nav-link active mt-2" routerLink="/contacto"
+        ><p
+          [ngClass]="{
+            'link-grande': accService.linkResaltadoBooleanServicio,
+            'texto-grande': accService.letraGrandeBooleanServicio
+          }"
+        >
+          Contacto
+        </p></a
+      >
+      <a class="nav-link active mt-2" routerLink="/reservaciones" *ngIf="dataUser !== null"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio,
@@ -55,5 +65,5 @@
   </div>
   <img src="assets/img/Logo.png" alt="" />
   <h1>CineFaction</h1>
-  <p style="color: #97a7e7"><i>El cine nunca fue tan personal</i></p>
+  <p style="color: #97a7e7"><i>El cine ahora es personal</i></p>
 </div>
