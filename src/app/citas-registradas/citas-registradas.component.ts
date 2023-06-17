@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AccService } from '../shared/acc.service';
-import { getDatabase, ref, push, set, onValue } from 'firebase/database';
+import { getDatabase, ref, push, set, onValue, remove } from 'firebase/database';
 import { SessionService } from '../services/session.service';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-citas-registradas',
@@ -28,7 +30,8 @@ export class CitasRegistradasComponent implements OnInit {
   dataUser!: any;
   userID!: any;
 
-  constructor(public accService: AccService, private session: SessionService, private afAuth: AngularFireAuth) {
+  constructor(public accService: AccService, private session: SessionService, private afAuth: AngularFireAuth,
+    private router: Router) {
     this.citas = [];
     console.log(this.dataUser);
     this.afAuth.currentUser.then((user) => {
@@ -43,6 +46,7 @@ export class CitasRegistradasComponent implements OnInit {
       }
     });
     var registroCitas = null;
+
     onValue(this.reservationsRef, (snapshot) => {
       registroCitas = snapshot.val();
       for (const key in registroCitas) {
@@ -130,6 +134,47 @@ export class CitasRegistradasComponent implements OnInit {
     });
   }
 
+
+  eliminar2(cita: any) {
+    onValue(this.reservationsRef, (snapshot) => {
+      const registroCitas = snapshot.val();
+      const registroEncontrado = Object.keys(registroCitas).find((key) => {
+        return (
+          registroCitas[key]['date'] === cita.date
+        );
+      });
+  
+      if (registroEncontrado) {
+        console.log(registroEncontrado)
+        Swal.fire({
+          title: '¿Seguro que quieres eliminar esta reservación?',
+          text: 'No serás capaz de revertir esta acción',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Sí'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const registroRef = ref(this.database, `reservations/${registroEncontrado}`);
+            // Elimina el registro
+            remove(registroRef)
+              .then(() => {
+                console.log('Registro eliminado correctamente');
+                this.router.navigate(['/contenido', '0']);
+                Swal.fire('Hecho', 'La reservación ha sido eliminada', 'success');
+              })
+              .catch((error) => {
+                console.error('Error al eliminar el registro:', error);
+                Swal.fire('Error', 'La reservación no ha sido eliminada', 'error');
+              });
+          }
+        });
+      }
+    });
+  }
+
+  
   leerTexto1(event: MouseEvent): void {
     if (this.leerElementosBoolean) {
       const contenido = (event.target as HTMLElement).textContent;

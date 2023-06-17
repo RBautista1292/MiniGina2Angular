@@ -25,6 +25,10 @@ export class ReservaComponent implements OnInit {
   reservationsRef = ref(this.database, 'reservations');
 
   @Input() nombrePelicula!: string;
+  nombreUsuario!: string;
+  correoUsuario!: string;
+  salaUsuario!: string;
+  asientosUsuario!: string;
 
   constructor(private router: Router, private session: SessionService, private afAuth: AngularFireAuth,
     private email: RutaService,) {
@@ -77,6 +81,10 @@ export class ReservaComponent implements OnInit {
       this.formatDate(this.forma.get('date')?.value)
     );
     let fechona = this.forma.get('date')?.value;
+    this.nombreUsuario = this.forma.get('nombre')?.value;
+    this.correoUsuario = this.forma.get('correo')?.value;
+    this.salaUsuario = this.forma.get('salaSel')?.value;
+    this.asientosUsuario = this.forma.get('numAsientos')?.value;
     console.log(this.forma.value);
     const citas1 = JSON.stringify(this.forma.value);
     const citas = JSON.parse(citas1);
@@ -124,7 +132,7 @@ export class ReservaComponent implements OnInit {
       });
       fechona = fechona.replace(/\//g, '-');
       const urapi = 
-        `https://cinefactionmails.onrender.com/mailCita/${this.forma.get('correo')?.value}/${this.forma.get('nombre')?.value}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.forma.get('salaSel')?.value}/${this.forma.get('numAsientos')?.value}`;
+        `https://cinefactionmails.onrender.com/mailCita/${this.correoUsuario}/${this.nombreUsuario}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.salaUsuario}/${this.asientosUsuario}`;
         this.email.getJSONurl(urapi).subscribe((res: any) => {
           console.log(res);
         
@@ -132,6 +140,7 @@ export class ReservaComponent implements OnInit {
       Swal.fire({
         icon: 'success',
         title: 'Su reservación ha sido registrada',
+        text: 'Le hemos enviado un correo con la información de la reservación',
         showConfirmButton: false,
         timer: 2500,
       });
