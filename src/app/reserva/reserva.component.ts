@@ -8,6 +8,7 @@ import { RutaService } from '../services/ruta.service';
 import { getDatabase, ref, push, set, onValue, equalTo, query, onChildAdded, get } from 'firebase/database';
 import { Observable } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-reserva',
@@ -34,7 +35,8 @@ export class ReservaComponent implements OnInit {
 
   constructor(private router: Router, private session: SessionService, private afAuth: AngularFireAuth,
     private email: RutaService,
-    private db: AngularFireDatabase) {
+    private db: AngularFireDatabase,
+    private http: HttpClient) {
     this.forma = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
@@ -135,10 +137,15 @@ export class ReservaComponent implements OnInit {
         nombrePel: this.forma.value.nombrePel,
         date: this.forma.value.date,
       });
+      var urapi = `http://localhost:3000/reservation/${this.dataUser.uid}/${this.forma.value.nombre}/${this.forma.value.correo}/${this.forma.value.salaSel}/${this.forma.value.numAsientos}/${this.forma.value.nombrePel}/${this.forma.value.date}`;
+      this.http.get<any[]>(urapi)
+        .subscribe((data) => {
+          //this.users = data;
+        });
     
       // Resto del código
       fechona = fechona.replace(/\//g, '-');
-      const urapi = `https://cinefactionmails.onrender.com/mailCita/${this.correoUsuario}/${this.nombreUsuario}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.salaUsuario}/${this.asientosUsuario}`;
+      urapi = `https://cinefactionmails.onrender.com/mailCita/${this.correoUsuario}/${this.nombreUsuario}/${fechona}/${this.forma.get('nombrePel')?.value}/${this.salaUsuario}/${this.asientosUsuario}`;
       this.email.getJSONurl(urapi).subscribe((res: any) => {
         console.log(res);
       });
