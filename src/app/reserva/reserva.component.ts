@@ -137,10 +137,11 @@ export class ReservaComponent implements OnInit {
         nombrePel: this.forma.value.nombrePel,
         date: this.forma.value.date,
       });
-      var urapi = `http://localhost:3000/reservation/${this.dataUser.uid}/${this.forma.value.nombre}/${this.forma.value.correo}/${this.forma.value.salaSel}/${this.forma.value.numAsientos}/${this.forma.value.nombrePel}/${this.forma.value.date}`;
+      //Esta es la q llama los datos dentro del QR
+      var urapi = `https://data-reservations-users.onrender.com/reservation/${this.dataUser.uid}/${this.forma.value.nombre}/${this.forma.value.correo}/${this.forma.value.salaSel}/${this.forma.value.numAsientos}/${this.forma.value.nombrePel}/${this.forma.value.date}`;
       this.http.get<any[]>(urapi)
         .subscribe((data) => {
-          //this.users = data;
+          //Aquí guardas el valor de "data" dentro de la variable q tu quieras pa imprimirla en el QR
         });
     
       // Resto del código
