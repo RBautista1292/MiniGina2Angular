@@ -40,6 +40,10 @@ import { VincularCorreoComponent } from './vincular-correo/vincular-correo.compo
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 import { SessionService } from './services/session.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { ChartComponent } from './chart/chart.component';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
@@ -77,6 +81,7 @@ firebase.initializeApp(firebaseConfig);
     DashboardComponent,
     VincularCorreoComponent,
     VincularTelefonoComponent,
+    ChartComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +90,7 @@ firebase.initializeApp(firebaseConfig);
     ReactiveFormsModule,
     CalendarModule,
     BrowserModule,
+    NgxChartsModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,

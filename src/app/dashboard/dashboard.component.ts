@@ -50,7 +50,6 @@ export class DashboardComponent implements OnInit {
             if (registroCitas.hasOwnProperty(key)) {
               const cita = registroCitas[key];
               console.log(cita);
-
             }
           }
         }
