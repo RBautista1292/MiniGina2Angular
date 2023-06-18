@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { getDatabase, ref, push, set } from 'firebase/database';
+import { getDatabase, ref, push, set, onValue, equalTo, query, onChildAdded, get  } from 'firebase/database';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'firebase/auth';
 
@@ -40,6 +40,20 @@ export class DashboardComponent implements OnInit {
     this.http.get<any[]>(urapi)
       .subscribe((data) => {
         this.users = data;
+      });
+      get(this.reservationsRef).then((snapshot) => {
+        const registroCitas = snapshot.val();
+        console.log(registroCitas);
+      
+        if (registroCitas) {
+          for (const key in registroCitas) {
+            if (registroCitas.hasOwnProperty(key)) {
+              const cita = registroCitas[key];
+              console.log(cita);
+
+            }
+          }
+        }
       });
   }
 
