@@ -44,6 +44,7 @@ import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 
+
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
   authDomain: 'proyecto-gina-a9700.firebaseapp.com',
