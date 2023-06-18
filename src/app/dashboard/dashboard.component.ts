@@ -46,12 +46,21 @@ export class DashboardComponent implements OnInit {
         console.log(registroCitas);
       
         if (registroCitas) {
+          const cantpeli: {[key: string]: number} = {};
           for (const key in registroCitas) {
             if (registroCitas.hasOwnProperty(key)) {
               const cita = registroCitas[key];
               console.log(cita);
+              var pelicula = registroCitas[key]['nombrePel'];
+              if (cantpeli[pelicula]){
+                cantpeli[pelicula] += 1;
+              }
+              else {
+                cantpeli[pelicula]  = 1;
+              }
             }
           }
+          console.log(cantpeli);
         }
       });
   }
