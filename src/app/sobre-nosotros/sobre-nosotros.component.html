@@ -164,12 +164,38 @@
     </div>
     <div class="col-3">
       <p-card
+        
         header="Ana Carolina De La Peña Gallegos"
+        subheader="Socio 4"
+        [style]="{ width: '240px' }"
+      >
+        <ng-template pTemplate="header">
+          <img alt="Card" src="assets/img/Logo.png" />
+        </ng-template>
+        <p
+          [ngClass]="{
+            'texto-grande': accService.letraGrandeBooleanServicio,
+            'texto-alineado': accService.alinearTextoBooleanServicio
+          }"
+        >
+            Con una de las mejores visiones a corto plazo, su desarrollo 
+            dentro de los ambiente de tension hace que sea la candidata 
+            perfecta para cualquiere puesto gerencial.
+            Una excelente colaboradora por el gusto tan impulsivo por las
+            cintas romanticas
+        </p>
+      </p-card>
+    </div>
+
+    <div class="col-3">
+      <p-card
+        header="Alonso Prieto Omar"
         subheader="Socio 5"
         [style]="{ width: '240px' }"
       >
         <ng-template pTemplate="header">
           <img alt="Card" src="assets/img/caro.jpeg" />
+          <img alt="Card" src="assets/img/Logo.png" />
         </ng-template>
         <p
           [ngClass]="{
@@ -201,6 +227,9 @@
           Demuestra caracter a la hora de resolver problemas, es un gran
           coolaborador, se define principalmente por sus valores y su etica
           de trabajo, una persona muy puntual.
+          Con un desarrollo increible dentro de ambiente y su impecable
+          adaptacion a situaciones donde se debe debatir el futuro, lo
+          Convierte en un excelente socio y colaborador.
         </p>
       </p-card>
     </div>
