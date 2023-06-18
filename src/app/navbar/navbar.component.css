@@ -2,6 +2,12 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 600px) {
+  .busqueda {
+    width: 60%;
+  }
+}
+
 /*Accesibilidad*/
 
 .texto-grande {
