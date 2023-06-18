@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     'UID', 'Nombre', 'Email', 'Teléfono', 'Proveedores'
   ];
   adminUID = '5ONTPL5AACSW3OnubQDt1f0MUxz1';
-
+  
   constructor(private afAuth: AngularFireAuth, private router: Router, private http: HttpClient) {
     
   }
@@ -41,28 +41,7 @@ export class DashboardComponent implements OnInit {
       .subscribe((data) => {
         this.users = data;
       });
-      get(this.reservationsRef).then((snapshot) => {
-        const registroCitas = snapshot.val();
-        console.log(registroCitas);
       
-        if (registroCitas) {
-          const cantpeli: {[key: string]: number} = {};
-          for (const key in registroCitas) {
-            if (registroCitas.hasOwnProperty(key)) {
-              const cita = registroCitas[key];
-              console.log(cita);
-              var pelicula = registroCitas[key]['nombrePel'];
-              if (cantpeli[pelicula]){
-                cantpeli[pelicula] += 1;
-              }
-              else {
-                cantpeli[pelicula]  = 1;
-              }
-            }
-          }
-          console.log(cantpeli);
-        }
-      });
   }
 
   logOut() {

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { get, getDatabase, ref } from 'firebase/database';
 @Component({
 selector: 'app-chart',
 template: `
@@ -36,17 +37,44 @@ margin-top: 20px;
 })
 export class ChartComponent {
 chartData: { name: string, value: number }[] = [];
+ datospel: {[key: string]: number} = {};
+ database = getDatabase();
+ reservationsRef = ref(this.database, 'reservations');
+ cantpeli: {[key: string]: number} = {};
 constructor() {
-this.generateRandomData();
-}
-generateRandomData() {
-const labels = ['Coca Cola', 'Pepsi', 'Cerveza', 'Mota', 'S3X'];
-this.chartData = labels.map((label) => {
-return { name: label, value: Math.floor(Math.random() * 100) + 1 } as
-{ name: string, value: number };
-});
-}
-reloadPage() {
-window.location.reload();
+  get(this.reservationsRef).then((snapshot) => {
+    const registroCitas = snapshot.val();
+    console.log(registroCitas);
+  
+    if (registroCitas) {
+      for (const key in registroCitas) {
+        if (registroCitas.hasOwnProperty(key)) {
+          const cita = registroCitas[key];
+          console.log(cita);
+          var pelicula = registroCitas[key]['nombrePel'];
+          if (this.cantpeli[pelicula]){
+            this.cantpeli[pelicula] += 1;
+          }
+          else {
+            this.cantpeli[pelicula]  = 1;
+          }
+        }
+      }
+      console.log(this.cantpeli);
+    }
+  });
+  console.log(JSON.parse(JSON.stringify(this.cantpeli)));
+  console.log(JSON.stringify(this.cantpeli, (key, value) => {
+    return typeof value === 'string' ? `(${value})` : value;
+  }));
+  const labels:string[] = Object.keys(this.cantpeli);
+  console.log(labels);
+
+  const value:number[] = Object.values(this.cantpeli);
+  console.log(value);
+  this.chartData = labels.map((label) => {
+  return { name: label, value: value.shift() } as
+  { name: string, value: number };
+  });
 }
 }
