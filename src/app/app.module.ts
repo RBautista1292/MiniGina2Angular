@@ -46,6 +46,7 @@ import { HijoComponent } from './hijo/hijo.component';
 
 
 
+
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
   authDomain: 'proyecto-gina-a9700.firebaseapp.com',

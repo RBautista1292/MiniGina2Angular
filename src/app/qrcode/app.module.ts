@@ -16,4 +16,4 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
   providers: [],
   bootstrap: [QRCodeComponent]
 })
-export class AppModule { }
+export class QRModule { }
