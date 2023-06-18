@@ -24,7 +24,7 @@ template: `
 </tbody>
 </table>
 <div class="button-container">
-<button (click)="reloadPage()">RECARGAR</button>
+<button (click)="reloadPage()">NO EXISTE</button>
 </div>
 `,
 styles: [
