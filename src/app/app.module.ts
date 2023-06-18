@@ -41,6 +41,7 @@ import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono
 import { SessionService } from './services/session.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
+
 export const firebaseConfig = {
   apiKey: 'AIzaSyC47AMfhjCTbBdH7X2-u3S6YdPursldDuE',
   authDomain: 'proyecto-gina-a9700.firebaseapp.com',
@@ -76,7 +77,7 @@ firebase.initializeApp(firebaseConfig);
     SpinnerComponent,
     DashboardComponent,
     VincularCorreoComponent,
-    VincularTelefonoComponent,
+    VincularTelefonoComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,10 @@ import { AccService } from '../shared/acc.service';
   styleUrls: ['./api.component.css'],
 })
 export class APIComponent implements OnInit {
+
+  video='';
+  mensajee:string="";
+
   private parrafo: SpeechSynthesisUtterance;
   leerElementosBoolean: boolean = false;
 
@@ -48,6 +52,8 @@ export class APIComponent implements OnInit {
   ];
   prueba = '';
 
+  
+
   constructor(private httpclient: HttpClient, public accService: AccService) {
     for (let i of this.ids) {
       this.httpclient.get(this.url + i + this.key).subscribe((data) => {
@@ -85,6 +91,7 @@ export class APIComponent implements OnInit {
       this.cancelarVoz();
     });
   }
+
 
   leerTexto1(event: MouseEvent): void {
     if (this.leerElementosBoolean) {
@@ -129,4 +136,7 @@ export class APIComponent implements OnInit {
       speechSynthesis.resume();
     }
   }
+
+
 }
+

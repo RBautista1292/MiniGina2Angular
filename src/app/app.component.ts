@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'MiniGina2Angular';
 
+  
+
   mostrar: boolean = false;
   lorem1: string =
     'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam possimus, odio consectetur, doloribus itaque consequatur eum minima natus provident molestiae, aut cupiditate cum deleniti mollitia alias quibusdam facilis quos obcaecati';

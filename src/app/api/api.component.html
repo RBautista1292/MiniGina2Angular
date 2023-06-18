@@ -26,7 +26,7 @@
       [columns]="columns"
       selectionMode="single"
       [value]="array"
-      [tableStyle]="{ 'min-width': '50rem' }"
+      [tableStyle]="{ 'min-width': '60rem' }"
       styleClass="p-datatable-striped"
     >
       <ng-template pTemplate="header" let-columns>
@@ -51,6 +51,7 @@
         >
           <td style="text-align: center" (mouseenter)="leerTexto1($event)">
             {{ pelicula.Title }}
+            
           </td>
           <td style="text-align: center" (mouseenter)="leerTexto1($event)">
             {{ pelicula.Year }}
