@@ -9,23 +9,6 @@ template: `
 [yAxis]="true"
 ></ngx-charts-bar-vertical>
 </div>
-<table class="data-table">
-<thead>
-<tr>
-<th>Name</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr *ngFor="let data of chartData">
-<td>{{ data.name }}</td>
-<td>{{ data.value }}</td>
-</tr>
-</tbody>
-</table>
-<div class="button-container">
-<button (click)="reloadPage()">NO EXISTE</button>
-</div>
 `,
 styles: [
 `
