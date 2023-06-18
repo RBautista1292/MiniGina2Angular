@@ -14,8 +14,6 @@ export class SobreNosotrosComponent implements OnInit {
 
   video ='2s4v46RPNaQ';
 
-   mensajeHi: string="";
-
   constructor(public accService: AccService) {
     this.parrafo = new SpeechSynthesisUtterance();
   }
@@ -52,10 +50,6 @@ export class SobreNosotrosComponent implements OnInit {
     this.accService.cancelarContenido.subscribe(() => {
       this.cancelarVoz();
     });
-  }
-
-  onMensajeHij(mensaje:any){
-    this.mensajeHi=mensaje;
   }
 
   leerTexto1(event: MouseEvent): void {
