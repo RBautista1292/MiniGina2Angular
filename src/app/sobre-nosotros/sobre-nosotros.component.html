@@ -380,22 +380,23 @@
     </div>
     <p class="my-4 text-light">fse</p>
   </div>
-  <div class="col-sm-6" style=" background-color:rgb(135, 168, 173); font-family:'Metropolis' sans-serif; font-size: 20px; border-radius: 2%; margin-left: 25%; width: 50%;">
-    <p style="text-align: center; font-family:'Metropolis' sans-serif;">Salas Privadas</p>
-       <iframe
+
+  <div class="col-sm-6" style="background-color:rgb(135, 168, 173); font-family:'Metropolis' sans-serif; font-size: 20px; border-radius: 2%;  margin-left: 25%; width: 50%;">
+    <p style="text-align: center;">Salas Privadas</p>
+
+    <iframe
     width="500"
     height="315"
     [src]="video | domseguro:'https://www.youtube.com/embed/' "
     frameborder="0"
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-></iframe>
-<p> Grandiosas salas de cine, las cuales cuentan con toda la comodidad para que puedas disfrutar de tu pelicula favorita...</p>
-<a href="https://www.dondeir.com/wp-content/uploads/2020/09/cine-exclusivo-cinemex-renta-sus-salas-platino-desde-700.jpg">
-<button type="button" class="btn btn-outline-warning">Más información</button>
-</a>
-</div>
-<br>
+    allowfullscreen></iframe>
+    <p> {{mensajeHi}} </p>
+    <app-hijo [tex]="'-'"  (eventoHijo)="onMensajeHij($event)"> </app-hijo>
+  </div>
+
+
+<br> 
 <br>
   
 </div>

@@ -42,6 +42,7 @@ import { SessionService } from './services/session.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { HijoComponent } from './hijo/hijo.component';
 
 
 
@@ -82,6 +83,7 @@ firebase.initializeApp(firebaseConfig);
     VincularCorreoComponent,
     VincularTelefonoComponent,
     ChartComponent,
+    HijoComponent,
   ],
   imports: [
     BrowserModule,
