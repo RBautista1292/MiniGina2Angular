@@ -1,4 +1,12 @@
-<p-table [columns]="columnas" [value]="citas">
+<div class="container my-5">
+  <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+    <h1 class="display-4 fw-normal">Registro de reservaciones</h1>
+    <p class="fs-5 text-muted">
+      {{ dataUser?.displayName }}: {{ dataUser?.email || "N/A" }}
+    </p>
+  </div>
+  <div class="shadow">
+<p-table [columns]="columnas" [value]="citas" styleClass="p-datatable-striped" selectionMode="single">
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th
@@ -45,7 +53,7 @@
           'texto-alineado': accService.alinearTextoBooleanServicio
         }"
       >
-        {{ cita.salaSel }}
+        {{ cita.salaSel.slice(4) }}
       </td>
       <td
         style="text-align: center"
@@ -86,7 +94,12 @@
         }"
       >
         <!--Aquí se pone el botón pa eliminar-->
+        <a href="javascript:void(0)" class="text-danger" (click)="eliminar2(cita.key)">
+          <i class="fa-solid fa-trash fa-1x"></i>
+        </a>
       </td>
     </tr>
   </ng-template>
 </p-table>
+</div>
+</div>
