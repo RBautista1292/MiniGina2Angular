@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 
 @Component({
-  selector: 'app-qr',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-qrcode',
+  templateUrl: './qrcode.component.html',
+  styleUrls: ['./qrcode.component.css']
 })
-export class AppComponent implements OnInit {
+export class QRCodeComponent implements OnInit{
   title = 'QR';
   ventas:Venta[]=[
     {id:1,nombre:"Omar",direccion:"VIllasuncion",total:65,pelicula:"El Juego",Sala:4},
@@ -58,8 +58,6 @@ export class AppComponent implements OnInit {
   correction = NgxQrcodeErrorCorrectionLevels.HIGH;
   
  
-  
-
   ngOnInit(): void {
       
   }
@@ -74,5 +72,3 @@ class Venta{
   Sala:number=0;
   total:number=0; 
 }
-
-
