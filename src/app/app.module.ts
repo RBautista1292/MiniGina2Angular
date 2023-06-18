@@ -44,6 +44,7 @@ import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { QRCodeComponent } from './qrcode/qrcode.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { HijoComponent } from './hijo/hijo.component';
 
 
 
@@ -85,6 +86,7 @@ firebase.initializeApp(firebaseConfig);
     VincularTelefonoComponent,
     ChartComponent,
     QRCodeComponent,
+    HijoComponent,
   ],
   imports: [
     BrowserModule,
