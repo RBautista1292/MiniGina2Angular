@@ -42,6 +42,8 @@ import { SessionService } from './services/session.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { QRCodeComponent } from './qrcode/qrcode.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 
@@ -82,6 +84,7 @@ firebase.initializeApp(firebaseConfig);
     VincularCorreoComponent,
     VincularTelefonoComponent,
     ChartComponent,
+    QRCodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,6 +94,7 @@ firebase.initializeApp(firebaseConfig);
     CalendarModule,
     BrowserModule,
     NgxChartsModule,
+    NgxQRCodeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
