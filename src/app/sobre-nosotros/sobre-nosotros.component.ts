@@ -12,6 +12,8 @@ export class SobreNosotrosComponent implements OnInit {
   private parrafo: SpeechSynthesisUtterance;
   leerElementosBoolean: boolean = false;
 
+  video ='2s4v46RPNaQ';
+
   constructor(public accService: AccService) {
     this.parrafo = new SpeechSynthesisUtterance();
   }

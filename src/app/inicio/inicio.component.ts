@@ -12,6 +12,7 @@ declare const speechSynthesis: any;
 })
 export class InicioComponent implements OnInit {
 
+
   private parrafo: SpeechSynthesisUtterance;
   leerElementosBoolean: boolean = false;
   dataUser!: any;
