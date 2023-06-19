@@ -26,6 +26,7 @@
     "@swimlane/ngx-charts": "^20.4.1",
     "@techiediaries/ngx-qrcode": "^9.1.0",
     "angular-cli-ghpages": "^1.0.6",
+    "angularx-qrcode": "^16.0.0",
     "bootstrap": "^4.6.2",
     "firebase": "^9.22.2",
     "i": "^0.3.7",

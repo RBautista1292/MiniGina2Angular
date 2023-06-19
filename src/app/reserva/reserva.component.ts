@@ -9,6 +9,8 @@ import { getDatabase, ref, push, set, onValue, equalTo, query, onChildAdded, get
 import { Observable } from 'rxjs';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { HttpClient } from '@angular/common/http';
+import { DataResService } from '../services/data-res.service';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @Component({
   selector: 'app-reserva',
@@ -36,7 +38,8 @@ export class ReservaComponent implements OnInit {
   constructor(private router: Router, private session: SessionService, private afAuth: AngularFireAuth,
     private email: RutaService,
     private db: AngularFireDatabase,
-    private http: HttpClient) {
+    private http: HttpClient,
+    private dataRes: DataResService) {
     this.forma = new FormGroup({
       nombre: new FormControl('', [
         Validators.required,
@@ -142,6 +145,8 @@ export class ReservaComponent implements OnInit {
       this.http.get<any[]>(urapi)
         .subscribe((data) => {
           //Aquí guardas el valor de "data" dentro de la variable q tu quieras pa imprimirla en el QR
+          console.log(data);
+          this.dataRes.setDataRes(data);
         });
     
       // Resto del código
@@ -150,13 +155,16 @@ export class ReservaComponent implements OnInit {
       this.email.getJSONurl(urapi).subscribe((res: any) => {
         console.log(res);
       });
-    
+      /*const qrCode = new QrCodeComponent();
+      const element = document.createElement('div');
+      element.appendChild(qrCode.getHtmlElement());*/
+      var qrData = this.dataRes.getDataRes();
+      const texto = `Le hemos enviado un correo con la información de la reservación\nTambién puede escanear el siguiente QR con la información de su cita:\n<qrcode [data]="${qrData}" colorDark="#0000FF" colorLight="#FFFFFF"></qrcode>`;
       Swal.fire({
         icon: 'success',
         title: 'Su reservación ha sido registrada',
-        text: 'Le hemos enviado un correo con la información de la reservación',
-        showConfirmButton: false,
-        timer: 2500,
+        html: `${texto}`,
+        showConfirmButton: true,
       });
     
       this.router.navigate(['/contenido', '0']);

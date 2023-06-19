@@ -32,6 +32,7 @@ import { ConfirmationResultService } from './services/confirmation-result.servic
 import { AngularFireModule } from '@angular/fire/compat';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { QRCodeModule } from 'angularx-qrcode';
 
 import * as firebase from 'firebase/app';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
@@ -43,6 +44,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HijoComponent } from './hijo/hijo.component';
+import { DataResService } from './services/data-res.service';
 
 
 
@@ -94,7 +96,7 @@ firebase.initializeApp(firebaseConfig);
     CalendarModule,
     BrowserModule,
     NgxChartsModule,
-
+    QRCodeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -114,6 +116,7 @@ firebase.initializeApp(firebaseConfig);
   ],
   providers: [ConfirmationResultService,
     SessionService,
+    DataResService,
   ],
   bootstrap: [AppComponent],
 })
