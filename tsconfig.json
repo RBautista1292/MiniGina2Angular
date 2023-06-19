@@ -24,14 +24,6 @@
       "dom"
     ]
   },
-  "include": [
-    "src/app/tslib.d.ts",
-    "src/main.ts"
-  ],
-  "files": [
-    "src/app/tslib.d.ts",
-    "src/main.ts"
-  ],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
