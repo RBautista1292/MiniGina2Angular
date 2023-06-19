@@ -39,10 +39,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { VincularCorreoComponent } from './vincular-correo/vincular-correo.component';
 import { VincularTelefonoComponent } from './vincular-telefono/vincular-telefono.component';
 import { SessionService } from './services/session.service';
+import { DataReservationService } from './services/data-reservation.service';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { ChartComponent } from './chart/chart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { HijoComponent } from './hijo/hijo.component';
+import { QrCodeComponent } from './qr-code/qr-code.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 
@@ -85,6 +88,7 @@ firebase.initializeApp(firebaseConfig);
     VincularTelefonoComponent,
     ChartComponent,
     HijoComponent,
+    QrCodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +98,7 @@ firebase.initializeApp(firebaseConfig);
     CalendarModule,
     BrowserModule,
     NgxChartsModule,
-
+    NgxQRCodeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
@@ -114,6 +118,7 @@ firebase.initializeApp(firebaseConfig);
   ],
   providers: [ConfirmationResultService,
     SessionService,
+    DataReservationService
   ],
   bootstrap: [AppComponent],
 })
