@@ -62,7 +62,7 @@ export class PeliculasService {
       duracion: 111,
       director: 'Julian Schnabel',
       collapse: 5,
-      trailer: '14fW4mhFkfg',
+      trailer: 'T77PDm3e1iE',
       generos: ['Drama'],
     },
     {

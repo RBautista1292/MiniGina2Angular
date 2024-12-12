@@ -1,62 +1,68 @@
 <div class="footer">
-  <div class="container mb-3">
-    <div class="nav">
-      <a class="nav-link active mt-2" aria-current="page" routerLink="/inicio"
+  <div class="container mb-3 mt-6 flex">
+    <div class="nav" style="display: flex; justify-content: space-between; column-gap: 50px;">
+      <a class="nav-link active mt-2" style="flex: 1;" aria-current="page" routerLink="/inicio"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio,
             'texto-grande': accService.letraGrandeBooleanServicio
           }"
+          style="display: flex; justify-content: center; align-content: center;"
         >
           Inicio
         </p></a
       >
-      <a class="nav-link active mt-2" routerLink="/contenido/0"
+      <a class="nav-link active mt-2" style="flex: 1;" routerLink="/contenido/0"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio, 
             'texto-grande': accService.letraGrandeBooleanServicio
           }"
+          style="display: flex; justify-content: center; align-content: center;"
         >
           Peliculas
         </p></a
       >
-      <a class="nav-link active mt-2" routerLink="/proximamente"
+      <a class="nav-link active mt-2" style="flex: 1;" routerLink="/proximamente"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio,
             'texto-grande': accService.letraGrandeBooleanServicio
           }"
+          style="display: flex; justify-content: center; align-content: center;"
         >
           Proximamente
         </p></a
       >
-      <a class="nav-link active mt-2" routerLink="/nosotros"
+      <a class="nav-link active mt-2" style="flex: 1;" routerLink="/nosotros"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio,
             'texto-grande': accService.letraGrandeBooleanServicio
           }"
+          style="display: flex; justify-content: center; align-content: center;"
         >
           Nuestro Equipo
         </p></a
       >
-      <a class="nav-link active mt-2" routerLink="/contacto"
+      <a class="nav-link active mt-2" style="flex: 1;" routerLink="/contacto"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio,
             'texto-grande': accService.letraGrandeBooleanServicio
           }"
+          style="display: flex; justify-content: center; align-content: center;"
         >
           Contacto
         </p></a
       >
-      <a class="nav-link active mt-2" routerLink="/reservaciones" *ngIf="dataUser !== null"
+      <a class="nav-link active mt-2" style="flex: 1;" routerLink="/reservaciones" *ngIf="dataUser !== null"
         ><p
           [ngClass]="{
             'link-grande': accService.linkResaltadoBooleanServicio,
             'texto-grande': accService.letraGrandeBooleanServicio
           }"
+          style="display: flex; justify-content: center; align-content: center;"
         >
           Lista de Reservaciones
         </p></a

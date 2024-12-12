@@ -1,12 +1,12 @@
-<div class="container wrapper" style="background-color: white;">
-  <div *ngIf="!loading" class="body">
+<div class="container wrapper mb-5" style="background-color: white;">
+  <div *ngIf="!loading" class="body mb-6">
     <img class="logo" src="../../../assets/img/login.png" alt="Login" />
-    <h1
+    <h2
       (mouseenter)="leerTexto1($event)"
       [ngClass]="{ 'texto-grande4': accService.letraGrandeBooleanServicio }"
     >
       Iniciar sesión
-    </h1>
+    </h2>
     <form (ngSubmit)="loginC()" [formGroup]="loginUsuarioC">
       <div class="form-floating mb-3">
         <label
@@ -129,7 +129,7 @@
       ¿No tienes cuenta? <a routerLink="/registrar-usuario">Regístrate</a>
     </p>
     <a
-      class="mt-3"
+      class="mt-3 mb-6"
       routerLink="/recuperar-password"
       (mouseenter)="leerTexto1($event)"
       [ngClass]="{ 'texto-grande': accService.letraGrandeBooleanServicio }"
